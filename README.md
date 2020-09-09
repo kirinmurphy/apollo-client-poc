@@ -14,7 +14,6 @@ https://strapi.io/documentation/3.0.0-beta.x/guides/auth-request.html#setup
 #### Typescript & Apollo
 https://www.apollographql.com/docs/react/development-testing/static-typing/   
 https://www.apollographql.com/blog/getting-started-with-typescript-and-apollo-a9aa2c7dcf87/      
-https://www.apollographql.com/docs/react/development-testing/static-typing/#usesubscription      
 
 #### Graphql
 https://graphql.org/learn/queries/      
