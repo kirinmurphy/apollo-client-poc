@@ -1,19 +1,5 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-
-function mapReducer(
-  state: any, 
-  action: any): any {
-  
-  switch (action.type) {
-  case 'init': 
-    return {
-      ...state
-    };
-  
-  default: throw new Error();
-  }
-}
 
 interface MarkerProps {
   name: string;
@@ -29,11 +15,6 @@ interface Props {
 }
 
 export default function Mapizer ({ markers }: Props): JSX.Element {
-  const initialMapState = {
-    zoom: 16
-  };
-
-  const [state, dispatch] = useReducer(mapReducer, initialMapState);
 
   const allLatLongs = markers.map(marker => marker.position);
 
