@@ -26,7 +26,7 @@ export function Bite ({ photo, name, bite_types, source }: ItemTypeProps): JSX.E
     <div className="bite-summary">
       {photo && (
         <div className="bite-summary__image">
-          <img src={process.env.API_URL + photo.url} />
+          <img src={process.env.IMAGE_ASSET_URL + photo.url} />
         </div>
       )}
       

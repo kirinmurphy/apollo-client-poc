@@ -10,6 +10,10 @@ https://github.com/strapi/strapi/issues/2334
 https://www.mstweaks.com/strapi-with-mongodb-and-mongodb-atlas/   
 https://docs.netlify.com/configure-builds/environment-variables
 
+#### Cloudinary integration
+https://medium.com/@jasong84/configuring-cloudinary-with-strapi-3-1-4-6dbddc721617    
+https://jaredude.wordpress.com/2020/08/04/getting-started-with-strapi-and-cloudinary-new-npm-package/
+
 #### Auth with strapi
 https://medium.com/ovrsea/token-authentication-with-react-and-apollo-client-a-detailed-example-a3cc23760e9      
 https://strapi.io/documentation/3.0.0-beta.x/guides/auth-request.html#setup      
