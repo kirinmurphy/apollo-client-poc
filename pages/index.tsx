@@ -11,6 +11,7 @@ import SOURCES_QUERY from '../apollo/queries/source/sources';
 import BITE_QUERY from '../apollo/queries/bite/bites';
 
 import { Bite } from '../components/Bite';
+import { Layout } from '../components/Layout';
 
 const Mapizer = dynamic(
   () => import('../components/Mapizer'),
@@ -21,7 +22,7 @@ export default function Home (): JSX.Element {
   return (
     <>
       <Head>
-        {/* <title></title> */}
+        <title>Best Bite Chicago</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossOrigin=""/>
@@ -30,43 +31,46 @@ export default function Home (): JSX.Element {
           integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
           crossOrigin=""></script>      
       </Head>
+      
+      <Layout>
+        <div className="page-content-wrapper">
+          <Query query={SOURCES_QUERY} id={null}>
+            {({ data: { sources } }) => {
 
-      <Query query={SOURCES_QUERY} id={null}>
-        {({ data: { sources } }) => {
+              const markers = sources.map(source => { {
+                const { latitude, longitude, neighborhood } = source.location;
+                return {
+                  name: source.name,
+                  neighborhood: neighborhood,
+                  position: [latitude, longitude]
+                }
+              }});
 
-          const markers = sources.map(source => { {
-            const { latitude, longitude, neighborhood } = source.location;
-            return {
-              name: source.name,
-              neighborhood: neighborhood,
-              position: [latitude, longitude]
-            }
-          }});
+              return (
+                <>
+                  <Mapizer markers={markers} />
+                </>
+              );
+            }}
+          </Query>
 
-          return (
-            <>
-              <Mapizer markers={markers} />
-            </>
-          );
-        }}
-      </Query>
+          <CollectionQuery collectionKey="biteTypes" query={BITE_TYPES_QUERY}>
+            {({ itemProps }) => <div>{itemProps.name}</div>}
+          </CollectionQuery>
 
+          <br/>
 
-      <CollectionQuery collectionKey="biteTypes" query={BITE_TYPES_QUERY}>
-        {({ itemProps }) => <div>{itemProps.name}</div>}
-      </CollectionQuery>
+          <CollectionQuery collectionKey="sources" query={SOURCES_QUERY}>
+            {({ itemProps }) => <div>{itemProps.name}</div>}
+          </CollectionQuery>
 
-      <br/>
+          <br/>
 
-      <CollectionQuery collectionKey="sources" query={SOURCES_QUERY}>
-        {({ itemProps }) => <div>{itemProps.name}</div>}
-      </CollectionQuery>
-
-      <br/>
-
-      <CollectionQuery collectionKey="bites" query={BITE_QUERY}>
-        {({ itemProps }) => <Bite {...itemProps} />}
-      </CollectionQuery>
+          <CollectionQuery collectionKey="bites" query={BITE_QUERY}>
+            {({ itemProps }) => <Bite {...itemProps} />}
+          </CollectionQuery>
+        </div>
+      </Layout>
     </>
   )
 }
