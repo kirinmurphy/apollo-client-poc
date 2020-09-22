@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import styled from 'styled-components';
-
+import { PageContentWrapper, SiteTitle } from '../styles/globalCss';
 // import { portfolioGlobal } from './css/portfolioGlobal';
 // import { globalVariables } from '../portfolioData/cssVariables';
 // import { redirectIfOldIE } from './utils/redirectIfOldIE';
@@ -21,11 +20,9 @@ export function Layout ({ children }: Props): JSX.Element {
 
       <main>
         <header>
-          <div className="page-content-wrapper">
-            <h1>
-              <Title>Best Bite Chicago</Title>
-            </h1>
-          </div>
+          <PageContentWrapper>
+            <SiteTitle>Best Bite Chicago</SiteTitle>
+          </PageContentWrapper>
         </header>
         <div className="page-content">
           {children}
@@ -34,7 +31,3 @@ export function Layout ({ children }: Props): JSX.Element {
     </>
   );
 }
-
-const Title = styled.h1`
-  color:red;
-`;

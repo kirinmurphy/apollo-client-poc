@@ -1,13 +1,14 @@
+
 import React from 'react';
 
-import { CommaSeparatedList } from 'codethings-react-ui';
+// import { CommaSeparatedList } from 'codethings-react-ui';
 
 export interface ItemTypeProps {
   photo: {
     url: string;
   }, 
   name: string, 
-  bite_types: {
+  biteTypes: {
     name: string;
   }[],
   source: {
@@ -20,7 +21,7 @@ export interface ItemTypeProps {
   }
 }
 
-export function Bite ({ photo, name, bite_types, source }: ItemTypeProps): JSX.Element {
+export function Bite ({ photo, name, source }: ItemTypeProps): JSX.Element {
 
   return (
     <div className="bite-summary">
@@ -31,11 +32,6 @@ export function Bite ({ photo, name, bite_types, source }: ItemTypeProps): JSX.E
       )}
       
       <div className="bite-summary__name">{name}</div>
-
-      <CommaSeparatedList
-        name="categories"
-        collection={bite_types?.map((type) => type.name)}
-      />
 
       <div className="bite-summary__source">{source.name} - {source?.location?.neighborhood}</div>  
     </div>

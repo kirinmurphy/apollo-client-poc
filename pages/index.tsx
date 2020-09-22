@@ -3,15 +3,16 @@ import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
+import { PageContentWrapper } from '../styles/globalCss'; 
+
 import Query from '../components/Query';
-import { CollectionQuery } from '../components/CollectionQuery';
 
 import BITE_TYPES_QUERY from '../apollo/queries/bite-types';
 import SOURCES_QUERY from '../apollo/queries/source/sources';
-import BITE_QUERY from '../apollo/queries/bite/bites';
 
-import { Bite } from '../components/Bite';
 import { Layout } from '../components/Layout';
+import { BiteSearch } from '../components/BiteTypeSearch';
+import { BiteList } from '../components/BiteList';
 
 const Mapizer = dynamic(
   () => import('../components/Mapizer'),
@@ -33,8 +34,8 @@ export default function Home (): JSX.Element {
       </Head>
       
       <Layout>
-        <div className="page-content-wrapper">
-          <Query query={SOURCES_QUERY} id={null}>
+        <PageContentWrapper>
+          <Query query={SOURCES_QUERY}>
             {({ data: { sources } }) => {
 
               const markers = sources.map(source => { {
@@ -46,34 +47,25 @@ export default function Home (): JSX.Element {
                 }
               }});
 
-              return (
-                <>
-                  <Mapizer markers={markers} />
-                </>
-              );
+              return <Mapizer markers={markers} />;
             }}
           </Query>
 
-          <CollectionQuery collectionKey="biteTypes" query={BITE_TYPES_QUERY}>
-            {({ itemProps }) => <div>{itemProps.name}</div>}
-          </CollectionQuery>
+          <Query query={BITE_TYPES_QUERY}>
+            {({ data }) => {
+              const { biteTypes } = data;
+              return <BiteSearch biteTypes={biteTypes} />;
+            }}
+          </Query>
 
-          <br/>
+          <BiteList />
 
-          <CollectionQuery collectionKey="sources" query={SOURCES_QUERY}>
-            {({ itemProps }) => <div>{itemProps.name}</div>}
-          </CollectionQuery>
-
-          <br/>
-
-          <CollectionQuery collectionKey="bites" query={BITE_QUERY}>
-            {({ itemProps }) => <Bite {...itemProps} />}
-          </CollectionQuery>
-        </div>
+        </PageContentWrapper>
       </Layout>
     </>
   )
 }
+
 
 // export async function getStaticProps() {
 //   const allPostsData = getSortedPostsData()

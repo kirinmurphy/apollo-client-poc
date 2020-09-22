@@ -37,11 +37,6 @@ body {
 
 .map > * { height:100%; }
 
-.bite-summary {
-  width:300px;
-  margin-bottom:2vw;
-}
-
 .bite-summary__image {
   height:0; 
   padding-bottom:60%;

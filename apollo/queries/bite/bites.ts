@@ -1,27 +1,41 @@
 import gql from "graphql-tag";
 
-const BITE_QUERY = gql`
-  query Bites {
-    bites {
+const biteContent = `
+  {
+    id
+    name
+    photo {
+      url
+    }
+    source {
       id
       name
-      photo {
-        url
-      }
-      bite_types {
-        name
-      }
-      source {
-        id
-        name
-        location {
-          latitude
-          longitude
-          neighborhood
-        }
+      location {
+        latitude
+        longitude
+        neighborhood
       }
     }
   }
 `;
 
-export default BITE_QUERY;
+export const BITE_BY_ID = gql`
+  query Bite($id: ID!){
+    bite(id: $id) {
+      id
+      name
+    } 
+  }
+`;
+
+export const FILTERED_BITE_QUERY = gql`
+  query Bites {
+    bites(where: { biteType: { name: "Slice" } }) ${biteContent}  
+  }
+`;
+
+export const BITE_QUERY = gql`
+  query Bites { 
+    bites ${biteContent} 
+  }
+`;
