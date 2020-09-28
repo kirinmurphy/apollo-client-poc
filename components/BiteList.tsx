@@ -5,23 +5,23 @@ import { GridList } from '../styles/globalCss';
 
 import { 
   BITE_QUERY, 
-  // FILTERED_BITE_QUERY
+  FILTERED_BITE_QUERY
 } from '../apollo/queries/bite/bites';
 
 import { Bite } from '../components/Bite';
 import Query from './Query';
-import { useBiteFilter } from '../utils/useBiteFilter';
+import { useCuisineFilter } from '../utils/useCuisineFilter';
 
 export function BiteList (): JSX.Element {
 
-  const { cuisineTypeFromUrl } = useBiteFilter();
+  const { cuisineTypeFromUrl } = useCuisineFilter();
 
-  // const query = !!cuisineTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
-  // const variables = !!cuisineTypeFromUrl ? { cuisine: cuisineTypeFromUrl } : {};
+  const query = !!cuisineTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
+  const variables = !!cuisineTypeFromUrl ? { cuisine: cuisineTypeFromUrl } : {};
 
   return (
     <GridList>
-      <Query query={BITE_QUERY}>
+      <Query query={query}  variables={variables}>
         {({ data }) => {
 
           const { bites = [] } = data;

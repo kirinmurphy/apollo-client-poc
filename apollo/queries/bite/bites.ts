@@ -28,11 +28,11 @@ export const BITE_BY_ID = gql`
   }
 `;
 
-// export const FILTERED_BITE_QUERY = gql`
-//   query Bites {
-//     bites(where: { cuisine: { name: "Pizza" } }) ${biteContent}  
-//   }
-// `;
+export const FILTERED_BITE_QUERY = gql`
+  query Bites {
+    bites(where: { cuisine: { name: "Pizza" } }) ${biteContent}  
+  }
+`;
 
 export const BITE_QUERY = gql`
   query Bites { 

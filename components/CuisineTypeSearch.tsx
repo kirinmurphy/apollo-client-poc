@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { useBiteFilter } from '../utils/useBiteFilter';
+import { useCuisineFilter } from '../utils/useCuisineFilter';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
 
@@ -15,7 +15,7 @@ interface Props {
 const FILTER_OPTION_NAME_ALL = 'All';
 
 export function BiteSearch ({ cuisines }: Props): JSX.Element {
-  const { updateCuisineType, clearCuisineType } = useBiteFilter();
+  const { updateCuisineType, clearCuisineType } = useCuisineFilter();
 
   const [searchInputValue, setSearchInputValue] = useState('');
   
