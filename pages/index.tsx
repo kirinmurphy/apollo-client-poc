@@ -7,7 +7,7 @@ import { PageContentWrapper } from '../styles/globalCss';
 
 import Query from '../components/Query';
 
-import CUISINES_QUERY from '../apollo/queries/bite-types';
+import CUISINES_QUERY from '../apollo/queries/cuisine/cuisines';
 import SOURCES_QUERY from '../apollo/queries/source/sources';
 
 import { Layout } from '../components/Layout';
