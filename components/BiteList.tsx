@@ -17,11 +17,11 @@ export function BiteList (): JSX.Element {
   const { cuisineTypeFromUrl } = useCuisineFilter();
 
   const query = !!cuisineTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
-  const variables = !!cuisineTypeFromUrl ? { cuisine: cuisineTypeFromUrl } : {};
+  const variables = !!cuisineTypeFromUrl ? { cuisineName: cuisineTypeFromUrl } : {};
 
   return (
     <GridList>
-      <Query query={query}  variables={variables}>
+      <Query query={query} variables={variables}>
         {({ data }) => {
 
           const { bites = [] } = data;

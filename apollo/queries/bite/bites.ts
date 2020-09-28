@@ -29,8 +29,8 @@ export const BITE_BY_ID = gql`
 `;
 
 export const FILTERED_BITE_QUERY = gql`
-  query Bites {
-    bites(where: { cuisine: { id: 1 } }) ${biteContent}  
+  query Bites($cuisineName: String!) {
+    bites(where: { cuisines: { name: $cuisineName } }) ${biteContent}  
   }
 `;
 
