@@ -18,7 +18,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "codethings-nextjs-router-addons": "^1.0.12",
-    "codethings-react-ui": "^1.0.29",
+    "codethings-react-ui": "1.1.6",
     "date-fns": "^2.11.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",

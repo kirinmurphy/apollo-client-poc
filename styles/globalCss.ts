@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const breakpointTablet = '800px';
+
 export const SiteTitle = styled.h1``;
 
 export const PageContentWrapper = styled.section`

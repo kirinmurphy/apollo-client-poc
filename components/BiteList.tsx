@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { GridList } from '../styles/globalCss'; 
+import { breakpointTablet, GridList } from '../styles/globalCss'; 
 
 import { 
   BITE_QUERY, 
@@ -11,6 +11,7 @@ import {
 import { BiteSummary } from '../components/Bite';
 import Query from './Query';
 import { useCuisineFilter } from '../utils/useCuisineFilter';
+import { SearchResultsSummary } from './SearchResults/SearchResultsSummary';
 
 export function BiteList (): JSX.Element {
 
@@ -18,28 +19,40 @@ export function BiteList (): JSX.Element {
 
   const queryProps = !!cuisineTypeFromUrl 
     ? { query: FILTERED_BITE_QUERY, variables: { cuisineName: cuisineTypeFromUrl } }
-    : { query: BITE_QUERY, variables: {} }
+    : { query: BITE_QUERY }
 
   return (
-    <GridList>
-      <Query {...queryProps}>
-        {({ data }) => {
-          const { bites = [] } = data;
+    <Query {...queryProps}>
+      {({ data }) => {
+        const { bites = [] } = data;
 
-          return (
-            <>
+        return bites.length ? (
+          <>
+            <SearchResultsSummaryWrapper>
+              <SearchResultsSummary biteCount={bites.length} />
+            </SearchResultsSummaryWrapper>
+    
+            <GridList>
               {bites.map((itemProps, index) => {
-                return <React.Fragment key={index}>
-                  <BiteTheme><BiteSummary {...itemProps} /></BiteTheme>
-                </React.Fragment>
+                return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
               })}
-            </>
-          );
-        }}
-      </Query>
-    </GridList>
+            </GridList>
+          </>
+        ) : <div>No results!</div>;
+      }}
+    </Query>
   );
 }
+
+const SearchResultsSummaryWrapper = styled.div`
+  padding:.2rem 0;
+  margin-bottom:.5rem;
+  font-size:var(--fontSize-bump);
+
+  @media(min-width:${breakpointTablet}) {
+    padding:.45rem 0;
+  }
+`;
 
 const BiteTheme = styled.div`
   .bite-summary__name {
@@ -48,6 +61,6 @@ const BiteTheme = styled.div`
   }
 
   .bite-summary__source {
-    font-size:.8rem;
+    font-size:var(--fontSize-small);
   }
 `;

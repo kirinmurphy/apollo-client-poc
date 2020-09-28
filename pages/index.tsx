@@ -3,7 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import { PageContentWrapper } from '../styles/globalCss'; 
+import { breakpointTablet, PageContentWrapper } from '../styles/globalCss'; 
 
 import Query from '../components/Query';
 
@@ -13,6 +13,7 @@ import SOURCES_QUERY from '../apollo/queries/source/sources';
 import { Layout } from '../components/Layout';
 import { BiteSearch } from '../components/CuisineTypeSearch';
 import { BiteList } from '../components/BiteList';
+import styled from 'styled-components';
 
 const Mapizer = dynamic(
   () => import('../components/Mapizer'),
@@ -51,14 +52,12 @@ export default function Home (): JSX.Element {
             }}
           </Query>
 
-          <Query query={CUISINES_QUERY}>
-            {({ data }) => {
-              console.log('data', data);
-              const { cuisines } = data;
-              return <BiteSearch cuisines={cuisines} />;
-            }}
-          </Query>
-
+          <BiteSearchWrapper>
+            <Query query={CUISINES_QUERY}>
+              {({ data }) => <BiteSearch cuisines={data.cuisines} />}
+            </Query>
+          </BiteSearchWrapper>
+          
           <BiteList />
 
         </PageContentWrapper>
@@ -67,6 +66,19 @@ export default function Home (): JSX.Element {
   )
 }
 
+const BiteSearchWrapper = styled.div`
+  @media(min-width:${breakpointTablet}) {
+    position:relative; 
+    margin-bottom:.5rem;
+
+    > * {
+      position:absolute; 
+      top:0; 
+      right:0; 
+      width:350px;
+    }  
+  }
+`;
 
 // export async function getStaticProps() {
 //   const allPostsData = getSortedPostsData()
