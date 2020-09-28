@@ -5,6 +5,11 @@ import { useCuisineFilter } from '../utils/useCuisineFilter';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
 
+import './utils/fontAwesomeLibrary';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFlask } from '@fortawesome/free-solid-svg-icons';
+
+
 interface Props {
   cuisines: {
     name: string;
@@ -41,7 +46,7 @@ export function BiteSearch ({ cuisines }: Props): JSX.Element {
         />
 
         <button onClick={() => submitSearch(searchInputValue)}>
-          Search
+          <FontAwesomeIcon icon={faFlask} />
         </button>
       </SearchBarWrapper>
 
