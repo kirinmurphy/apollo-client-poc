@@ -8,7 +8,7 @@ import {
   FILTERED_BITE_QUERY
 } from '../apollo/queries/bite/bites';
 
-import { Bite } from '../components/Bite';
+import { BiteSummary } from '../components/Bite';
 import Query from './Query';
 import { useCuisineFilter } from '../utils/useCuisineFilter';
 
@@ -16,23 +16,21 @@ export function BiteList (): JSX.Element {
 
   const { cuisineTypeFromUrl } = useCuisineFilter();
 
-  const query = !!cuisineTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
-  const variables = !!cuisineTypeFromUrl ? { cuisineName: cuisineTypeFromUrl } : {};
+  const queryProps = !!cuisineTypeFromUrl 
+    ? { query: FILTERED_BITE_QUERY, variables: { cuisineName: cuisineTypeFromUrl } }
+    : { query: BITE_QUERY, variables: {} }
 
   return (
     <GridList>
-      <Query query={query} variables={variables}>
+      <Query {...queryProps}>
         {({ data }) => {
-
           const { bites = [] } = data;
-
-          console.log('bites', data);
 
           return (
             <>
               {bites.map((itemProps, index) => {
                 return <React.Fragment key={index}>
-                  <BiteTheme><Bite {...itemProps} /></BiteTheme>
+                  <BiteTheme><BiteSummary {...itemProps} /></BiteTheme>
                 </React.Fragment>
               })}
             </>

@@ -1,8 +1,6 @@
 
 import React from 'react';
 
-// import { CommaSeparatedList } from 'codethings-react-ui';
-
 export interface ItemTypeProps {
   photo: {
     url: string;
@@ -21,7 +19,7 @@ export interface ItemTypeProps {
   }
 }
 
-export function Bite ({ photo, name, source }: ItemTypeProps): JSX.Element {
+export function BiteSummary ({ photo, name, source }: ItemTypeProps): JSX.Element {
 
   return (
     <div className="bite-summary">
