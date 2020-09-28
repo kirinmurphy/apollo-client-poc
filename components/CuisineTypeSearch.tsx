@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import { useBiteFilter } from '../utils/useBiteFilter';
 
-import { BiteTypeOption } from './BiteTypeOption';
+import { CuisineTypeOption } from './CuisineTypeOption';
 
 interface Props {
-  biteTypes: {
+  cuisines: {
     name: string;
     id: string | number;
   }[]
@@ -14,8 +14,8 @@ interface Props {
 
 const FILTER_OPTION_NAME_ALL = 'All';
 
-export function BiteSearch ({ biteTypes }: Props): JSX.Element {
-  const { updateBiteType, clearBiteType } = useBiteFilter();
+export function BiteSearch ({ cuisines }: Props): JSX.Element {
+  const { updateCuisineType, clearCuisineType } = useBiteFilter();
 
   const [searchInputValue, setSearchInputValue] = useState('');
   
@@ -27,8 +27,8 @@ export function BiteSearch ({ biteTypes }: Props): JSX.Element {
     if ( charCode === 13 ) { submitSearch(searchInputValue); }
   }
 
-  function submitSearch (newBiteType) {
-    updateBiteType(newBiteType);
+  function submitSearch (newCuisineType) {
+    updateCuisineType(newCuisineType);
   }
 
   return (
@@ -45,15 +45,15 @@ export function BiteSearch ({ biteTypes }: Props): JSX.Element {
         </button>
       </SearchBarWrapper>
 
-      {!searchInputValue && <BiteTypeOption 
+      {!searchInputValue && <CuisineTypeOption 
         name={FILTER_OPTION_NAME_ALL} 
-        onClick={clearBiteType} 
+        onClick={clearCuisineType} 
       />}
       
-      {biteTypes
-        .filter(biteType => getBiteTypeMatches(biteType, searchInputValue))
+      {cuisines
+        .filter(cuisineType => getCuisineMatches(cuisineType, searchInputValue))
         .map(({ name }, index) => (
-          <BiteTypeOption 
+          <CuisineTypeOption 
             key={index} 
             name={name} 
             onClick={() => submitSearch(name)} 
@@ -64,7 +64,7 @@ export function BiteSearch ({ biteTypes }: Props): JSX.Element {
   );  
 }
 
-function getBiteTypeMatches ({ name }, searchInputValue) {
+function getCuisineMatches ({ name }, searchInputValue) {
   return name.split(' ').filter((wordInName) => {
     const matchingPart = wordInName.slice(0, searchInputValue.length);
     return searchInputValue.toLowerCase() === matchingPart.toLowerCase();

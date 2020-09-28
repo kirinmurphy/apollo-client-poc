@@ -14,13 +14,17 @@ interface Props {
 export default function Query (props: Props): JSX.Element {
 
   const { children, query, variables = {} } = props;
-  console.log('varrrr', variables);
+  // console.log('varrrr', variables);
   
   const { data, loading, error } = useQuery(query, {
     variables: variables
   });
 
   if (loading) return <LoadingIcon />;
-  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+
+  if (error) { 
+    console.error(error);
+    return <p>There was an error returning these results.</p>;
+  }
   return children({ data });
 }

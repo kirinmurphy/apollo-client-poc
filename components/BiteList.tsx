@@ -5,8 +5,7 @@ import { GridList } from '../styles/globalCss';
 
 import { 
   BITE_QUERY, 
-  FILTERED_BITE_QUERY,
-  BITE_BY_ID
+  // FILTERED_BITE_QUERY
 } from '../apollo/queries/bite/bites';
 
 import { Bite } from '../components/Bite';
@@ -15,14 +14,14 @@ import { useBiteFilter } from '../utils/useBiteFilter';
 
 export function BiteList (): JSX.Element {
 
-  const { biteTypeFromUrl } = useBiteFilter();
+  const { cuisineTypeFromUrl } = useBiteFilter();
 
-  const query = !!biteTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
-  // const variables = !!biteTypeFromUrl ? { biteType: biteTypeFromUrl } : {};
+  // const query = !!cuisineTypeFromUrl ? FILTERED_BITE_QUERY : BITE_QUERY;
+  // const variables = !!cuisineTypeFromUrl ? { cuisine: cuisineTypeFromUrl } : {};
 
   return (
     <GridList>
-      <Query query={query} variables={{ biteTypeName: 'Slice' }}>
+      <Query query={BITE_QUERY}>
         {({ data }) => {
 
           const { bites = [] } = data;

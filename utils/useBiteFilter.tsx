@@ -1,11 +1,11 @@
 import { ClearParamType, UpdateParamType, useUrlParam } from '../utils/useUrlParam';
 
-const BITE_TYPE_PARAM = 'biteType';
+const BITE_TYPE_PARAM = 'cuisine';
 
 interface ReturnProps {
-  biteTypeFromUrl: string;
-  updateBiteType: UpdateParamType;
-  clearBiteType: ClearParamType;
+  cuisineTypeFromUrl: string;
+  updateCuisineType: UpdateParamType;
+  clearCuisineType: ClearParamType;
 }
 
 export function useBiteFilter (): ReturnProps {
@@ -16,8 +16,8 @@ export function useBiteFilter (): ReturnProps {
   } = useUrlParam(BITE_TYPE_PARAM);
 
   return {
-    biteTypeFromUrl: paramValueFromUrl,
-    updateBiteType: updateParam,
-    clearBiteType: clearParam
+    cuisineTypeFromUrl: paramValueFromUrl,
+    updateCuisineType: updateParam,
+    clearCuisineType: clearParam
   };
 }

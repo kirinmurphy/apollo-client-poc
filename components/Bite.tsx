@@ -8,7 +8,7 @@ export interface ItemTypeProps {
     url: string;
   }, 
   name: string, 
-  biteTypes: {
+  cuisines: {
     name: string;
   }[],
   source: {

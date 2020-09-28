@@ -1,12 +1,12 @@
 import gql from "graphql-tag";
 
-const BITE_TYPES_QUERY = gql`
-  query BiteTypes {
-    biteTypes {
+const CUISINES_QUERY = gql`
+  query Cuisines {
+    cuisines {
       id
       name
     }
   }
 `;
 
-export default BITE_TYPES_QUERY;
+export default CUISINES_QUERY;

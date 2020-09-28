@@ -7,11 +7,11 @@ import { PageContentWrapper } from '../styles/globalCss';
 
 import Query from '../components/Query';
 
-import BITE_TYPES_QUERY from '../apollo/queries/bite-types';
+import CUISINES_QUERY from '../apollo/queries/bite-types';
 import SOURCES_QUERY from '../apollo/queries/source/sources';
 
 import { Layout } from '../components/Layout';
-import { BiteSearch } from '../components/BiteTypeSearch';
+import { BiteSearch } from '../components/CuisineTypeSearch';
 import { BiteList } from '../components/BiteList';
 
 const Mapizer = dynamic(
@@ -51,10 +51,11 @@ export default function Home (): JSX.Element {
             }}
           </Query>
 
-          <Query query={BITE_TYPES_QUERY}>
+          <Query query={CUISINES_QUERY}>
             {({ data }) => {
-              const { biteTypes } = data;
-              return <BiteSearch biteTypes={biteTypes} />;
+              console.log('data', data);
+              const { cuisines } = data;
+              return <BiteSearch cuisines={cuisines} />;
             }}
           </Query>
 
