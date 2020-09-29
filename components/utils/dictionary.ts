@@ -5,3 +5,5 @@ export const MSG_SHOW_ALL_RESULTS = 'Show All';
 
 export const MSG_NO_SEARCH_RESULTS = 'No Results';
 export const MSG_NO_TYPEAHEAD_MATCHES = 'No new matches.';
+
+export const MSG_FILTER_VIEW_ALL_RESULTS = 'All Cuisine Types';

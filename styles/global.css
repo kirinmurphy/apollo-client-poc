@@ -36,15 +36,7 @@ body {
 
 .map > * { height:100%; }
 
-.bite-summary__image {
-  height:0; 
-  padding-bottom:60%;
-  overflow:hidden;
-}
 
-.bite-summary__image img {
-  display:block;
-}
 
 :root {
   --bgcolor-highlight1-medium:#45586b;

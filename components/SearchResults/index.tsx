@@ -13,6 +13,7 @@ import Query from '../widgets/Query';
 import { useCuisineFilter } from '../utils/useCuisineFilter';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { BiteSourceMap } from './BiteSourceMap';
+import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 
 export function BiteList (): JSX.Element {
 
@@ -68,6 +69,16 @@ const SearchResultsSummaryWrapper = styled.div`
 `;
 
 const BiteTheme = styled.div`
+  .bite-summary__image {
+    height:0; 
+    padding-bottom:60%;
+    overflow:hidden;
+  }
+
+  .bite-summary__image img {
+    display:block;
+  }
+
   .bite-summary__name {
     font-size:.9rem;
     font-weight:bold;
@@ -75,5 +86,14 @@ const BiteTheme = styled.div`
 
   .bite-summary__source {
     font-size:var(--fontSize-small);
+  }
+
+  .bite-summary:hover {
+    cursor:pointer;
+
+    .link {
+      text-decoration:underline;
+      color:var(--textcolor-link-hover);
+    }
   }
 `;

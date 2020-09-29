@@ -5,7 +5,7 @@ import Head from "next/head";
 import '../styles/global.css';
 
 import { ApolloProvider, ApolloClient } from "@apollo/react-hooks";
-import withData from "../utils/apollo";
+import withApollo from "../utils/apollo";
 import { AppProps } from "next/app";
 
 interface Props extends AppProps {
@@ -29,4 +29,4 @@ function App ({ Component, pageProps, apollo }: Props): JSX.Element {
 }
 
 // Wraps all components in the tree with the data provider
-export default withData(App);
+export default withApollo(App);

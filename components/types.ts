@@ -13,6 +13,7 @@ export interface SourceProps {
 }
 
 export interface BiteSummaryProps {
+  id: string | number;
   photo: {
     url: string;
   }, 

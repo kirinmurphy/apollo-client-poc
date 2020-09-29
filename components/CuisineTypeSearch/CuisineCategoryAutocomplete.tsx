@@ -3,11 +3,12 @@ import React, { useRef } from 'react';
 import { useCallbackOnExternalEventTrigger } from 'codethings-react-ui';
 
 import { CuisineProps } from '../types';
-import { MSG_NO_TYPEAHEAD_MATCHES } from '../utils/dictionary';
+import { 
+  MSG_NO_TYPEAHEAD_MATCHES, 
+  MSG_FILTER_VIEW_ALL_RESULTS 
+} from '../utils/dictionary';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
-
-const FILTER_OPTION_NAME_ALL = 'All Cuisine Types';
 
 interface Props {
   filteredCuisines: CuisineProps[];
@@ -32,7 +33,7 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
   return (
     <div className="category-list" ref={autocompleteRef}>
       {showClearOption && <CuisineTypeOption 
-        name={FILTER_OPTION_NAME_ALL} 
+        name={MSG_FILTER_VIEW_ALL_RESULTS} 
         onClick={clearSearch} 
       />}
       

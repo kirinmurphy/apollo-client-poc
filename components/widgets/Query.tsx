@@ -3,8 +3,6 @@ import { useQuery, DocumentNode } from "@apollo/react-hooks";
 import { LoadingIcon } from "codethings-react-ui";
 import { LooseObject } from "../../types/global";
 
-
-
 interface Props {
   children: (arg0: { data:any }) => JSX.Element;
   query: DocumentNode;
