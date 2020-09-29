@@ -2,13 +2,15 @@ import React, { useRef } from 'react';
 
 import { useCallbackOnExternalEventTrigger } from 'codethings-react-ui';
 
+import { CuisineProps } from '../types';
+import { MSG_NO_TYPEAHEAD_MATCHES } from '../utils/dictionary';
+
 import { CuisineTypeOption } from './CuisineTypeOption';
-import { Cuisine } from './types';
 
 const FILTER_OPTION_NAME_ALL = 'All Cuisine Types';
 
 interface Props {
-  filteredCuisines: Cuisine[];
+  filteredCuisines: CuisineProps[];
   showClearOption: boolean;
   closeFilter: () => void;
   clearSearch: () => void;
@@ -42,7 +44,9 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
         />
       ))}
 
-      {!filteredCuisines.length && <div>No new matches.</div>}
+      {!filteredCuisines.length && (
+        <div>{MSG_NO_TYPEAHEAD_MATCHES}</div>
+      )}
     </div>
   );
 }

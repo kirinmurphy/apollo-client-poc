@@ -1,12 +1,12 @@
-import { Cuisine } from ".";
+import { CuisineProps } from "../types";
 
 interface GetFilteredCuisinesProps {
-  cuisines: Cuisine[];
+  cuisines: CuisineProps[];
   cuisineTypeFromUrl: string | string[];
   inputValue: string;
 }
 
-export function getFilteredCuisines (props:GetFilteredCuisinesProps): Cuisine[] {
+export function getFilteredCuisines (props:GetFilteredCuisinesProps): CuisineProps[] {
   const { cuisines, cuisineTypeFromUrl, inputValue } = props;
 
   return cuisines

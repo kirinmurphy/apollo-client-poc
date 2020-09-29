@@ -43,7 +43,7 @@ export function BiteList (): JSX.Element {
               })}
             </GridList>
           </>
-        ) : <div>No results!</div>;
+        ) : <div>{MSG_NO_SEARCH_RESULTS}</div>;
       }}
     </Query>
   );

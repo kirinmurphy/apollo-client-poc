@@ -19,7 +19,10 @@ export const SEARCH_ACTION_OPEN_FILTER = 'openCuisineFilter';
 export const SEARCH_ACTION_CLOSE_FILTER = 'closeCuisineFilter';
 export const SEARCH_ACTION_RESET_SEARCH = 'resetSearch';
 
-export function searchFormStateReducer (state: SearchStateProps, action: SearchActionProps): SearchStateProps {
+export function searchFormStateReducer (
+  state: SearchStateProps, 
+  action: SearchActionProps): SearchStateProps {
+  
   switch (action.type) {
   case SEARCH_ACTION_UPDATE_INPUT: 
     return {

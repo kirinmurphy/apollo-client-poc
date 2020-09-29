@@ -1,15 +1,6 @@
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-interface MarkerProps {
-  name: string;
-  neighborhood: string;
-  position: {
-    latitude: number;
-    longitude: number;
-  }
-}
-
 interface Props {
   markers: {
     position: number[];

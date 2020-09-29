@@ -1,24 +1,16 @@
 import React from 'react';
-
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
+import styled from 'styled-components';
 
 import { breakpointTablet, PageContentWrapper } from '../styles/globalCss'; 
 
 import Query from '../components/widgets/Query';
 
 import CUISINES_QUERY from '../apollo/queries/cuisine/cuisines';
-import SOURCES_QUERY from '../apollo/queries/source/sources';
 
 import { Layout } from '../components/Layout';
 import { BiteSearch } from '../components/CuisineTypeSearch';
-import { BiteList } from '../components/SearchResults/BiteList';
-import styled from 'styled-components';
-
-const Mapizer = dynamic(
-  () => import('../components/widgets/Mapizer'),
-  { ssr: false }
-);
+import { BiteList } from '../components/SearchResults';
 
 export default function Home (): JSX.Element {
   return (
@@ -36,22 +28,6 @@ export default function Home (): JSX.Element {
       
       <Layout>
         <PageContentWrapper>
-          {/* <Query query={SOURCES_QUERY}>
-            {({ data: { sources } }) => {
-
-              const markers = sources.map(source => { {
-                const { latitude, longitude, neighborhood } = source.location;
-                return {
-                  name: source.name,
-                  neighborhood: neighborhood,
-                  position: [latitude, longitude]
-                }
-              }});
-
-              return <Mapizer markers={markers} />;
-            }}
-          </Query> */}
-
           <BiteSearchWrapper>
             <Query query={CUISINES_QUERY}>
               {({ data }) => <BiteSearch cuisines={data.cuisines} />}

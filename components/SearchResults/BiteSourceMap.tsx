@@ -1,17 +1,15 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { BiteSummaryProps } from '../types';
+import { BiteSourceMapMarker } from './BiteSourceMapMarker';
 
 const Mapizer = dynamic(
   () => import('../widgets/Mapizer'),
   { ssr: false }
 );
 
-interface BiteProps {
-  name: string
-}
-
 interface Props {
-  bites: BiteProps[]
+  bites: BiteSummaryProps[]
 }
 
 export function BiteSourceMap ({ bites }: Props): JSX.Element {
@@ -25,35 +23,11 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
       position: [latitude, longitude],
       // TODO - this seems maybe not as performant
       // but cleaner than passing the template and props separately.  better abstraction?
-      tooltipTemplate: <SourceMapMarker source={source} bites={bites} />
+      tooltipTemplate: <BiteSourceMapMarker source={source} bites={bites} />
     };
   });
 
   return <Mapizer markers={markers} />;
-}
-
-interface SMMProps {
-  source: {
-    name: string;
-    location: {
-      neighborhood: string;
-    }
-  };
-  bites: BiteProps[];
-}
-
-function SourceMapMarker ({ source, bites }: SMMProps): JSX.Element {
-  return (
-    <div>
-      {source.name} - {source.location.neighborhood}
-      
-      {bites.map((bite, index) => {
-        return (
-          <div key={index}>{bite.name}</div>
-        );
-      })}
-    </div>
-  );
 }
 
 function getSourcesWithBites (bites) {

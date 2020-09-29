@@ -4,7 +4,7 @@ import '../utils/fontAwesomeLibrary';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { Cuisine } from './types';
+import { CuisineProps } from '../types';
 
 import { useCuisineFilter } from '../utils/useCuisineFilter';
 import { getFilteredCuisines } from './helperGetFilteredCuisines';
@@ -25,7 +25,7 @@ import {
 } from './styles';
 
 interface Props {
-  cuisines: Cuisine[]
+  cuisines: CuisineProps[]
 }
 
 export function BiteSearch ({ cuisines }: Props): JSX.Element {

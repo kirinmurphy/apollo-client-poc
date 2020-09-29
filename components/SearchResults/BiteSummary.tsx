@@ -1,25 +1,8 @@
 
 import React from 'react';
+import { BiteSummaryProps } from '../types';
 
-export interface ItemTypeProps {
-  photo: {
-    url: string;
-  }, 
-  name: string, 
-  cuisines: {
-    name: string;
-  }[],
-  source: {
-    name: string;
-    location?: {
-      neighborhood: string;
-      latitude?: number;
-      longitude?: number;
-    }
-  }
-}
-
-export function BiteSummary ({ photo, name, source }: ItemTypeProps): JSX.Element {
+export function BiteSummary ({ photo, name, source }: BiteSummaryProps): JSX.Element {
 
   return (
     <div className="bite-summary">
@@ -31,7 +14,9 @@ export function BiteSummary ({ photo, name, source }: ItemTypeProps): JSX.Elemen
       
       <div className="bite-summary__name">{name}</div>
 
-      <div className="bite-summary__source">{source.name} - {source?.location?.neighborhood}</div>  
+      <div className="bite-summary__source">
+        {source.name} - {source?.location?.neighborhood}
+      </div>  
     </div>
   );
 }
