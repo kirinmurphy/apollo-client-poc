@@ -16,6 +16,7 @@ function App ({ Component, pageProps, apollo }: Props): JSX.Element {
   return (
     <ApolloProvider client={apollo}>
       <Head>
+        <title>Best Bite Chicago</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
           rel="stylesheet"
