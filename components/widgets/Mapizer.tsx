@@ -11,7 +11,10 @@ interface MarkerProps {
 }
 
 interface Props {
-  markers: MarkerProps[];
+  markers: {
+    position: number[];
+    tooltipTemplate: JSX.Element;
+  }[];
 }
 
 export default function Mapizer ({ markers }: Props): JSX.Element {
@@ -26,11 +29,11 @@ export default function Mapizer ({ markers }: Props): JSX.Element {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {markers.map((marker, index) => {
-          const { name, neighborhood, position } = marker;
+          const { position, tooltipTemplate } = marker;
           return (
             <Marker position={position} key={index}>
               <Popup>
-                {name} - {neighborhood}
+                {tooltipTemplate}
               </Popup>
             </Marker>  
           );
