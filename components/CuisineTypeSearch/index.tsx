@@ -120,9 +120,6 @@ const SearchBarWrapper = styled.div`
   button {
     width: 3rem;
     line-height:2rem;
-    border-radius:4px;
-    color:var(--textcolor-inverted);
-    background:#05182b;
   }
 
   input[type="text"] {
@@ -151,6 +148,11 @@ const SearchCategoryListWrapper = styled.div`
 
     &:not(:last-of-type) {
       border-bottom:1px solid #eee;
+    }
+
+    &:hover {
+      background:var(--bgcolor-highlight1-dark);
+      color:var(--textcolor-inverted);
     }
   }
 `;

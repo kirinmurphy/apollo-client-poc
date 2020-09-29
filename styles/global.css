@@ -14,7 +14,6 @@ body {
   padding:0;
 }
 
-
 a {
   color: #0070f3;
   text-decoration: none;
@@ -33,7 +32,7 @@ body {
   padding:2vw;
 }
 
-.map { height: 45vh; }
+.map { height:45vh; }
 
 .map > * { height:100%; }
 
@@ -45,4 +44,24 @@ body {
 
 .bite-summary__image img {
   display:block;
+}
+
+:root {
+  --bgcolor-highlight1-medium:#45586b;
+  --bgcolor-highlight1-dark:#05182b;
+
+  --bgcolor-button: var(--bgcolor-highlight1-medium);
+  --bgcolor-button-hover: var(--bgcolor-highlight1-dark);
+}
+
+button,
+.button {
+  border-radius:4px;
+  color:var(--textcolor-inverted);
+  background:var(--bgcolor-button);
+}
+
+button:hover,
+.button:hover {
+  background:var(--bgcolor-button-hover);
 }
