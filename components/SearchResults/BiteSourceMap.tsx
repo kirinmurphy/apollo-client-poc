@@ -16,8 +16,6 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
 
   const sourcesWithBites = getSourcesWithBites(bites);
 
-  console.log('FEEF w bites:', sourcesWithBites);
-
   const markers = sourcesWithBites.map(({ source }) => { {
     const { latitude, longitude, neighborhood } = source.location;
     return {

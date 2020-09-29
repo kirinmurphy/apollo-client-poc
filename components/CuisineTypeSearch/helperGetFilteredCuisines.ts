@@ -3,16 +3,16 @@ import { Cuisine } from ".";
 interface GetFilteredCuisinesProps {
   cuisines: Cuisine[];
   cuisineTypeFromUrl: string | string[];
-  searchInputValue: string;
+  inputValue: string;
 }
 
 export function getFilteredCuisines (props:GetFilteredCuisinesProps): Cuisine[] {
-  const { cuisines, cuisineTypeFromUrl, searchInputValue } = props;
+  const { cuisines, cuisineTypeFromUrl, inputValue } = props;
 
   return cuisines
     .filter(cuisineType => { 
       if ( isActiveCuisine(cuisineType.name, cuisineTypeFromUrl) ) { return false; }
-      else { return getCuisineMatches(cuisineType.name, searchInputValue); }
+      else { return getCuisineMatches(cuisineType.name, inputValue); }
     });
 }
 
@@ -24,9 +24,9 @@ function isActiveCuisine (cuisineName, cuisineTypeFromUrl) {
   return cuisineName.toLowerCase() === formattedCuisineType.toLowerCase();
 }
 
-function getCuisineMatches (cuisineName, searchInputValue) {
+function getCuisineMatches (cuisineName, inputValue) {
   return cuisineName.split(' ').filter((wordInName) => {
-    const matchingPart = wordInName.slice(0, searchInputValue.length);
-    return searchInputValue.toLowerCase() === matchingPart.toLowerCase();
+    const matchingPart = wordInName.slice(0, inputValue.length);
+    return inputValue.toLowerCase() === matchingPart.toLowerCase();
   }).length > 0;
 }
