@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery, DocumentNode } from "@apollo/react-hooks";
 import { LoadingIcon } from "codethings-react-ui";
-import { LooseObject } from "../types/global";
+import { LooseObject } from "../../types/global";
 
 
 

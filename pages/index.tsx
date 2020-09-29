@@ -5,18 +5,18 @@ import dynamic from 'next/dynamic';
 
 import { breakpointTablet, PageContentWrapper } from '../styles/globalCss'; 
 
-import Query from '../components/Query';
+import Query from '../components/widgets/Query';
 
 import CUISINES_QUERY from '../apollo/queries/cuisine/cuisines';
 import SOURCES_QUERY from '../apollo/queries/source/sources';
 
 import { Layout } from '../components/Layout';
 import { BiteSearch } from '../components/CuisineTypeSearch';
-import { BiteList } from '../components/BiteList';
+import { BiteList } from '../components/SearchResults/BiteList';
 import styled from 'styled-components';
 
 const Mapizer = dynamic(
-  () => import('../components/Mapizer'),
+  () => import('../components/widgets/Mapizer'),
   { ssr: false }
 );
 
@@ -36,7 +36,7 @@ export default function Home (): JSX.Element {
       
       <Layout>
         <PageContentWrapper>
-          <Query query={SOURCES_QUERY}>
+          {/* <Query query={SOURCES_QUERY}>
             {({ data: { sources } }) => {
 
               const markers = sources.map(source => { {
@@ -50,7 +50,7 @@ export default function Home (): JSX.Element {
 
               return <Mapizer markers={markers} />;
             }}
-          </Query>
+          </Query> */}
 
           <BiteSearchWrapper>
             <Query query={CUISINES_QUERY}>
@@ -69,6 +69,7 @@ export default function Home (): JSX.Element {
 const BiteSearchWrapper = styled.div`
   @media(min-width:${breakpointTablet}) {
     position:relative; 
+    z-index:10;
     margin-bottom:.5rem;
 
     > * {

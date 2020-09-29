@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCuisineFilter } from '../../utils/useCuisineFilter';
+import { useCuisineFilter } from '../utils/useCuisineFilter';
 
 interface Props {
   biteCount: number;
@@ -14,7 +14,9 @@ export function SearchResultsSummary ({ biteCount }: Props): JSX.Element {
     <>
       <span>
         {biteCount} {biteCount > 1 ? 'results' : 'result'} 
-        {!!cuisineTypeFromUrl && <span> for <strong>{cuisineTypeFromUrl} </strong></span>}
+        {!!cuisineTypeFromUrl && (
+          <span> for <strong>{cuisineTypeFromUrl} </strong></span>
+        )}
       </span>
       
       {!!cuisineTypeFromUrl && <span className="link"

@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpointTablet, GridList } from '../styles/globalCss'; 
+import { breakpointTablet, GridList } from '../../styles/globalCss'; 
 
 import { 
   BITE_QUERY, 
   FILTERED_BITE_QUERY
-} from '../apollo/queries/bite/bites';
+} from '../../apollo/queries/bite/bites';
 
-import { BiteSummary } from '../components/Bite';
-import Query from './Query';
+import { BiteSummary } from './BiteSummary';
+import Query from '../widgets/Query';
 import { useCuisineFilter } from '../utils/useCuisineFilter';
-import { SearchResultsSummary } from './SearchResults/SearchResultsSummary';
+import { SearchResultsSummary } from './SearchResultsSummary';
+import { BiteSourceMap } from './BiteSourceMap';
 
 export function BiteList (): JSX.Element {
 
@@ -31,7 +32,11 @@ export function BiteList (): JSX.Element {
             <SearchResultsSummaryWrapper>
               <SearchResultsSummary biteCount={bites.length} />
             </SearchResultsSummaryWrapper>
-    
+      
+            <BiteSourceMapWrapper>
+              <BiteSourceMap bites={bites} />
+            </BiteSourceMapWrapper>
+
             <GridList>
               {bites.map((itemProps, index) => {
                 return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
@@ -44,7 +49,15 @@ export function BiteList (): JSX.Element {
   );
 }
 
+const BiteSourceMapWrapper = styled.div`
+  position:relative;
+  z-index:1;
+  margin:1.5rem 0;
+`;
+
 const SearchResultsSummaryWrapper = styled.div`
+  position:relative; 
+  z-index: 2;
   padding:.2rem 0;
   margin-bottom:.5rem;
   font-size:var(--fontSize-bump);
