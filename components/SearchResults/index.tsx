@@ -17,10 +17,10 @@ import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 
 export function BiteList (): JSX.Element {
 
-  const { cuisineTypeFromUrl } = useCuisineFilter();
+  const { activeCuisineType } = useCuisineFilter();
 
-  const queryProps = !!cuisineTypeFromUrl 
-    ? { query: FILTERED_BITE_QUERY, variables: { cuisineName: cuisineTypeFromUrl } }
+  const queryProps = !!activeCuisineType 
+    ? { query: FILTERED_BITE_QUERY, variables: { cuisineName: activeCuisineType } }
     : { query: BITE_QUERY }
 
   return (

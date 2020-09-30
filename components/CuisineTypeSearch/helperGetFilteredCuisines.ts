@@ -2,25 +2,25 @@ import { CuisineProps } from "../types";
 
 interface GetFilteredCuisinesProps {
   cuisines: CuisineProps[];
-  cuisineTypeFromUrl: string | string[];
+  activeCuisineType: string | string[];
   inputValue: string;
 }
 
 export function getFilteredCuisines (props:GetFilteredCuisinesProps): CuisineProps[] {
-  const { cuisines, cuisineTypeFromUrl, inputValue } = props;
+  const { cuisines, activeCuisineType, inputValue } = props;
 
   return cuisines
     .filter(cuisineType => { 
-      if ( isActiveCuisine(cuisineType.name, cuisineTypeFromUrl) ) { return false; }
+      if ( isActiveCuisine(cuisineType.name, activeCuisineType) ) { return false; }
       else { return getCuisineMatches(cuisineType.name, inputValue); }
     });
 }
 
-function isActiveCuisine (cuisineName, cuisineTypeFromUrl) {
-  if ( !cuisineTypeFromUrl ) { return false; }
+function isActiveCuisine (cuisineName, activeCuisineType) {
+  if ( !activeCuisineType ) { return false; }
   // TODO - this array logic is repeated, need to abstract it into hook props
-  const isArray = Array.isArray(cuisineTypeFromUrl);
-  const formattedCuisineType = isArray ? cuisineTypeFromUrl.join(',') : cuisineTypeFromUrl;
+  const isArray = Array.isArray(activeCuisineType);
+  const formattedCuisineType = isArray ? activeCuisineType.join(',') : activeCuisineType;
   return cuisineName.toLowerCase() === formattedCuisineType.toLowerCase();
 }
 

@@ -15,16 +15,16 @@ interface Props {
 
 export function SearchResultsSummary ({ biteCount }: Props): JSX.Element {
 
-  const { cuisineTypeFromUrl, clearCuisineType } = useCuisineFilter();
+  const { activeCuisineType, clearCuisineType } = useCuisineFilter();
 
   return (
     <>
       <span>
         {biteCount} {biteCount > 1 ? MSG_RESULT_COUNT_PLURAL : MSG_RESULT_COUNT_SINGULAR} 
 
-        {!!cuisineTypeFromUrl && (
+        {!!activeCuisineType && (
           <>
-            <span> {MSG_RESULT_COUNT_FOR} <strong>{cuisineTypeFromUrl}</strong></span>
+            <span> {MSG_RESULT_COUNT_FOR} <strong>{activeCuisineType}</strong></span>
 
             &nbsp;&middot;&nbsp;
 

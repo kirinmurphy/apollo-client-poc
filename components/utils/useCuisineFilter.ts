@@ -3,20 +3,20 @@ import { ClearParamType, UpdateParamType, useUrlParam } from 'codethings-nextjs-
 const CUISINE_TYPE_PARAM = 'cuisine';
 
 interface ReturnProps {
-  cuisineTypeFromUrl: string | string[];
+  activeCuisineType: string | string[];
   updateCuisineType: UpdateParamType;
   clearCuisineType: ClearParamType;
 }
 
 export function useCuisineFilter (): ReturnProps {
   const { 
-    paramValue: cuisineTypeFromUrl, 
+    paramValue: activeCuisineType, 
     updateParam: updateCuisineType, 
     clearParam: clearCuisineType, 
   } = useUrlParam(CUISINE_TYPE_PARAM);
 
   return {
-    cuisineTypeFromUrl,
+    activeCuisineType,
     updateCuisineType,
     clearCuisineType
   };

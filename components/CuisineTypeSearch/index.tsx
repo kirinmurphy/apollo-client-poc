@@ -30,7 +30,7 @@ interface Props {
 
 export function BiteSearch ({ cuisines }: Props): JSX.Element {
   const { 
-    cuisineTypeFromUrl, 
+    activeCuisineType, 
     updateCuisineType, 
     clearCuisineType 
   } = useCuisineFilter();
@@ -45,7 +45,7 @@ export function BiteSearch ({ cuisines }: Props): JSX.Element {
 
   const filteredCuisines = getFilteredCuisines({ 
     cuisines, 
-    cuisineTypeFromUrl, 
+    activeCuisineType, 
     inputValue 
   });
 
@@ -90,7 +90,7 @@ export function BiteSearch ({ cuisines }: Props): JSX.Element {
             closeFilter={() => dispatch({ type: SEARCH_ACTION_CLOSE_FILTER})}
             submitSearch={submitSearch}
             clearSearch={clearSearch}
-            showClearOption={!!cuisineTypeFromUrl}
+            showClearOption={!!activeCuisineType}
           />
         </CuisineCategoryWrapper>
       )}

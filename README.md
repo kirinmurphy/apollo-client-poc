@@ -1,4 +1,5 @@
 Inspired by: https://strapi.io/blog/build-a-blog-with-next-react-js-strapi-and-apollo
+https://strapi.io/blog/strapi-next-setup    
 
 ## Making it work
 #### Strapi db & deploys 
@@ -30,3 +31,11 @@ https://foursquare.com/developers/apps/E5B4ADENUZLKZRSUONNZP2EJTXPIYDF0Y24L5EN1F
 
 #### NextJs
 https://nextjs.org/docs/advanced-features/dynamic-import   
+
+#### Apollo + SSR
+https://dev.to/angad777/setting-up-apollo-graphql-in-next-js-with-server-side-rendering-45l5    
+https://dev.to/alexandrg/how-to-setup-apollo-client-in-order-to-perform-graphql-queries-with-nextjs-41fe    
+
+
+#### MORE
+https://nec.is/writing/graphql-with-apollo-react-and-nextjs/    
