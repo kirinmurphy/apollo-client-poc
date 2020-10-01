@@ -17,7 +17,7 @@ https://jaredude.wordpress.com/2020/08/04/getting-started-with-strapi-and-cloudi
 
 #### Auth with strapi
 https://medium.com/ovrsea/token-authentication-with-react-and-apollo-client-a-detailed-example-a3cc23760e9      
-https://strapi.io/documentation/3.0.0-beta.x/guides/auth-request.html#setup      
+https://strapi.io/documentation/3.0.0-beta.x/guides/auth-request.html
 
 #### Typescript & Apollo
 https://www.apollographql.com/docs/react/development-testing/static-typing/   
@@ -35,6 +35,8 @@ https://nextjs.org/docs/advanced-features/dynamic-import
 #### Apollo + SSR
 https://dev.to/angad777/setting-up-apollo-graphql-in-next-js-with-server-side-rendering-45l5    
 https://dev.to/alexandrg/how-to-setup-apollo-client-in-order-to-perform-graphql-queries-with-nextjs-41fe    
+
+
 
 
 #### MORE

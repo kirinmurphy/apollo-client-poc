@@ -10,7 +10,7 @@ button {
   display:inline-block;
   height:2.5rem;
   line-height:2.5rem;
-  font-size:1.3rem;
+  font-size:var(--fontsize-highlight);
 }
 
 button {

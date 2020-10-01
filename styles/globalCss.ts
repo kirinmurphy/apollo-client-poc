@@ -4,6 +4,8 @@ export const breakpointTablet = '800px';
 
 export const SiteTitle = styled.h1``;
 
+export const PageTitle = styled.h2``;
+
 export const PageContentWrapper = styled.section`
   max-width:1200px;
   margin:0 auto;

@@ -7,3 +7,13 @@ export const MSG_NO_SEARCH_RESULTS = 'No Results';
 export const MSG_NO_TYPEAHEAD_MATCHES = 'No new matches.';
 
 export const MSG_FILTER_VIEW_ALL_RESULTS = 'All Cuisine Types';
+
+export const MSG_LINK_HEADER_SIGNUP = 'Sign Up';
+
+export const MSG_PAGE_TITLE_SIGN_UP = 'Create an Account';
+
+export const MSG_ERROR_REQUIRED_FIELD = 'This field is required.';
+
+export const MSG_SIGN_UP_FORM_LABEL_EMAIL = 'Email Address';
+export const MSG_SIGN_UP_FORM_LABEL_PASSWORD = 'Password';
+export const MSG_SIGN_UP_FORM_SUBMIT_BUTTON = 'Sign Up';

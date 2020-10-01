@@ -39,6 +39,8 @@ body {
 
 
 :root {
+  --textcolor-error: #a00;
+
   --bgcolor-highlight1-medium:#45586b;
   --bgcolor-highlight1-dark:#05182b;
 
@@ -46,13 +48,23 @@ body {
   --bgcolor-button-hover: var(--bgcolor-highlight1-dark);
 }
 
+input[type="submit"],
+input[type="button"],
 button,
 .button {
+  padding:0 .5rem;
+  height:2rem;
+  line-height:1.8rem;
   border-radius:4px;
+  border:none;
   color:var(--textcolor-inverted);
   background:var(--bgcolor-button);
+  font-size:var(--fontsize-highlight);
+  cursor:pointer;
 }
 
+input[type="submit"]:hover,
+input[type="button"]:hover,
 button:hover,
 .button:hover {
   background:var(--bgcolor-button-hover);
