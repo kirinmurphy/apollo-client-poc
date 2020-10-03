@@ -2,7 +2,7 @@ import { CuisineProps } from "../types";
 
 interface GetFilteredCuisinesProps {
   cuisines: CuisineProps[];
-  activeCuisineType: string | string[];
+  activeCuisineType: string;
   inputValue: string;
 }
 
@@ -18,10 +18,7 @@ export function getFilteredCuisines (props:GetFilteredCuisinesProps): CuisinePro
 
 function isActiveCuisine (cuisineName, activeCuisineType) {
   if ( !activeCuisineType ) { return false; }
-  // TODO - this array logic is repeated, need to abstract it into hook props
-  const isArray = Array.isArray(activeCuisineType);
-  const formattedCuisineType = isArray ? activeCuisineType.join(',') : activeCuisineType;
-  return cuisineName.toLowerCase() === formattedCuisineType.toLowerCase();
+  return cuisineName.toLowerCase() === activeCuisineType.toLowerCase();
 }
 
 function getCuisineMatches (cuisineName, inputValue) {

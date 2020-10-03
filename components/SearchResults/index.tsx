@@ -6,7 +6,7 @@ import { breakpointTablet, GridList } from '../../styles/globalCss';
 import { 
   BITE_QUERY, 
   FILTERED_BITE_QUERY
-} from '../../apollo/queries/bite/bites';
+} from '../../apollo/queries/resources/bites';
 
 import { BiteSummary } from './BiteSummary';
 import Query from '../widgets/Query';

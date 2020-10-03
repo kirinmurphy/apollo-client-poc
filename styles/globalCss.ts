@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const breakpointTablet = '800px';
 
-export const SiteTitle = styled.h1``;
+export const SiteTitle = styled.h1`
+  a { color:var(--textcolor-base); 
+    &:hover { text-decoration:none; }
+  }
+`;
 
 export const PageTitle = styled.h2``;
 

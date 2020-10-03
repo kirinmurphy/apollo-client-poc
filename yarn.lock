@@ -2134,15 +2134,15 @@ coa@^2.0.2:
     chalk "^2.4.1"
     q "^1.1.2"
 
-codethings-nextjs-router-addons@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/codethings-nextjs-router-addons/-/codethings-nextjs-router-addons-1.0.12.tgz#fd9e9f240c09c0448dbd3f155d04799113741cc3"
-  integrity sha512-TCGEE8jQ+UOHrDKVNKZTo0Wp5kOpy8ZtgqN9PgfnGQtU1sfxZQFnx7+9tFoGfQ1fOVRpOjuyX3fRbb5jP43XWw==
+codethings-nextjs-router-addons@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/codethings-nextjs-router-addons/-/codethings-nextjs-router-addons-1.1.0.tgz#0664562924422197cca072eb36777bd579a752e5"
+  integrity sha512-s84DK4XY2eaI2/tGnMOqRv1zVR3/HPLDn72H2DDUe3pBJ62MLjRItAtjzftjyOuqC44M1fKnbU9qtzPO2Ds25w==
 
-codethings-react-ui@1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/codethings-react-ui/-/codethings-react-ui-1.1.6.tgz#21915cde4dd1ecda51e342d22059bc00e932f749"
-  integrity sha512-/+OAYHB0BTOc2kSSphY568xtUQCUyrfJ3Bh2jCJ/U5XJMQ94OyFkHgSYYGkesbvShEO8MBBd1pCnl2Pskr9ScA==
+codethings-react-ui@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/codethings-react-ui/-/codethings-react-ui-1.2.1.tgz#81e1ca8e1f93aefb43c96ef7ff3abb91c8b2166f"
+  integrity sha512-swIRA/mBwRanQhPXQqwHYvMeSgLEr9CHclIbNeprtiE8T706eilg1XnFwrew6zAXqM1aytvZeQjVjTKaL3yPfA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.30"
     "@fortawesome/free-solid-svg-icons" "^5.14.0"

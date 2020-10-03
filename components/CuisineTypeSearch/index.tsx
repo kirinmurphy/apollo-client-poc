@@ -28,7 +28,7 @@ interface Props {
   cuisines: CuisineProps[]
 }
 
-export function BiteSearch ({ cuisines }: Props): JSX.Element {
+export function CuisineTypeSearch ({ cuisines }: Props): JSX.Element {
   const { 
     activeCuisineType, 
     updateCuisineType, 

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { BackLink } from "codethings-react-ui";
+import { BrowserBackLink } from "codethings-react-ui";
 
-import { BITE_BY_ID } from "../../apollo/queries/bite/bites";
+import { BITE_BY_ID } from "../../apollo/queries/resources/bites";
 
 import { Layout } from "../../components/Layout";
 import Query from "../../components/widgets/Query";
@@ -18,7 +18,7 @@ export default function Bites (props: Props): JSX.Element {
     <Layout>
       <>
         <div>
-          <BackLink />
+          <BrowserBackLink />
         </div>
 
         {/* Page initially renders with no id before re-rendering, why???? */}
@@ -63,6 +63,8 @@ export function getStaticPaths(): StaticPathProps {
   return { paths: [], fallback: true };
 }
 
-export function getStaticProps({ params: { id } }: StaticProps): StaticPropsReturnProps {
+export function getStaticProps({ params: { id } }
+  : StaticProps): StaticPropsReturnProps {
+  
   return { props: { id } };
 }

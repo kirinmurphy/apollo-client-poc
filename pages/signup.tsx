@@ -13,7 +13,7 @@ import {
 
 import { PageContentWrapper, PageTitle } from '../styles/globalCss';
 
-import { Layout } from '../components/Layout';
+import { Layout, PAGE_SIGNUP } from '../components/Layout';
 import { GQL_REGISTER } from '../apollo/queries/register';
 
 function RequiredFieldError () {
@@ -27,14 +27,14 @@ export default function SignUp (): JSX.Element {
 
   const [signUpMutation, { data }] = useMutation(GQL_REGISTER);
 
-  console.log('data', data);
-
   function onSubmit (formData) {
     signUpMutation({ variables: formData });
   }
 
+  console.log('data', data);
+
   return (
-    <Layout page="signup">
+    <Layout page={PAGE_SIGNUP}>
       <PageContentWrapper>
         <FullPageFormWrapper>
 

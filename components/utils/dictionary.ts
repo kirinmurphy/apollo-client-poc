@@ -1,3 +1,5 @@
+export const MSG_SITE_TITLE = 'Working Title';
+
 export const MSG_RESULT_COUNT_SINGULAR = 'result';
 export const MSG_RESULT_COUNT_PLURAL = 'results';
 export const MSG_RESULT_COUNT_FOR = 'for';

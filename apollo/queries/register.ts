@@ -6,7 +6,7 @@ export const GQL_REGISTER = gql`
       user {
         username,
         email
-      },
+      }
       jwt
     }
   }

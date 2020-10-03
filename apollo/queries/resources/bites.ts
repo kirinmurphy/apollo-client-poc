@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { GQL_FRAGMENT_SOURCES } from "../source/sources";
+import { GQL_FRAGMENT_SOURCES } from "./sources";
 
 const GQL_FRAGMENT_BITES = gql`
   fragment BiteContent on Bite {
