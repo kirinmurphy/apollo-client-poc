@@ -6,16 +6,21 @@ import { setCookie } from 'nookies';
 
 import { 
   MSG_ERROR_REQUIRED_FIELD, 
-  MSG_PAGE_TITLE_SIGN_UP,
+  MSG_PAGE_TITLE_LOGIN, 
   MSG_AUTH_FORM_LABEL_EMAIL,
   MSG_AUTH_FORM_LABEL_PASSWORD,
-  MSG_SIGN_UP_FORM_SUBMIT_BUTTON
+  MSG_LOGIN_FORM_SUBMIT_BUTTON
 } from '../components/utils/dictionary';
 
 import { PageContentWrapper, PageTitle } from '../styles/globalCss';
 
-import { Layout, PAGE_SIGNUP, SECURE_COOKIE_NAME } from '../components/Layout';
-import { GQL_REGISTER } from '../apollo/queries/register';
+import { 
+  Layout, 
+  PAGE_LOGIN, 
+  SECURE_COOKIE_NAME 
+} from '../components/Layout';
+
+import { GQL_LOGIN } from '../apollo/queries/login';
 
 function RequiredFieldError () {
   return (
@@ -23,12 +28,12 @@ function RequiredFieldError () {
   );
 }
 
-export default function SignUp (): JSX.Element {
+export default function Login (): JSX.Element {
   const { register, handleSubmit, errors } = useForm();
 
-  const [signUpMutation, { data }] = useMutation(GQL_REGISTER);
+  const [loginMutation, { data }] = useMutation(GQL_LOGIN);
 
-  const jwtToken = data?.register?.jwt;
+  const jwtToken = data?.login?.jwt;
 
   if ( jwtToken ) {
     setCookie({}, SECURE_COOKIE_NAME, jwtToken, {
@@ -37,22 +42,22 @@ export default function SignUp (): JSX.Element {
   }
   
   function onSubmit (formData) {
-    signUpMutation({ variables: formData });
+    loginMutation({ variables: formData });
   }
 
   return (
-    <Layout page={PAGE_SIGNUP}>
+    <Layout page={PAGE_LOGIN}>
       <PageContentWrapper>
         <FullPageFormWrapper>
 
-          <PageTitle>{MSG_PAGE_TITLE_SIGN_UP}</PageTitle>
+          <PageTitle>{MSG_PAGE_TITLE_LOGIN}</PageTitle>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormField>
-              <label htmlFor="signup-email">{MSG_AUTH_FORM_LABEL_EMAIL}</label>
+              <label htmlFor="login-email">{MSG_AUTH_FORM_LABEL_EMAIL}</label>
               <input 
                 type="text"
-                id="signup-email" 
+                id="login-email" 
                 name="email" 
                 ref={register({ required: true })} 
               />
@@ -60,16 +65,16 @@ export default function SignUp (): JSX.Element {
             </FormField>
 
             <FormField>
-              <label htmlFor="signup-password">{MSG_AUTH_FORM_LABEL_PASSWORD}</label>
+              <label htmlFor="login-password">{MSG_AUTH_FORM_LABEL_PASSWORD}</label>
               <input 
                 type="password"
-                id="signup-password" 
+                id="login-password" 
                 name="password" 
                 ref={register({ required: true })} 
               />
               {errors.password && <RequiredFieldError />}
             </FormField>
-            <input type="submit" value={MSG_SIGN_UP_FORM_SUBMIT_BUTTON}  />
+            <input type="submit" value={MSG_LOGIN_FORM_SUBMIT_BUTTON}  />
           </form>
 
         </FullPageFormWrapper>
