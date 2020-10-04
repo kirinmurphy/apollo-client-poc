@@ -29,10 +29,10 @@ export default function Home (): JSX.Element {
 }
 
 const CuisineTypeSearchWrapper = styled.div`
+  position:relative; 
+  z-index:10;
+
   @media(min-width:${breakpointTablet}) {
-    position:relative; 
-    z-index:10;
-    margin-bottom:.5rem;
 
     > * {
       position:absolute; 

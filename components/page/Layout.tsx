@@ -21,7 +21,10 @@ const anonOnlyPages = [
 ];
 
 export function Layout ({ children, page }: Props): JSX.Element {
-  const { isAuthenticated, sendToDefaultAuthenticatedPage } = useAuthController();
+  const { 
+    isAuthenticated, 
+    sendToDefaultAuthenticatedPage 
+  } = useAuthController();
 
   // TODO - this should happen on the server 
   const authedOnAnonOnlyPage = isAuthenticated && anonOnlyPages.includes(page);
@@ -29,7 +32,8 @@ export function Layout ({ children, page }: Props): JSX.Element {
 
   // useEffect(() => { redirectIfOldIE(window); }, []);
   const showPage = !authedOnAnonOnlyPage;
-  return showPage ? (
+
+  return (
     <>
       <main>
         <header>
@@ -38,10 +42,9 @@ export function Layout ({ children, page }: Props): JSX.Element {
           </PageContentWrapper>
         </header>
         <div className="page-content">
-          {children}
+          {showPage && children}
         </div>
       </main>  
     </>
-  ) : <></>;
+  );
 }
-

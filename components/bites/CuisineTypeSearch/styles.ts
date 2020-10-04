@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchWrapper = styled.div`
-padding:.5rem 0;
-`;
+export const SearchWrapper = styled.div``;
 
 export const SearchBarWrapper = styled.div`
 input,
@@ -50,5 +48,12 @@ position:relative;
     background:var(--bgcolor-highlight1-dark);
     color:var(--textcolor-inverted);
   }
+}
+
+.no-category-matches {
+  padding:1rem;
+  text-align:center;
+  background:var(--bgcolor-light);
+  font-size:var(--fontSize-small);
 }
 `;

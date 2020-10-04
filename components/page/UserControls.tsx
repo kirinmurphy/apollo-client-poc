@@ -19,12 +19,16 @@ export default function UserControls ({ page }: Props): JSX.Element {
     <div className="user-controls">
       {showAuthenticatedElements && (
         <>
-          {page !== PAGE_SIGNUP && (
-            <Link href="/signup"><a>{MSG_LINK_HEADER_SIGNUP}</a></Link>
+          {page !== PAGE_LOGIN && (
+            <Link href="/login">
+              <a>{MSG_LINK_HEADER_LOGIN}</a>
+            </Link>
           )}
 
-          {page !== PAGE_LOGIN && (
-            <Link href="/login"><a>{MSG_LINK_HEADER_LOGIN}</a></Link>
+          {page !== PAGE_SIGNUP && (
+            <Link href="/signup">
+              <a className="button sign-up">{MSG_LINK_HEADER_SIGNUP}</a>
+            </Link>
           )}
         </>
       )}

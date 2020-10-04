@@ -46,7 +46,7 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
       ))}
 
       {!filteredCuisines.length && (
-        <div>{MSG_NO_TYPEAHEAD_MATCHES}</div>
+        <div className="no-category-matches">{MSG_NO_TYPEAHEAD_MATCHES}</div>
       )}
     </div>
   );

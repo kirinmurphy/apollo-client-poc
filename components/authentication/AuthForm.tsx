@@ -20,7 +20,11 @@ interface AuthFormProps {
 }
 
 export function AuthForm (props: AuthFormProps): JSX.Element {
-  const { fields, authAction, gqlMutation } = props;
+  const { 
+    fields, 
+    authAction, 
+    gqlMutation 
+  } = props;
 
   const { 
     isAuthenticated, 
@@ -28,7 +32,7 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
     sendToDefaultAuthenticatedPage 
   } = useAuthController();
 
-  // this redirect should be done on the server  
+  // TODO: this redirect should be done on the server  
   if ( isAuthenticated ) { sendToDefaultAuthenticatedPage(); }
 
   const [updateMutation, { data = {} }] = useMutation(gqlMutation);

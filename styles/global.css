@@ -41,6 +41,8 @@ body {
 :root {
   --textcolor-error: #a00;
 
+  --bgcolor-light: #e4e4e4;
+
   --bgcolor-highlight1-medium:#45586b;
   --bgcolor-highlight1-dark:#05182b;
 
@@ -52,7 +54,7 @@ input[type="submit"],
 input[type="button"],
 button,
 .button {
-  padding:0 .5rem;
+  padding:0 1rem;
   height:2rem;
   line-height:1.8rem;
   border-radius:4px;

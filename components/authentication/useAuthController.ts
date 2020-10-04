@@ -19,7 +19,8 @@ export function useAuthController (): useAuthControllerReturnProps {
 
   function setAuthToken (jwtToken) {
     setCookie({}, SECURE_COOKIE_NAME, jwtToken, {
-      maxAge: 60 * 10
+      maxAge: 60 * 10,
+      path: '/'
     });
   }
 
@@ -31,7 +32,9 @@ export function useAuthController (): useAuthControllerReturnProps {
   }
 
   function logout () {
-    destroyCookie(null, SECURE_COOKIE_NAME); 
+    destroyCookie(null, SECURE_COOKIE_NAME, {
+      path: '/'
+    }); 
     router.push('/');
   }
 

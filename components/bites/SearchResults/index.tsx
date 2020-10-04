@@ -53,18 +53,17 @@ export function BiteList (): JSX.Element {
 const BiteSourceMapWrapper = styled.div`
   position:relative;
   z-index:1;
-  margin:1.5rem 0;
+  margin-bottom:1.5rem;
 `;
 
 const SearchResultsSummaryWrapper = styled.div`
   position:relative; 
   z-index: 2;
-  padding:.2rem 0;
-  margin-bottom:.5rem;
-  font-size:var(--fontSize-bump);
+  padding:.7rem 0;
 
   @media(min-width:${breakpointTablet}) {
-    padding:.45rem 0;
+    padding:.4rem 0 1.3rem 0;
+    font-size:var(--fontSize-bump);
   }
 `;
 

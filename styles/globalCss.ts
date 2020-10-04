@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const breakpointTablet = '800px';
 
 export const SiteTitle = styled.h1`
+  font-size:var(--fontSize-title-medium);
+
   a { color:var(--textcolor-base); 
     &:hover { text-decoration:none; }
   }
@@ -12,6 +14,7 @@ export const PageTitle = styled.h2``;
 
 export const PageContentWrapper = styled.section`
   max-width:1200px;
+  min-width:320px;
   margin:0 auto;
 `;
 

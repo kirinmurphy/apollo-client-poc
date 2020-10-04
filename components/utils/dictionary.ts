@@ -1,12 +1,12 @@
-export const MSG_SITE_TITLE = 'Working Title';
+export const MSG_SITE_TITLE = 'Things at Places';
 
 export const MSG_RESULT_COUNT_SINGULAR = 'result';
 export const MSG_RESULT_COUNT_PLURAL = 'results';
 export const MSG_RESULT_COUNT_FOR = 'for';
-export const MSG_SHOW_ALL_RESULTS = 'Show All';
+export const MSG_SHOW_ALL_RESULTS = 'show all';
 
 export const MSG_NO_SEARCH_RESULTS = 'No Results';
-export const MSG_NO_TYPEAHEAD_MATCHES = 'No new matches.';
+export const MSG_NO_TYPEAHEAD_MATCHES = 'No matching cuisines.';
 
 export const MSG_FILTER_VIEW_ALL_RESULTS = 'All Cuisine Types';
 
