@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { BiteSummaryProps } from '../types';
+import { BiteSummaryProps } from '../../types';
 
 export function BiteSummary (props: BiteSummaryProps): JSX.Element {
   const { id, photo, name, source } = props;

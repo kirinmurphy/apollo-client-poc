@@ -5,9 +5,10 @@ import { BrowserBackLink } from "codethings-react-ui";
 
 import { BITE_BY_ID } from "../../apollo/queries/resources/bites";
 
-import { Layout } from "../../components/Layout";
+import { Layout } from "../../components/page/Layout";
 import Query from "../../components/widgets/Query";
-import { BiteDetail } from "../../components/BiteDetail";
+import { BiteDetail } from "../../components/bites/BiteDetail";
+import { PageContentWrapper } from "../../styles/globalCss";
 
 interface Props {
   id: number;
@@ -16,7 +17,7 @@ interface Props {
 export default function Bites (props: Props): JSX.Element {
   return (
     <Layout>
-      <>
+      <PageContentWrapper>
         <div>
           <BrowserBackLink />
         </div>
@@ -34,7 +35,7 @@ export default function Bites (props: Props): JSX.Element {
             }}
           </Query> 
         )}
-      </>
+      </PageContentWrapper>
     </Layout>
   );
 }

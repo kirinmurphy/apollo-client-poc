@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
-import { setCookie } from 'nookies';
 
 import { 
   MSG_ERROR_REQUIRED_FIELD, 
@@ -14,13 +13,9 @@ import {
 
 import { PageContentWrapper, PageTitle } from '../styles/globalCss';
 
-import { 
-  Layout, 
-  PAGE_LOGIN, 
-  SECURE_COOKIE_NAME 
-} from '../components/Layout';
-
+import { Layout, PAGE_LOGIN } from '../components/page/Layout';
 import { GQL_LOGIN } from '../apollo/queries/login';
+import { useAuthenticator } from '../components/utils/useAuthenticator';
 
 function RequiredFieldError () {
   return (
@@ -30,19 +25,14 @@ function RequiredFieldError () {
 
 export default function Login (): JSX.Element {
   const { register, handleSubmit, errors } = useForm();
-
-  const [loginMutation, { data }] = useMutation(GQL_LOGIN);
+  const [updateMutation, { data }] = useMutation(GQL_LOGIN);
+  const { setAuthToken } = useAuthenticator();
 
   const jwtToken = data?.login?.jwt;
-
-  if ( jwtToken ) {
-    setCookie({}, SECURE_COOKIE_NAME, jwtToken, {
-      maxAge: 60 * 10
-    });
-  }
+  if ( jwtToken ) { setAuthToken(jwtToken); }
   
   function onSubmit (formData) {
-    loginMutation({ variables: formData });
+    updateMutation({ variables: formData });
   }
 
   return (

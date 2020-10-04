@@ -7,9 +7,9 @@ import Query from '../components/widgets/Query';
 
 import CUISINES_QUERY from '../apollo/queries/resources/cuisines';
 
-import { Layout, PAGE_HOME } from '../components/Layout';
-import { CuisineTypeSearch } from '../components/CuisineTypeSearch';
-import { BiteList } from '../components/SearchResults';
+import { Layout, PAGE_HOME } from '../components/page/Layout';
+import { CuisineTypeSearch } from '../components/bites/CuisineTypeSearch';
+import { BiteList } from '../components/bites/SearchResults';
 
 export default function Home (): JSX.Element {
   return (

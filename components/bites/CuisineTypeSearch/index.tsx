@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react';
 
-import '../utils/fontAwesomeLibrary';
+import '../../utils/fontAwesomeLibrary';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { CuisineProps } from '../types';
+import { CuisineProps } from '../../types';
 
-import { useCuisineFilter } from '../utils/useCuisineFilter';
+import { useCuisineFilter } from '../../utils/useCuisineFilter';
 import { getFilteredCuisines } from './helperGetFilteredCuisines';
 import { 
   searchFormStateReducer, 

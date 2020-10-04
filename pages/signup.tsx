@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
-import { setCookie } from 'nookies';
 
 import { 
   MSG_ERROR_REQUIRED_FIELD, 
@@ -14,8 +13,9 @@ import {
 
 import { PageContentWrapper, PageTitle } from '../styles/globalCss';
 
-import { Layout, PAGE_SIGNUP, SECURE_COOKIE_NAME } from '../components/Layout';
+import { Layout, PAGE_SIGNUP } from '../components/page/Layout';
 import { GQL_REGISTER } from '../apollo/queries/register';
+import { useAuthenticator } from '../components/utils/useAuthenticator';
 
 function RequiredFieldError () {
   return (
@@ -25,16 +25,11 @@ function RequiredFieldError () {
 
 export default function SignUp (): JSX.Element {
   const { register, handleSubmit, errors } = useForm();
-
   const [signUpMutation, { data }] = useMutation(GQL_REGISTER);
+  const { setAuthToken } = useAuthenticator();
 
   const jwtToken = data?.register?.jwt;
-
-  if ( jwtToken ) {
-    setCookie({}, SECURE_COOKIE_NAME, jwtToken, {
-      maxAge: 60 * 10
-    });
-  }
+  if ( jwtToken ) { setAuthToken(jwtToken); }
   
   function onSubmit (formData) {
     signUpMutation({ variables: formData });
@@ -44,7 +39,6 @@ export default function SignUp (): JSX.Element {
     <Layout page={PAGE_SIGNUP}>
       <PageContentWrapper>
         <FullPageFormWrapper>
-
           <PageTitle>{MSG_PAGE_TITLE_SIGN_UP}</PageTitle>
 
           <form onSubmit={handleSubmit(onSubmit)}>

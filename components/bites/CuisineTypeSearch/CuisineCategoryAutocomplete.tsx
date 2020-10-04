@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 
 import { useCallbackOnExternalEventTrigger } from 'codethings-react-ui';
 
-import { CuisineProps } from '../types';
+import { CuisineProps } from '../../types';
 import { 
   MSG_NO_TYPEAHEAD_MATCHES, 
   MSG_FILTER_VIEW_ALL_RESULTS 
-} from '../utils/dictionary';
+} from '../../utils/dictionary';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
 

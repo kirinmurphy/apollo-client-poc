@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpointTablet, GridList } from '../../styles/globalCss'; 
+import { breakpointTablet, GridList } from '../../../styles/globalCss'; 
 
 import { 
   BITE_QUERY, 
   FILTERED_BITE_QUERY
-} from '../../apollo/queries/resources/bites';
+} from '../../../apollo/queries/resources/bites';
 
 import { BiteSummary } from './BiteSummary';
-import Query from '../widgets/Query';
-import { useCuisineFilter } from '../utils/useCuisineFilter';
+import Query from '../../widgets/Query';
+import { useCuisineFilter } from '../../utils/useCuisineFilter';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { BiteSourceMap } from './BiteSourceMap';
-import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
+import { MSG_NO_SEARCH_RESULTS } from '../../utils/dictionary';
 
 export function BiteList (): JSX.Element {
 

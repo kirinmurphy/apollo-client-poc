@@ -1,5 +1,5 @@
 import React from "react";
-import { BiteSummaryProps } from "../types";
+import { BiteSummaryProps } from "../../types";
 
 interface Props {
   bite: BiteSummaryProps;

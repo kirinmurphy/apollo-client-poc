@@ -1,10 +1,10 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { BiteSummaryProps } from '../types';
+import { BiteSummaryProps } from '../../types';
 import Head from 'next/head';
 
 const Mapizer = dynamic(
-  () => import('../widgets/Mapizer'),
+  () => import('../../widgets/Mapizer'),
   { ssr: false }
 );
 

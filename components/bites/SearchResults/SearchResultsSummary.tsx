@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useCuisineFilter } from '../utils/useCuisineFilter';
+import { useCuisineFilter } from '../../utils/useCuisineFilter';
 
 import {
   MSG_RESULT_COUNT_SINGULAR,
   MSG_RESULT_COUNT_PLURAL,
   MSG_RESULT_COUNT_FOR,
   MSG_SHOW_ALL_RESULTS
-} from '../utils/dictionary';
+} from '../../utils/dictionary';
 
 interface Props {
   biteCount: number;
