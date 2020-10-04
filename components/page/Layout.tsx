@@ -1,7 +1,7 @@
 import React from "react";
 
 import { PageContentWrapper } from '../../styles/globalCss';
-import { useAuthenticator } from "../utils/useAuthenticator";
+import { useAuthController } from "../authentication/useAuthController";
 // import { redirectIfOldIE } from './utils/redirectIfOldIE';
 
 import { Navbar } from "./Navbar";
@@ -21,21 +21,20 @@ const anonOnlyPages = [
 ];
 
 export function Layout ({ children, page }: Props): JSX.Element {
-  const { isAuthenticated, sendToDefaultAuthenticatedPage } = useAuthenticator();
-  const alreadyAuthed = isAuthenticated && anonOnlyPages.includes(page);
-  if ( alreadyAuthed ) { sendToDefaultAuthenticatedPage(); }
+  const { isAuthenticated, sendToDefaultAuthenticatedPage } = useAuthController();
+
+  // TODO - this should happen on the server 
+  const authedOnAnonOnlyPage = isAuthenticated && anonOnlyPages.includes(page);
+  if ( authedOnAnonOnlyPage ) { sendToDefaultAuthenticatedPage(); }
 
   // useEffect(() => { redirectIfOldIE(window); }, []);
-
-  return (
+  const showPage = !authedOnAnonOnlyPage;
+  return showPage ? (
     <>
       <main>
         <header>
           <PageContentWrapper>
-            <Navbar 
-              page={page}
-              isAuthenticated={isAuthenticated} 
-            />
+            <Navbar page={page} />
           </PageContentWrapper>
         </header>
         <div className="page-content">
@@ -43,6 +42,6 @@ export function Layout ({ children, page }: Props): JSX.Element {
         </div>
       </main>  
     </>
-  );
+  ) : <></>;
 }
 

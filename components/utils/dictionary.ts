@@ -11,14 +11,20 @@ export const MSG_NO_TYPEAHEAD_MATCHES = 'No new matches.';
 export const MSG_FILTER_VIEW_ALL_RESULTS = 'All Cuisine Types';
 
 export const MSG_LINK_HEADER_SIGNUP = 'Sign Up';
-export const MSG_LINK_HEADER_LOGIN = 'Sign In';
-
-export const MSG_PAGE_TITLE_SIGN_UP = 'Create an Account';
-export const MSG_PAGE_TITLE_LOGIN = 'Login';
+export const MSG_LINK_HEADER_LOGIN = 'Login';
 
 export const MSG_ERROR_REQUIRED_FIELD = 'This field is required.';
 
 export const MSG_AUTH_FORM_LABEL_EMAIL = 'Email Address';
 export const MSG_AUTH_FORM_LABEL_PASSWORD = 'Password';
-export const MSG_SIGN_UP_FORM_SUBMIT_BUTTON = 'Sign Up';
-export const MSG_LOGIN_FORM_SUBMIT_BUTTON = "Login";
+
+export const MSGS_AUTH_FORMS = {
+  login: {
+    PAGE_TITLE: 'Login',
+    SUBMIT_BUTTON_TEXT: 'Login'
+  },
+  register: {
+    PAGE_TITLE: 'Create an Account',
+    SUBMIT_BUTTON_TEXT: 'Sign Up'
+  }
+}

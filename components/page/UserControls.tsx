@@ -3,22 +3,21 @@ import Link from 'next/link';
 
 import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../utils/dictionary';
 import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
-import { useAuthenticator } from '../utils/useAuthenticator';
+import { useAuthController } from '../authentication/useAuthController';
 
 interface Props {
   page: string;
-  isAuthenticated: boolean;
 }
 
-export default function UserControls ({ page, isAuthenticated }: Props): JSX.Element {
-  const showAuthOptions = !isAuthenticated && typeof(Window) !== 'undefined';
+export default function UserControls ({ page }: Props): JSX.Element {
+  const { isAuthenticated, logout } = useAuthController();
+  // TODO - would there be any benefit to SSRing this?   
+  const showAuthenticatedElements = !isAuthenticated && typeof(Window) !== 'undefined';
   const showEnrolledElements = isAuthenticated && typeof(Window) !== 'undefined';
-
-  const { logout } = useAuthenticator();
 
   return (
     <div className="user-controls">
-      {showAuthOptions && (
+      {showAuthenticatedElements && (
         <>
           {page !== PAGE_SIGNUP && (
             <Link href="/signup"><a>{MSG_LINK_HEADER_SIGNUP}</a></Link>
@@ -32,7 +31,6 @@ export default function UserControls ({ page, isAuthenticated }: Props): JSX.Ele
 
       {showEnrolledElements && (
         <>
-          <div>Welcome guy!</div>
           <span className="link" onClick={logout}>Logout</span>
         </>
       )}

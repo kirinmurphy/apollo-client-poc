@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { CuisineProps } from '../../types';
 
-import { useCuisineFilter } from '../../utils/useCuisineFilter';
+import { useCuisineFilter } from '../useCuisineFilter';
 import { getFilteredCuisines } from './helperGetFilteredCuisines';
 import { 
   searchFormStateReducer, 

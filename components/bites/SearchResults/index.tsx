@@ -10,7 +10,7 @@ import {
 
 import { BiteSummary } from './BiteSummary';
 import Query from '../../widgets/Query';
-import { useCuisineFilter } from '../../utils/useCuisineFilter';
+import { useCuisineFilter } from '../useCuisineFilter';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { BiteSourceMap } from './BiteSourceMap';
 import { MSG_NO_SEARCH_RESULTS } from '../../utils/dictionary';

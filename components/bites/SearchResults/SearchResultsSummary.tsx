@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCuisineFilter } from '../../utils/useCuisineFilter';
+import { useCuisineFilter } from '../useCuisineFilter';
 
 import {
   MSG_RESULT_COUNT_SINGULAR,

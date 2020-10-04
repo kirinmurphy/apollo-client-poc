@@ -15,10 +15,9 @@ const UserControls = dynamic(
 
 interface Props {
   page: string;
-  isAuthenticated: boolean;
 }
 
-export function Navbar ({ page, isAuthenticated }: Props): JSX.Element {
+export function Navbar ({ page }: Props): JSX.Element {
   return (
     <NavbarWrapper>
       <div className="site-nav">
@@ -30,10 +29,7 @@ export function Navbar ({ page, isAuthenticated }: Props): JSX.Element {
         {page !== PAGE_HOME && <Link href="/"><a>Home</a></Link>}
       </div>
 
-      <UserControls 
-        page={page} 
-        isAuthenticated={isAuthenticated} 
-      />
+      <UserControls page={page} />
     </NavbarWrapper>
   );
 }
