@@ -2,8 +2,12 @@ import React from 'react';
 
 import { Layout, PAGE_SIGNUP } from '../components/page/Layout';
 import { GQL_REGISTER } from '../apollo/queries/register';
-import { AuthForm } from '../components/authentication/AuthForm';
-import { AuthFormCommonFields } from '../components/authentication/AuthFormCommonFields';
+
+import { 
+  AuthForm, 
+  AuthFormCommonFields,
+  getDefaultPropsOnPublicOnlyPage 
+} from '../components/authentication';
 
 const AUTH_ACTION_SIGNUP_MUTATION = 'register';
 
@@ -19,3 +23,5 @@ export default function SignUp (): JSX.Element {
     </Layout>
   );
 }
+
+export const getServerSideProps = getDefaultPropsOnPublicOnlyPage; 

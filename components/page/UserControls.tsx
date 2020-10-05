@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../utils/dictionary';
 import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
-import { useAuthController } from '../authentication/useAuthController';
+import { useClientAuthController } from '../authentication/useClientAuthController';
 
 interface Props {
   page: string;
 }
 
 export default function UserControls ({ page }: Props): JSX.Element {
-  const { isAuthenticated, logout } = useAuthController();
+  const { isAuthenticated, logout } = useClientAuthController();
   // TODO - would there be any benefit to SSRing this?   
   const showAuthenticatedElements = !isAuthenticated && typeof(Window) !== 'undefined';
   const showEnrolledElements = isAuthenticated && typeof(Window) !== 'undefined';

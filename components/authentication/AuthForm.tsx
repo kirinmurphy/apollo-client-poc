@@ -4,13 +4,11 @@ import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
 import { DocumentNode } from 'graphql';
 
-import { LoadingIcon } from 'codethings-react-ui';
-
 import { PageContentWrapper, PageTitle } from '../../styles/globalCss';
 
 import { AuthFormFieldsProps } from './AuthFormCommonFields';
 
-import { useAuthController } from './useAuthController';
+import { useClientAuthController } from './useClientAuthController';
 import { MSGS_AUTH_FORMS } from '../utils/dictionary';
 
 interface AuthFormProps {
@@ -26,26 +24,20 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
     gqlMutation 
   } = props;
 
-  const { 
-    isAuthenticated, 
-    setAsLoggedInIfAuthenticated, 
-    sendToDefaultAuthenticatedPage 
-  } = useAuthController();
-
-  // TODO: this redirect should be done on the server  
-  if ( isAuthenticated ) { sendToDefaultAuthenticatedPage(); }
-
-  const [updateMutation, { data = {} }] = useMutation(gqlMutation);
-  setAsLoggedInIfAuthenticated(data[authAction]?.jwt);
+  const [sendUpdateMutation, { data = {} }] = useMutation(gqlMutation);
+  
+  const { onAuthorizationSuccess } = useClientAuthController();
+  const jwtToken = data[authAction]?.jwt;
+  if ( jwtToken ) { onAuthorizationSuccess(jwtToken); }
 
   const { register, handleSubmit, errors } =  useForm();
   const { PAGE_TITLE, SUBMIT_BUTTON_TEXT } = MSGS_AUTH_FORMS[authAction];
 
   function onSubmit (formData) {
-    updateMutation({ variables: formData });
+    sendUpdateMutation({ variables: formData });
   }
 
-  return !isAuthenticated ? (
+  return (
     <PageContentWrapper>
       <FullPageFormWrapper>
         <PageTitle>{PAGE_TITLE}</PageTitle>
@@ -55,7 +47,7 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
         </form>
       </FullPageFormWrapper>
     </PageContentWrapper>
-  ) : <LoadingIcon />;
+  );
 }
 
 const FullPageFormWrapper = styled.div`
