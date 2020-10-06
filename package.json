@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "deploy": "yarn build && yarn export"
+    "deploy": "yarn build && yarn export",
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -27,6 +28,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "leaflet": "^1.6.0",
     "next": "9.3.5",
+    "next-on-netlify": "^2.5.1",
     "next-with-apollo": "^5.1.0",
     "nookies": "^2.4.0",
     "react": "16.13.1",
