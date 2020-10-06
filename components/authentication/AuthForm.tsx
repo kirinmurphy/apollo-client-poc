@@ -24,14 +24,26 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
     gqlMutation 
   } = props;
 
-  const [sendUpdateMutation, { data = {} }] = useMutation(gqlMutation);
-  
+  const [
+    sendUpdateMutation, 
+    { data = {}, error, loading }
+  ] = useMutation(gqlMutation);
+
+  // is there a cleaner way to pull this? 
+  const errorCode = error?.graphQLErrors[0]?.extensions?.exception?.code;
+
   const { onAuthorizationSuccess } = useClientAuthController();
   const jwtToken = data[authAction]?.jwt;
   if ( jwtToken ) { onAuthorizationSuccess(jwtToken); }
 
   const { register, handleSubmit, errors } =  useForm();
-  const { PAGE_TITLE, SUBMIT_BUTTON_TEXT } = MSGS_AUTH_FORMS[authAction];
+  const { 
+    MSG_PAGE_TITLE, 
+    MSG_SUBMIT_BUTTON_TEXT, 
+    MSG_AUTH_FAILED 
+  } = MSGS_AUTH_FORMS[authAction];
+
+  const formDisabled = loading || !!jwtToken;
 
   function onSubmit (formData) {
     sendUpdateMutation({ variables: formData });
@@ -40,10 +52,17 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
   return (
     <PageContentWrapper>
       <FullPageFormWrapper>
-        <PageTitle>{PAGE_TITLE}</PageTitle>
+        <PageTitle>{MSG_PAGE_TITLE}</PageTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           {fields({ register, errors })}
-          <input type="submit" value={SUBMIT_BUTTON_TEXT}  />
+
+          {!!errorCode && errorCode === 400 && (
+            <div className="form-error">{MSG_AUTH_FAILED}</div>
+          )}
+
+          <button type="submit" disabled={formDisabled}>
+            <span>{MSG_SUBMIT_BUTTON_TEXT}</span>
+          </button>
         </form>
       </FullPageFormWrapper>
     </PageContentWrapper>
@@ -55,13 +74,19 @@ const FullPageFormWrapper = styled.div`
   margin:0 auto;
   padding: 1rem;
 
-  input[type="submit"] { 
-    width:100%;
-    height:2.5rem;
-  }
-
   .field-error {
     color: var(--textcolor-error);
     font-size:var(--fontSize-small);
+  }
+
+  .form-error {
+    margin-bottom:1rem;
+    font-size:var(--fontSize-small);
+    color:var(--textcolor-error);
+  }
+
+  button[type="submit"] { 
+    width:100%;
+    height:3rem;
   }
 `;

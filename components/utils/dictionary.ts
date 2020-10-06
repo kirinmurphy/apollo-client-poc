@@ -19,11 +19,13 @@ export const MSG_LINK_HEADER_LOGIN = 'Login';
 
 export const MSGS_AUTH_FORMS = {
   login: {
-    PAGE_TITLE: 'Login',
-    SUBMIT_BUTTON_TEXT: 'Login'
+    MSG_PAGE_TITLE: 'Login',
+    MSG_SUBMIT_BUTTON_TEXT: 'Login',
+    MSG_AUTH_FAILED: 'Login credentials failed.'
   },
   register: {
-    PAGE_TITLE: 'Create an Account',
-    SUBMIT_BUTTON_TEXT: 'Sign Up'
+    MSG_PAGE_TITLE: 'Create an Account',
+    MSG_SUBMIT_BUTTON_TEXT: 'Sign Up',
+    MSG_AUTH_FAILED: 'Unable to create an account with these credentials.'
   }
 }
