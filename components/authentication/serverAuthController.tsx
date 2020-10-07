@@ -8,15 +8,8 @@ import {
   SECURE_COOKIE_NAME 
 } from './constants';
 
-function isAuthenticated (ctx: NextPageContext) {
-  const cookies = nookies.get(ctx);
-  return !!cookies[SECURE_COOKIE_NAME];
-}
-
 export function redirectIfNotAuthenticated (ctx: NextPageContext): void {
-  if (!isAuthenticated(ctx)) {
-    ctx.res.writeHead(307, { Location: PATH_LOGIN }).end();
-  }
+  if (!isAuthenticated(ctx)) { redirectTo(ctx, PATH_LOGIN) }
 }
 
 export async function getDefaultPropsOnSecurePage (ctx: NextPageContext)
@@ -26,13 +19,23 @@ export async function getDefaultPropsOnSecurePage (ctx: NextPageContext)
 }
 
 export function redirectIfAlreadyAuthenticated (ctx: NextPageContext) : void {
-  if (isAuthenticated(ctx)) {
-    ctx.res.writeHead(307, { Location: PATH_ROOT }).end();
-  }
+  if (isAuthenticated(ctx)) { redirectTo(ctx, PATH_ROOT); }
 }
 
 export async function getDefaultPropsOnPublicOnlyPage (ctx: NextPageContext)
   : Promise<{ props: LooseObject }> {
   redirectIfAlreadyAuthenticated(ctx);
   return { props: {} }
+}
+
+function isAuthenticated (ctx: NextPageContext) {
+  const cookies = nookies.get(ctx);
+  return !!cookies[SECURE_COOKIE_NAME];
+}
+
+function redirectTo(ctx, path) {
+  try {
+    ctx.res.writeHead(307, { Location: path });
+    ctx.res.end();
+  } catch (error) { console.log('error', error); }
 }
