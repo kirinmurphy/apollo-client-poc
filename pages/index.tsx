@@ -5,7 +5,7 @@ import { breakpointTablet, PageContentWrapper } from '../styles/globalCss';
 
 import Query from '../components/widgets/Query';
 
-import CUISINES_QUERY from '../apollo/queries/resources/cuisines';
+import CUISINES_QUERY from '../components/bites/queries/cuisines';
 
 import { Layout, PAGE_HOME } from '../components/page/Layout';
 import { CuisineTypeSearch } from '../components/bites/CuisineTypeSearch';

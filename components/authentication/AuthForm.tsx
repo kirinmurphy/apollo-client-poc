@@ -27,7 +27,11 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
   const [
     sendUpdateMutation, 
     { data = {}, error, loading }
-  ] = useMutation(gqlMutation);
+  ] = useMutation(gqlMutation, {
+    update: client => {
+      console.log('hey', client);
+    }
+  });
 
   // is there a cleaner way to pull this? 
   const errorCode = error?.graphQLErrors[0]?.extensions?.exception?.code;

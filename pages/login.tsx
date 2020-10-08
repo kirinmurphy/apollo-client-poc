@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Layout, PAGE_LOGIN } from '../components/page/Layout';
-import { GQL_LOGIN } from '../apollo/queries/login';
+import { GQL_LOGIN } from '../components/authentication/queries/login';
 
 import { 
   AuthForm, 

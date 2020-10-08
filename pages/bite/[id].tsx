@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { BrowserBackLink } from "codethings-react-ui";
 
-import { BITE_BY_ID } from "../../apollo/queries/resources/bites";
+import { BITE_BY_ID } from "../../components/bites/queries/bites";
 
 import { Layout } from "../../components/page/Layout";
 import Query from "../../components/widgets/Query";

@@ -26,7 +26,7 @@ https://www.apollographql.com/blog/getting-started-with-typescript-and-apollo-a9
 #### Graphql
 https://graphql.org/learn/queries/      
 
-#### Locaiton Data
+#### Location Data
 https://foursquare.com/developers/apps/E5B4ADENUZLKZRSUONNZP2EJTXPIYDF0Y24L5EN1F3BNZIMM/settings      
 
 #### NextJs
@@ -40,4 +40,11 @@ https://dev.to/alexandrg/how-to-setup-apollo-client-in-order-to-perform-graphql-
 
 
 #### MORE
-https://nec.is/writing/graphql-with-apollo-react-and-nextjs/    
+https://nec.is/writing/graphql-with-apollo-react-and-nextjs/  
+https://www.apollographql.com/blog/the-concepts-of-graphql-bc68bd819be3/
+https://towardsdatascience.com/updating-apolloclient-cache-and-re-rendering-data-4537c11c6daf
+
+### Apollo Caching
+https://www.apollographql.com/blog/first-impressions-with-apollo-client-3-2ae2a069ab2f/
+https://www.apollographql.com/docs/react/caching/cache-interaction/    
+https://www.apollographql.com/blog/first-impressions-with-apollo-client-3-2ae2a069ab2f/

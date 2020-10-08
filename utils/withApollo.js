@@ -16,6 +16,7 @@ export default withApollo(
   // e.g. ({ headers, ctx, initialState })
   ({ initialState }) =>
     new ApolloClient({
+      connectToDevTools: true,
       link: link,
       cache: new InMemoryCache()
         //  rehydrate the cache using the initial data passed from the server:
