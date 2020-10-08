@@ -12,18 +12,18 @@ export function redirectIfNotAuthenticated (ctx: NextPageContext): void {
   if (!isAuthenticated(ctx)) { redirectTo(ctx, PATH_LOGIN) }
 }
 
-export async function getDefaultPropsOnSecurePage (ctx: NextPageContext)
-  : Promise<{ props: LooseObject }> {
-  redirectIfNotAuthenticated(ctx);
-  return { props: {} }
-}
-
 export function redirectIfAlreadyAuthenticated (ctx: NextPageContext) : void {
   if (isAuthenticated(ctx)) { redirectTo(ctx, PATH_ROOT); }
 }
 
-export async function getDefaultPropsOnPublicOnlyPage (ctx: NextPageContext)
-  : Promise<{ props: LooseObject }> {
+export function getDefaultPropsOnSecurePage (ctx: NextPageContext)
+  : { props: LooseObject } {
+  redirectIfNotAuthenticated(ctx);
+  return { props: {} }
+}
+
+export function getDefaultPropsOnPublicOnlyPage (ctx: NextPageContext)
+  : { props: LooseObject } {
   redirectIfAlreadyAuthenticated(ctx);
   return { props: {} }
 }
@@ -34,8 +34,6 @@ function isAuthenticated (ctx: NextPageContext) {
 }
 
 function redirectTo(ctx, path) {
-  try {
-    ctx.res.writeHead(307, { Location: path });
-    ctx.res.end();
-  } catch (error) { console.log('error', error); }
+  ctx.res.writeHead(307, { Location: path });
+  ctx.res.end();
 }
