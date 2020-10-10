@@ -24,19 +24,24 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
     gqlMutation 
   } = props;
 
+  const { onAuthorizationSuccess } = useClientAuthController();
+
   const [
     sendUpdateMutation, 
     { data = {}, error, loading }
   ] = useMutation(gqlMutation, {
-    update: client => {
-      console.log('hey', client);
-    }
+    update: cache => {
+      // dont wanna persiste the auth props in the cache once JWT is stored in a cookie
+      // able to use cache.modify to remove it, but not the supplied login credentials 
+      // not sure the use case of storing mutations so this will do until it won't
+      cache.evict({ id: 'ROOT_MUTATION' });
+    },
+    onError: error => { console.log('error', error); }
   });
 
   // is there a cleaner way to pull this? 
   const errorCode = error?.graphQLErrors[0]?.extensions?.exception?.code;
 
-  const { onAuthorizationSuccess } = useClientAuthController();
   const jwtToken = data[authAction]?.jwt;
   if ( jwtToken ) { onAuthorizationSuccess(jwtToken); }
 
