@@ -1,7 +1,10 @@
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { 
+  ApolloClient, 
+  InMemoryCache, 
+  createHttpLink 
+} from "@apollo/client";
+
 import withApollo from "next-with-apollo";
-import { createHttpLink } from "apollo-link-http";
 import fetch from "isomorphic-unfetch";
 
 const link = createHttpLink({

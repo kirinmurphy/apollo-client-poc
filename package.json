@@ -11,13 +11,10 @@
     "postbuild": "next-on-netlify"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^4.0.0",
+    "@apollo/client": "^3.2.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
-    "apollo-link-http": "^1.5.17",
     "codethings-nextjs-router-addons": "1.1.0",
     "codethings-react-ui": "1.2.1",
     "date-fns": "^2.11.1",

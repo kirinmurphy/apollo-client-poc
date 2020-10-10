@@ -4,7 +4,7 @@ import 'codethings-react-ui/dist/styles.css';
 import Head from "next/head";
 import '../styles/global.css';
 
-import { ApolloProvider, ApolloClient } from "@apollo/react-hooks";
+import { ApolloProvider, ApolloClient } from "@apollo/client";
 import withApollo from "../utils/withApollo";
 import { AppProps } from "next/app";
 import { MSG_SITE_TITLE } from "../components/utils/dictionary";
