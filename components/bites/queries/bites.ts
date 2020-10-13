@@ -20,11 +20,14 @@ export const BITE_BY_ID = gql`
   ${GQL_FRAGMENT_BITES}
 `;
 
+// _or query with graphQl has a bug in strapi code.  fixed in version 3.2.4, wtg for publish 
+// https://github.com/strapi/strapi/pull/8332
+// bites(where: { _or: { name_contains: $searchKeyword }, cuisines: { name: $searchKeyword } })
 export const FILTERED_BITE_QUERY = gql`
-  query Bites($cuisineName: String!) {
-    bites(where: { cuisines: { name: $cuisineName } }) {
+  query Bites($searchKeyword: String!) {
+    bites(where: { cuisines: { name: $searchKeyword } }) {
       ...BiteContent
-    }  
+    }
   }
   ${GQL_FRAGMENT_BITES}
 `;

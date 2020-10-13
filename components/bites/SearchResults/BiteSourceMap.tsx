@@ -2,6 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { BiteSummaryProps } from '../../types';
 import Head from 'next/head';
+import { getSourcesWithBites } from './getSourcesWithBites';
 
 const Mapizer = dynamic(
   () => import('../../widgets/Mapizer'),
@@ -51,27 +52,4 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
       />
     </>
   );
-}
-
-function getSourcesWithBites (bites) {
-  const sourcesObject = bites.reduce((currentSources, currentBite) => {
-    const existingBites = currentSources[currentBite.source.id]?.bites || [];
-    return { 
-      ...currentSources, 
-      [currentBite.source.id]: {
-        source: currentBite.source,
-        bites: [
-          ...existingBites, 
-          {
-            name: currentBite.name,
-            photo: currentBite.photo
-          }
-        ]
-      }
-    };
-  }, {});
-
-  return Object.keys(sourcesObject).map((source) => {
-    return sourcesObject[source];
-  });
 }

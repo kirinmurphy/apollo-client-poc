@@ -20,7 +20,7 @@ export function BiteList (): JSX.Element {
   const { activeCuisineType } = useCuisineFilter();
 
   const queryProps = !!activeCuisineType 
-    ? { query: FILTERED_BITE_QUERY, variables: { cuisineName: activeCuisineType } }
+    ? { query: FILTERED_BITE_QUERY, variables: { searchKeyword: activeCuisineType } }
     : { query: BITE_QUERY }
 
   return (

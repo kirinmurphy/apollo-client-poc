@@ -4,6 +4,7 @@ export interface CuisineProps {
 }
 
 export interface SourceProps {
+  id: string;
   name: string;
   location?: {
     neighborhood: string;
