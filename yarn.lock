@@ -2956,10 +2956,10 @@ codethings-nextjs-router-addons@1.1.0:
   resolved "https://registry.yarnpkg.com/codethings-nextjs-router-addons/-/codethings-nextjs-router-addons-1.1.0.tgz#0664562924422197cca072eb36777bd579a752e5"
   integrity sha512-s84DK4XY2eaI2/tGnMOqRv1zVR3/HPLDn72H2DDUe3pBJ62MLjRItAtjzftjyOuqC44M1fKnbU9qtzPO2Ds25w==
 
-codethings-react-ui@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/codethings-react-ui/-/codethings-react-ui-1.2.1.tgz#81e1ca8e1f93aefb43c96ef7ff3abb91c8b2166f"
-  integrity sha512-swIRA/mBwRanQhPXQqwHYvMeSgLEr9CHclIbNeprtiE8T706eilg1XnFwrew6zAXqM1aytvZeQjVjTKaL3yPfA==
+codethings-react-ui@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/codethings-react-ui/-/codethings-react-ui-1.3.3.tgz#0bbf2b285287aedf3e21e4cd590263a55693fbfa"
+  integrity sha512-VTXMS5+9zMHdaX7liDJQ7Jc2plhMdV5/f68O8vt+cBJ9pdP0nBizKsWQ2j94gWVfr+e3cZg+U/N9d0TXUXRPFw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.30"
     "@fortawesome/free-solid-svg-icons" "^5.14.0"

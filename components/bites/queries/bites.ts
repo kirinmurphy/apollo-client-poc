@@ -25,7 +25,7 @@ export const BITE_BY_ID = gql`
 // bites(where: { _or: { name_contains: $searchKeyword }, cuisines: { name: $searchKeyword } })
 export const FILTERED_BITE_QUERY = gql`
   query Bites($searchKeyword: String!) {
-    bites(where: { cuisines: { name: $searchKeyword } }) {
+    bites(where: { _or: { name_contains: $searchKeyword }, cuisines: { name: $searchKeyword } }) {
       ...BiteContent
     }
   }

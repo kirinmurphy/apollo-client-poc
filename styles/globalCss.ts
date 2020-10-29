@@ -31,4 +31,18 @@ export const GridList = styled.div`
   > *:not(:nth-of-type(4n+4)) {
     margin-right:1%;
   }
+
+  @media (max-width:900px) {
+    > * {
+      width:49%;
+    }
+  }
+
+  @media (max-width:450px) {
+    margin-right:0;
+
+    > * {
+      width:100%;
+    }
+  }
 `;

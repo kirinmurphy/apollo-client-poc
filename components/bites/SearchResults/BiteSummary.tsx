@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { BiteSummaryProps } from '../../types';
+import { CenterTextEllipticizer } from 'codethings-react-ui';
 
 export function BiteSummary (props: BiteSummaryProps): JSX.Element {
   const { id, photo, name, source } = props;
@@ -18,7 +19,7 @@ export function BiteSummary (props: BiteSummaryProps): JSX.Element {
         <a className="bite-summary__name link">{name}</a>
 
         <div className="bite-summary__source">
-          {source.name} - {source?.location?.neighborhood}
+          <CenterTextEllipticizer rawText={`${source.name} - ${source?.location?.neighborhood}`} /> 
         </div>  
       </div>
     </Link>

@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "codethings-nextjs-router-addons": "1.1.0",
-    "codethings-react-ui": "1.2.1",
+    "codethings-react-ui": "1.3.3",
     "date-fns": "^2.11.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
