@@ -18,6 +18,7 @@ export function getSourcesWithBites (
         bites: [
           ...existingBites, 
           {
+            id: currentBite.id,
             name: currentBite.name,
             photo: currentBite.photo
           }

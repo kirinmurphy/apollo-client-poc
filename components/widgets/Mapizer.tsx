@@ -1,6 +1,7 @@
-import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+
+import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
 
 interface Props {
   markers: LooseObject[],
@@ -18,12 +19,11 @@ export default function Mapizer ({ markers, tooltipTemplate }: Props): JSX.Eleme
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker, index) => {
-          const { position } = marker;
+        {markers.map(({ markerData, position }) => {
           return (
-            <Marker position={position} key={index}>
+            <Marker position={position} key={markerData.source.id}>
               <Popup>
-                {tooltipTemplate(marker.markerData)}
+                {tooltipTemplate(markerData)}
               </Popup>
             </Marker>  
           );

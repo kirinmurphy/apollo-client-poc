@@ -3,6 +3,7 @@ import 'codethings-react-ui/dist/styles.css';
 
 import Head from "next/head";
 import '../styles/global.css';
+import '../components/utils/fontAwesomeLibrary';
 
 import { ApolloProvider, ApolloClient } from "@apollo/client";
 import withApollo from "../utils/withApollo";

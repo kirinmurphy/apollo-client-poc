@@ -2,23 +2,25 @@ import { CuisineProps } from "../../types";
 
 interface GetFilteredCuisinesProps {
   cuisines: CuisineProps[];
-  activeCuisineType: string;
+  activeSearchKeyword: string;
   inputValue: string;
 }
 
 export function getFilteredCuisines (props:GetFilteredCuisinesProps): CuisineProps[] {
-  const { cuisines, activeCuisineType, inputValue } = props;
+  const { cuisines, activeSearchKeyword, inputValue } = props;
 
   return cuisines
     .filter(cuisineType => { 
-      if ( isActiveCuisine(cuisineType.name, activeCuisineType) ) { return false; }
-      else { return getCuisineMatches(cuisineType.name, inputValue); }
+      return isActiveCuisine(cuisineType.name, activeSearchKeyword) 
+        ? false
+        : getCuisineMatches(cuisineType.name, inputValue);
     });
 }
 
-function isActiveCuisine (cuisineName, activeCuisineType) {
-  if ( !activeCuisineType ) { return false; }
-  return cuisineName.toLowerCase() === activeCuisineType.toLowerCase();
+function isActiveCuisine (cuisineName, activeSearchKeyword) {
+  return !!activeSearchKeyword 
+    ? cuisineName.toLowerCase() === activeSearchKeyword.toLowerCase()
+    : false;
 }
 
 function getCuisineMatches (cuisineName, inputValue) {

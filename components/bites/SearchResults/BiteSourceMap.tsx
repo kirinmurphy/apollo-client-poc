@@ -42,10 +42,8 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
           <div>
             {source.name} - {source.location.neighborhood}
             
-            {bites.map((bite, index) => {
-              return (
-                <div key={index}>{bite.name}</div>
-              );
+            {bites.map(({ id, name }) => {
+              return <div key={id}>{name}</div>;
             })}
           </div>
         )}  

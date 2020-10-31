@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import useSWR from 'swr';
-
 import { useCallbackOnExternalEventTrigger } from 'codethings-react-ui';
 
 import { 
@@ -8,60 +7,67 @@ import {
   MSG_FILTER_VIEW_ALL_RESULTS 
 } from '../../utils/dictionary';
 
-import { CuisineTypeOption } from './CuisineTypeOption';
-import { SEARCH_ACTION_CLOSE_FILTER } from './helperSearchFormStateReducer';
-import { useCuisineFilter } from '../useCuisineFilter';
+import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
 import { getFilteredCuisines } from './helperGetFilteredCuisines';
+
+import { 
+  SearchFormDispatchType, 
+  SEARCH_ACTION_CLOSE_AUTOCOMPLETE, 
+  SEARCH_ACTION_RESET_FORM, 
+} from './helperSearchFormStateReducer';
+
+import { CuisineTypeOption } from './CuisineTypeOption';
 
 interface Props {
   inputValue: string;
-  clearSearch: () => void;
-  submitSearch: (arg0: string) => void;
-  searchFormDispatch: any;
+  searchFormDispatch: SearchFormDispatchType;
 }
 
 export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
-  const { 
-    inputValue,
-    searchFormDispatch,
-    clearSearch, 
-    submitSearch
-  } = props;
+  const { inputValue, searchFormDispatch } = props;
 
-  const { activeCuisineType } = useCuisineFilter();
+  const { 
+    activeSearchKeyword, 
+    updateSearchKeyword, 
+    clearSearchKeyword 
+  } = useKeywordSearchFilter();
 
   const API_URL_CUISINES = `${process.env.API_URL}/cuisines`;
   const cuisinePathSwr =  useSWR(API_URL_CUISINES);
   const { data: cuisines = [] } = cuisinePathSwr;
 
   const filteredCuisines = getFilteredCuisines({ 
-    cuisines, 
-    activeCuisineType, 
-    inputValue 
+    cuisines, activeSearchKeyword, inputValue 
   });
 
   const autocompleteRef = useRef(null);
-  const closeFilter = () => searchFormDispatch({ type: SEARCH_ACTION_CLOSE_FILTER });
+  const closeFilter = () => searchFormDispatch({ type: SEARCH_ACTION_CLOSE_AUTOCOMPLETE });
   useCallbackOnExternalEventTrigger(autocompleteRef, closeFilter);
 
   return (
     <div className="category-list" ref={autocompleteRef}>
-      {!!activeCuisineType && (
+      {!!activeSearchKeyword && (
         <CuisineTypeOption 
           name={MSG_FILTER_VIEW_ALL_RESULTS} 
-          onClick={clearSearch} 
+          onClick={() => { 
+            clearSearchKeyword();
+            searchFormDispatch({ type: SEARCH_ACTION_RESET_FORM });
+          }} 
         />
       )}
       
-      {filteredCuisines.map(({ name }, index) => (
+      {filteredCuisines.map(({ id, name }) => (
         <CuisineTypeOption 
-          key={index} 
+          key={id} 
           name={name} 
-          onClick={() => submitSearch(name)} 
+          onClick={() => { 
+            updateSearchKeyword(name);
+            searchFormDispatch({ type: SEARCH_ACTION_RESET_FORM });
+          }} 
         />
       ))}
 
-      {!filteredCuisines.length && (
+      {!!cuisines && !filteredCuisines.length && (
         <div className="no-category-matches">{MSG_NO_TYPEAHEAD_MATCHES}</div>
       )}
     </div>

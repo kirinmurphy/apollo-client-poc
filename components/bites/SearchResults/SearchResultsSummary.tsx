@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCuisineFilter } from '../useCuisineFilter';
+import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
 
 import {
   MSG_RESULT_COUNT_SINGULAR,
@@ -15,20 +15,20 @@ interface Props {
 
 export function SearchResultsSummary ({ biteCount }: Props): JSX.Element {
 
-  const { activeCuisineType, clearCuisineType } = useCuisineFilter();
+  const { activeSearchKeyword, clearSearchKeyword } = useKeywordSearchFilter();
 
   return (
     <>
       <span>
         {biteCount} {biteCount > 1 ? MSG_RESULT_COUNT_PLURAL : MSG_RESULT_COUNT_SINGULAR} 
 
-        {!!activeCuisineType && (
+        {!!activeSearchKeyword && (
           <>
-            <span> {MSG_RESULT_COUNT_FOR} <strong>{activeCuisineType}</strong></span>
+            <span> {MSG_RESULT_COUNT_FOR} <strong>{activeSearchKeyword}</strong></span>
 
             &nbsp;&middot;&nbsp;
 
-            <span className="link" onClick={clearCuisineType}>
+            <span className="link" onClick={clearSearchKeyword}>
               {MSG_SHOW_ALL_RESULTS}
             </span>
           </>
