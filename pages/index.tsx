@@ -3,22 +3,21 @@ import styled from 'styled-components';
 
 import { breakpointTablet, PageContentWrapper } from '../styles/globalCss'; 
 
-import Query from '../components/widgets/Query';
-
-import CUISINES_QUERY from '../components/bites/queries/cuisines';
-
 import { Layout, PAGE_HOME } from '../components/page/Layout';
 import { CuisineTypeSearch } from '../components/bites/CuisineTypeSearch';
 import { BiteList } from '../components/bites/SearchResults';
+import useSWR from 'swr';
 
 export default function Home (): JSX.Element {
+
+  const API_URL_CUISINES = `${process.env.API_URL}/cuisines`;
+  const { data: cuisines = [] } = useSWR(API_URL_CUISINES);
+
   return (
     <Layout page={PAGE_HOME}>
       <PageContentWrapper>
         <CuisineTypeSearchWrapper>
-          <Query query={CUISINES_QUERY}>
-            {({ data }) => <CuisineTypeSearch cuisines={data.cuisines} />}
-          </Query>
+          <CuisineTypeSearch cuisines={cuisines} />
         </CuisineTypeSearchWrapper>
         
         <BiteList />
