@@ -2951,10 +2951,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codethings-nextjs-router-addons@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/codethings-nextjs-router-addons/-/codethings-nextjs-router-addons-1.1.0.tgz#0664562924422197cca072eb36777bd579a752e5"
-  integrity sha512-s84DK4XY2eaI2/tGnMOqRv1zVR3/HPLDn72H2DDUe3pBJ62MLjRItAtjzftjyOuqC44M1fKnbU9qtzPO2Ds25w==
+codethings-nextjs-router-addons@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/codethings-nextjs-router-addons/-/codethings-nextjs-router-addons-1.3.0.tgz#3294cdf9b6528909a90e4e5769173dc737c9716e"
+  integrity sha512-K49HL7QliIDUlorX3ln6x8UU1VTidB4eXkZfxzNSLrulBUtR6IL6VJI1FokUtBmHM3LpjXHBEmephsvYEdu1mA==
 
 codethings-react-ui@1.3.3:
   version "1.3.3"

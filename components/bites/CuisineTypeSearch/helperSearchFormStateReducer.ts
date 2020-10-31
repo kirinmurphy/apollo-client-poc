@@ -4,7 +4,7 @@ type SearchActionTypes =
   'closeCuisineFilter' | 
   'resetSearch';
 
-interface SearchActionProps {
+export interface SearchActionProps {
   type?: SearchActionTypes;
   inputValue?: string;
 }
@@ -23,6 +23,11 @@ export function searchFormStateReducer (
   state: SearchStateProps, 
   action: SearchActionProps): SearchStateProps {
   
+  const resetSearchState = {
+    inputValue: '',
+    autocompleteVisible: false
+  }
+
   switch (action.type) {
   case SEARCH_ACTION_UPDATE_INPUT: 
     return {
@@ -34,8 +39,7 @@ export function searchFormStateReducer (
   case SEARCH_ACTION_RESET_SEARCH: 
     return {
       ...state,
-      inputValue: '',
-      autocompleteVisible: false
+      ...resetSearchState
     };
   
   case SEARCH_ACTION_CLOSE_FILTER: 
