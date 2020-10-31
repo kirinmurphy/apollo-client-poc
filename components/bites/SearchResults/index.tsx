@@ -3,51 +3,45 @@ import styled from 'styled-components';
 
 import { breakpointTablet, GridList } from '../../../styles/globalCss'; 
 
-import { 
-  BITE_QUERY, 
-  FILTERED_BITE_QUERY
-} from '../queries/bites';
-
 import { BiteSummary } from './BiteSummary';
-import Query from '../../widgets/Query';
 import { useCuisineFilter } from '../useCuisineFilter';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { BiteSourceMap } from './BiteSourceMap';
 import { MSG_NO_SEARCH_RESULTS } from '../../utils/dictionary';
+import useSWR from 'swr';
 
 export function BiteList (): JSX.Element {
 
   const { activeCuisineType } = useCuisineFilter();
 
-  const queryProps = !!activeCuisineType 
-    ? { query: FILTERED_BITE_QUERY, variables: { searchKeyword: activeCuisineType } }
-    : { query: BITE_QUERY }
+  // had to switch from using Apollo to regular rest calls
+  // Apollo was causing significant cold starts in production on Heroku
+  // waiting for some feedback with the strapi team before switching it back
+  const API_URL_BITES = `${process.env.API_URL}/bites`;
+  const params = activeCuisineType ? `/?cuisines.name=${activeCuisineType}` : '';
+  const fullPath = `${API_URL_BITES}${params}`;
+  const { data: bites = [], error } = useSWR(fullPath);
 
-  return (
-    <Query {...queryProps}>
-      {({ data }) => {
-        const { bites = [] } = data;
+  console.log('data', bites);
+  console.log('error', error);
 
-        return bites.length ? (
-          <>
-            <SearchResultsSummaryWrapper>
-              <SearchResultsSummary biteCount={bites.length} />
-            </SearchResultsSummaryWrapper>
-      
-            <BiteSourceMapWrapper>
-              <BiteSourceMap bites={bites} />
-            </BiteSourceMapWrapper>
+  return bites.length ? (
+    <>
+      <SearchResultsSummaryWrapper>
+        <SearchResultsSummary biteCount={bites.length} />
+      </SearchResultsSummaryWrapper>
 
-            <GridList>
-              {bites.map((itemProps, index) => {
-                return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
-              })}
-            </GridList>
-          </>
-        ) : <div>{MSG_NO_SEARCH_RESULTS}</div>;
-      }}
-    </Query>
-  );
+      <BiteSourceMapWrapper>
+        <BiteSourceMap bites={bites} />
+      </BiteSourceMapWrapper>
+
+      <GridList>
+        {bites.map((itemProps, index) => {
+          return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
+        })}
+      </GridList>
+    </>
+  ) : <div>{MSG_NO_SEARCH_RESULTS}</div>;
 }
 
 const BiteSourceMapWrapper = styled.div`
