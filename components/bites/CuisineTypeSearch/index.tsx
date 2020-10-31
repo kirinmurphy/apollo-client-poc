@@ -1,10 +1,9 @@
 import React, { useReducer } from 'react';
+import useSWR from 'swr';
 
 import '../../utils/fontAwesomeLibrary';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
-import { CuisineProps } from '../../types';
 
 import { useCuisineFilter } from '../useCuisineFilter';
 import { getFilteredCuisines } from './helperGetFilteredCuisines';
@@ -24,11 +23,9 @@ import {
   SearchWrapper 
 } from './styles';
 
-interface Props {
-  cuisines: CuisineProps[]
-}
+import { SwrResourceView } from '../../widgets/SwrResourceView';
 
-export function CuisineTypeSearch ({ cuisines }: Props): JSX.Element {
+export function CuisineTypeSearch (): JSX.Element {
   const { 
     activeCuisineType, 
     updateCuisineType, 
@@ -42,6 +39,10 @@ export function CuisineTypeSearch ({ cuisines }: Props): JSX.Element {
 
   const [searchFormState, dispatch] = useReducer(searchFormStateReducer, initialSearchFormState);
   const { inputValue, autocompleteVisible } = searchFormState;
+
+  const API_URL_CUISINES = `${process.env.API_URL}/cuisines`;
+  const cuisinePathSwr =  useSWR(API_URL_CUISINES);
+  const { data: cuisines = [] } = cuisinePathSwr;
 
   const filteredCuisines = getFilteredCuisines({ 
     cuisines, 

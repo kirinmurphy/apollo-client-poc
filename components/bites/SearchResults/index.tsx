@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useSWR from 'swr';
 
 import { breakpointTablet, GridList } from '../../../styles/globalCss'; 
 
@@ -7,8 +8,7 @@ import { BiteSummary } from './BiteSummary';
 import { useCuisineFilter } from '../useCuisineFilter';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { BiteSourceMap } from './BiteSourceMap';
-import { MSG_NO_SEARCH_RESULTS } from '../../utils/dictionary';
-import useSWR from 'swr';
+import { SwrResourceView } from '../../widgets/SwrResourceView';
 
 export function BiteList (): JSX.Element {
 
@@ -17,31 +17,39 @@ export function BiteList (): JSX.Element {
   // had to switch from using Apollo to regular rest calls
   // Apollo was causing significant cold starts in production on Heroku
   // waiting for some feedback with the strapi team before switching it back
+  const bitePathSwrProps = useSWR(getBitePath(activeCuisineType));
+
+  return (
+    <SwrResourceView {...bitePathSwrProps}>
+      {(bites) => (
+        <>
+          <SearchResultsSummaryWrapper>
+            <SearchResultsSummary biteCount={bites?.length} />
+          </SearchResultsSummaryWrapper>
+
+          <BiteSourceMapWrapper>
+            <BiteSourceMap bites={bites} />
+          </BiteSourceMapWrapper>
+
+          <GridList>
+            {bites.map((itemProps, index) => {
+              return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
+            })}
+          </GridList>        
+        </>
+      )}
+    </SwrResourceView>
+  );
+}
+
+function getBitePath (activeCuisineType) {
   const API_URL_BITES = `${process.env.API_URL}/bites`;
+  // :/ strapi bug?  no syntax for OR queries return correctly, return results for AND
+  // const params = activeCuisineType 
+  //   ? `/?name_contains=${activeCuisineType}&cuisines.name=${activeCuisineType}` 
+  //   : '';
   const params = activeCuisineType ? `/?cuisines.name=${activeCuisineType}` : '';
-  const fullPath = `${API_URL_BITES}${params}`;
-  const { data: bites = [], error } = useSWR(fullPath);
-
-  console.log('data', bites);
-  console.log('error', error);
-
-  return bites.length ? (
-    <>
-      <SearchResultsSummaryWrapper>
-        <SearchResultsSummary biteCount={bites.length} />
-      </SearchResultsSummaryWrapper>
-
-      <BiteSourceMapWrapper>
-        <BiteSourceMap bites={bites} />
-      </BiteSourceMapWrapper>
-
-      <GridList>
-        {bites.map((itemProps, index) => {
-          return <BiteTheme key={index}><BiteSummary {...itemProps} /></BiteTheme>;
-        })}
-      </GridList>
-    </>
-  ) : <div>{MSG_NO_SEARCH_RESULTS}</div>;
+  return API_URL_BITES + params;
 }
 
 const BiteSourceMapWrapper = styled.div`

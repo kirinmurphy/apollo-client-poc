@@ -6,18 +6,13 @@ import { breakpointTablet, PageContentWrapper } from '../styles/globalCss';
 import { Layout, PAGE_HOME } from '../components/page/Layout';
 import { CuisineTypeSearch } from '../components/bites/CuisineTypeSearch';
 import { BiteList } from '../components/bites/SearchResults';
-import useSWR from 'swr';
 
 export default function Home (): JSX.Element {
-
-  const API_URL_CUISINES = `${process.env.API_URL}/cuisines`;
-  const { data: cuisines = [] } = useSWR(API_URL_CUISINES);
-
   return (
     <Layout page={PAGE_HOME}>
       <PageContentWrapper>
         <CuisineTypeSearchWrapper>
-          <CuisineTypeSearch cuisines={cuisines} />
+          <CuisineTypeSearch />
         </CuisineTypeSearchWrapper>
         
         <BiteList />
@@ -41,12 +36,3 @@ const CuisineTypeSearchWrapper = styled.div`
     }  
   }
 `;
-
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }

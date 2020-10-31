@@ -28,6 +28,7 @@
     "next-on-netlify": "^2.5.1",
     "next-with-apollo": "^5.1.0",
     "nookies": "^2.4.0",
+    "qs": "^6.9.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^6.8.6",
