@@ -43,31 +43,4 @@ const NavbarWrapper = styled.nav`
   .site-nav {
     display:flex;
   }
-
-  .user-controls {
-    transform:translateY(5px);
-  }
-  
-  .user-controls a {
-    text-transform:uppercase;
-
-    &:not(.button) {
-      color:var(--textcolor-base);
-    }
-  }
-
-
-  .user-controls .sign-up {
-    display:inline-block;
-    margin-left:1rem;
-    background-color:#759b88;
-    line-height:2rem;
-    padding:0 .75rem;
-
-    &:hover {
-      color:var(--textcolor-inverted);
-      text-decoration:none;
-      background-color:#556b78;
-    }
-  }
 `;

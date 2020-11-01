@@ -16,6 +16,8 @@ export const MSG_AUTH_FORM_LABEL_PASSWORD = 'Password';
 
 export const MSG_LINK_HEADER_SIGNUP = 'Sign Up';
 export const MSG_LINK_HEADER_LOGIN = 'Login';
+export const MSG_LOGOUT = 'Logout';
+export const MSG_LINK_ACCOUNT_PAGE = 'Account';
 
 export const MSGS_AUTH_FORMS = {
   login: {

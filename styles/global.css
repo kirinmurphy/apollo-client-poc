@@ -48,6 +48,8 @@ body {
 
   --bgcolor-button: var(--bgcolor-highlight1-medium);
   --bgcolor-button-hover: var(--bgcolor-highlight1-dark);
+
+  --dropdownItem-textColor: var(--textcolor-link);
 }
 
 input[type="submit"],
