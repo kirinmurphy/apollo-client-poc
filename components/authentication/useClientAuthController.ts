@@ -7,6 +7,7 @@ import {
 } from './constants';
 
 interface useClientAuthControllerReturnProps {
+  authToken: string;
   isAuthenticated: boolean;
   logout: () => void;
   onAuthorizationSuccess: (arg0: string) => void;
@@ -17,7 +18,8 @@ const COOKIE_MAX_AGE = 60 * 10;
 export function useClientAuthController (): useClientAuthControllerReturnProps {
   const router = useRouter();
   const cookies = parseCookies();
-  const isAuthenticated = !!cookies[SECURE_COOKIE_NAME];
+  const authToken = cookies[SECURE_COOKIE_NAME];
+  const isAuthenticated = !!authToken;
 
   function onAuthorizationSuccess (authToken) {
     setAuthToken(authToken);
@@ -48,6 +50,7 @@ export function useClientAuthController (): useClientAuthControllerReturnProps {
   }
 
   return { 
+    authToken,
     isAuthenticated, 
     onAuthorizationSuccess,
     logout
