@@ -59,3 +59,6 @@ https://jaredude.wordpress.com/2020/08/04/getting-started-with-strapi-and-cloudi
 
 #### Location Data
 https://foursquare.com/developers/apps/E5B4ADENUZLKZRSUONNZP2EJTXPIYDF0Y24L5EN1F3BNZIMM/settings           
+
+#### Strapi authenticated users
+https://www.drewtown.dev/post/using-strapi-policies-to-create-editable-user-profiles/
