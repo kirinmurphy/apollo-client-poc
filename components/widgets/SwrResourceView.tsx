@@ -7,7 +7,7 @@ import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 
 interface RVProps {
   children: (arg0: any) => JSX.Element;
-  data?: LooseObject[];
+  data?: any;
   error?: LooseObject;
 }
 
