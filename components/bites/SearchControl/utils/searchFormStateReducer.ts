@@ -19,7 +19,7 @@ interface SearchStateProps {
 export const SEARCH_ACTION_UPDATE_INPUT_FIELD = 'updateSearchInputField';
 export const SEARCH_ACTION_OPEN_AUTOCOMPLETE = 'openSearchAutocomplete';
 export const SEARCH_ACTION_CLOSE_AUTOCOMPLETE = 'closeSearchAutocomplete';
-export const SEARCH_ACTION_RESET_FORM = 'resetSearchForm'
+export const SEARCH_ACTION_RESET_FORM = 'resetSearchForm';
 
 export function searchFormStateReducer (
   state: SearchStateProps, 

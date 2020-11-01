@@ -8,13 +8,13 @@ import {
 } from '../../utils/dictionary';
 
 import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
-import { getFilteredCuisines } from './helperGetFilteredCuisines';
+import { getFilteredCuisines } from './utils/getFilteredCuisines';
 
 import { 
   SearchFormDispatchType, 
   SEARCH_ACTION_CLOSE_AUTOCOMPLETE, 
   SEARCH_ACTION_RESET_FORM, 
-} from './helperSearchFormStateReducer';
+} from './utils/searchFormStateReducer';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
 

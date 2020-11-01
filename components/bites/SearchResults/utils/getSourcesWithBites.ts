@@ -1,4 +1,4 @@
-import { BiteSummaryProps, SourceProps } from "../../types";
+import { BiteSummaryProps, SourceProps } from "../../../types";
 
 interface GetSourcesWithBitesReturnProps {
   source: SourceProps;
@@ -6,8 +6,7 @@ interface GetSourcesWithBitesReturnProps {
 }
 
 export function getSourcesWithBites (
-  bites:BiteSummaryProps[])
-  : GetSourcesWithBitesReturnProps[] {
+  bites:BiteSummaryProps[]): GetSourcesWithBitesReturnProps[] {
   
   const sourcesObject = bites.reduce((currentSources, currentBite) => {
     const existingBites = currentSources[currentBite.source.id]?.bites || [];

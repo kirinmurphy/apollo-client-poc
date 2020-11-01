@@ -1,4 +1,4 @@
-import { CuisineProps } from "../../types";
+import { CuisineProps } from "../../../types";
 
 interface GetFilteredCuisinesProps {
   cuisines: CuisineProps[];

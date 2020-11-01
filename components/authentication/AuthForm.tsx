@@ -8,7 +8,7 @@ import { PageContentWrapper, PageTitle } from '../../styles/globalCss';
 
 import { AuthFormFieldsProps } from './AuthFormCommonFields';
 
-import { useClientAuthController } from './useClientAuthController';
+import { useClientAuthController } from './utils/useClientAuthController';
 import { MSGS_AUTH_FORMS } from '../utils/dictionary';
 
 interface AuthFormProps {

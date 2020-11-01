@@ -9,7 +9,7 @@ import { MSG_LOGOUT, MSG_LINK_ACCOUNT_PAGE } from '../utils/dictionary';
 
 import { PAGE_ACCOUNT } from './Layout';
 
-import { useClientAuthController } from '../authentication/useClientAuthController';
+import { useClientAuthController } from '../authentication';
 import { useCurrentUser } from '../utils/useCurrentUser';
 
 interface Props {
@@ -20,7 +20,6 @@ export function EnrolledNavControl ({ page }: Props): JSX.Element {
   const { logout } = useClientAuthController();
 
   const { user } = useCurrentUser();
-  console.log('user', user);
 
   return (
     <Dropdownizer 
@@ -40,4 +39,3 @@ export function EnrolledNavControl ({ page }: Props): JSX.Element {
     />
   );
 }
-

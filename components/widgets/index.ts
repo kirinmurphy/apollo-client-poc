@@ -1,0 +1,1 @@
+export { Mapizer } from './Mapizer';

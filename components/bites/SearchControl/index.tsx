@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { searchFormStateReducer } from './helperSearchFormStateReducer';
+import { searchFormStateReducer } from './utils/searchFormStateReducer';
 
 import { 
   SearchBarWrapper, 

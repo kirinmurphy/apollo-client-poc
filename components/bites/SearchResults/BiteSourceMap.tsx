@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { BiteSummaryProps } from '../../types';
 import Head from 'next/head';
-import { getSourcesWithBites } from './getSourcesWithBites';
+import { getSourcesWithBites } from './utils/getSourcesWithBites';
 
 const Mapizer = dynamic(
   () => import('../../widgets/Mapizer'),

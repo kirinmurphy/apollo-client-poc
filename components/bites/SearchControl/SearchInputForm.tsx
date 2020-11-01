@@ -7,7 +7,7 @@ import {
   SEARCH_ACTION_OPEN_AUTOCOMPLETE, 
   SEARCH_ACTION_RESET_FORM, 
   SEARCH_ACTION_UPDATE_INPUT_FIELD 
-} from './helperSearchFormStateReducer';
+} from './utils/searchFormStateReducer';
 
 import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
 

@@ -6,7 +6,7 @@ import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../utils/dictiona
 
 import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
 
-import { useClientAuthController } from '../authentication/useClientAuthController';
+import { useClientAuthController } from '../authentication';
 import { EnrolledNavControl } from './EnrolledNavControl';
 
 interface Props {
