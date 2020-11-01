@@ -1,46 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from "styled-components";
-import { Dropdownizer } from 'codethings-react-ui';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN, MSG_LOGOUT, MSG_LINK_ACCOUNT_PAGE } from '../utils/dictionary';
+import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../utils/dictionary';
 
-import { PAGE_SIGNUP, PAGE_LOGIN, PAGE_ACCOUNT } from './Layout';
+import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
 
 import { useClientAuthController } from '../authentication/useClientAuthController';
-import { useCurrentUser } from '../utils/useCurrentUser';
+import { EnrolledNavControl } from './EnrolledNavControl';
 
 interface Props {
   page: string;
 }
-
-function EnrolledNavControl ({ page }: Props): JSX.Element {
-  const { logout } = useClientAuthController();
-
-  const { user } = useCurrentUser();
-  console.log('user', user);
-
-  return (
-    <Dropdownizer 
-      title={<FontAwesomeIcon icon={faUser} />}
-      content={
-        <>
-          <div className="user-details">{user?.email}</div>
-
-          {page !== PAGE_ACCOUNT && (
-            <Link href="/account">
-              <a><div className="dropdown-item">{MSG_LINK_ACCOUNT_PAGE}</div></a>
-            </Link>
-          )}
-          <div className="dropdown-item" onClick={logout}>{MSG_LOGOUT}</div>
-        </>
-      }
-    />
-  );
-}
-
 
 export default function UserControls ({ page }: Props): JSX.Element {
   const { isAuthenticated } = useClientAuthController();
@@ -66,7 +37,9 @@ export default function UserControls ({ page }: Props): JSX.Element {
         </>
       )}
 
-      {showEnrolledElements && <EnrolledNavControl page={page} />}
+      {showEnrolledElements && (
+        <EnrolledNavControl page={page} />
+      )}
     </UserControlsWrapper>
   );
 }
