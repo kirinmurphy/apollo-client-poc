@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import  MarkerClusterGroup  from "react-leaflet-markercluster";
 
 import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
 
@@ -19,15 +20,17 @@ export default function Mapizer ({ markers, tooltipTemplate }: Props): JSX.Eleme
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map(({ markerData, position }) => {
-          return (
-            <Marker position={position} key={markerData.source.id}>
-              <Popup>
-                {tooltipTemplate(markerData)}
-              </Popup>
-            </Marker>  
-          );
-        })}
+        <MarkerClusterGroup>
+          {markers.map(({ markerData, position }) => {
+            return (
+              <Marker position={position} key={markerData.source.id}>
+                <Popup>
+                  {tooltipTemplate(markerData)}
+                </Popup>
+              </Marker>  
+            );
+          })}
+        </MarkerClusterGroup>
       </Map>
     </div>
   );

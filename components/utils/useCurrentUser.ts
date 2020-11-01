@@ -1,14 +1,14 @@
 import useSWR from "swr";
 import { useClientAuthController } from "../authentication";
 
+const API_PATH_CURRENT_USER = `${process.env.API_URL}/users/me`;
+
 interface UseCurrentUserReturnProps {
   secureFetcher: (arg0: string) => void;
   user: {
     email: string;
   }
 }
-
-const API_PATH_CURRENT_USER = `${process.env.API_URL}/users/me`;
 
 export function useCurrentUser (): UseCurrentUserReturnProps {
   const { authToken } = useClientAuthController();

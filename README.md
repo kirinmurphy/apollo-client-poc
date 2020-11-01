@@ -63,3 +63,6 @@ https://foursquare.com/developers/apps/E5B4ADENUZLKZRSUONNZP2EJTXPIYDF0Y24L5EN1F
 #### Strapi authenticated users
 https://www.drewtown.dev/post/using-strapi-policies-to-create-editable-user-profiles/
 https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers
+
+#### React leaflet    
+https://walkingtree.tech/play-with-maps-in-react-online-and-offline-using-leaflet-libraries/    

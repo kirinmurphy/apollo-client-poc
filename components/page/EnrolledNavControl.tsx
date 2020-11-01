@@ -18,7 +18,6 @@ interface Props {
 
 export function EnrolledNavControl ({ page }: Props): JSX.Element {
   const { logout } = useClientAuthController();
-
   const { user } = useCurrentUser();
 
   return (
