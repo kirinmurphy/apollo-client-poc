@@ -5,13 +5,13 @@ import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
 
 import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 
-interface RVProps {
+interface Props {
   children: (arg0: any) => JSX.Element;
   data?: any;
   error?: LooseObject;
 }
 
-export function SwrResourceView ({ children, data, error }: RVProps): JSX.Element {
+export function SwrResourceView ({ children, data, error }: Props): JSX.Element {
   return (
     <>
       {data?.length && children(data)}

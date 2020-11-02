@@ -1,5 +1,6 @@
 import React from "react";
 import 'codethings-react-ui/dist/styles.css';
+import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 
 import Head from "next/head";
