@@ -10,18 +10,27 @@ import { BiteSourceMap } from './BiteSourceMap';
 import { SwrResourceView } from '../../widgets/SwrResourceView';
 import { BiteSummary } from './BiteSummary';
 import { BiteSourceMapWrapper, BiteTheme, SearchResultsSummaryWrapper } from './styles';
+import { defaultGraphQlFetcher, GRAPHQL_URL } from '../../../utils/graphql-request-fetcher';
+import { BITE_QUERY, FILTERED_BITE_QUERY } from '../queries/bites';
+import request from 'graphql-request';
 
 export function BiteList (): JSX.Element {
 
   const { activeSearchKeyword } = useKeywordSearchFilter();
 
-  // had to switch from using Apollo to regular rest calls
-  // Apollo was causing significant cold starts in production on Heroku
-  // waiting for some feedback with the strapi team before switching it back
-  const bitePathSwrProps = useSWR(getBitePath(activeSearchKeyword));
+  const query = !!activeSearchKeyword 
+    ? [FILTERED_BITE_QUERY, activeSearchKeyword]  
+    : BITE_QUERY;
+
+  const fetcher = !!activeSearchKeyword
+    ? (query, id) => request(GRAPHQL_URL, query, { searchKeyword: id })
+    : defaultGraphQlFetcher;
+
+  const staticBitePathProps = useSWR(query, fetcher);
 
   return (
-    <SwrResourceView {...bitePathSwrProps}>
+    <SwrResourceView {...staticBitePathProps}
+      collection={staticBitePathProps.data?.bites}>
       {(bites) => (
         <>
           <SearchResultsSummaryWrapper>
@@ -43,14 +52,4 @@ export function BiteList (): JSX.Element {
       )}
     </SwrResourceView>
   );
-}
-
-function getBitePath (activeSearchKeyword) {
-  const API_URL_BITES = `${process.env.API_URL}/bites`;
-  // :/ strapi bug?  no syntax for OR queries return correctly, return results for AND
-  // const params = activeSearchKeyword 
-  //   ? `/?name_contains=${activeSearchKeyword}&cuisines.name=${activeSearchKeyword}` 
-  //   : '';
-  const params = activeSearchKeyword ? `/?cuisines.name=${activeSearchKeyword}` : '';
-  return API_URL_BITES + params;
 }

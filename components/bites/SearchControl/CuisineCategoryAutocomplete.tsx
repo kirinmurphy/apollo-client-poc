@@ -17,6 +17,8 @@ import {
 } from './utils/searchFormStateReducer';
 
 import { CuisineTypeOption } from './CuisineTypeOption';
+import CUISINES_QUERY from '../queries/cuisines';
+import { defaultGraphQlFetcher } from '../../../utils/graphql-request-fetcher';
 
 interface Props {
   inputValue: string;
@@ -32,9 +34,8 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
     clearSearchKeyword 
   } = useKeywordSearchFilter();
 
-  const API_URL_CUISINES = `${process.env.API_URL}/cuisines`;
-  const cuisinePathSwr =  useSWR(API_URL_CUISINES);
-  const { data: cuisines = [] } = cuisinePathSwr;
+  const { data = {} } = useSWR(CUISINES_QUERY, defaultGraphQlFetcher);
+  const { cuisines = [] } = data;
 
   const filteredCuisines = getFilteredCuisines({ 
     cuisines, activeSearchKeyword, inputValue 

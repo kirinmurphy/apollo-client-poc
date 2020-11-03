@@ -8,13 +8,20 @@ import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 interface Props {
   children: (arg0: any) => JSX.Element;
   data?: any;
+  collection?: LooseObject[];
   error?: LooseObject;
 }
 
-export function SwrResourceView ({ children, data, error }: Props): JSX.Element {
+export function SwrResourceView (props: Props): JSX.Element {
+  const { children, data, error, collection } = props;
+
+  // collection is an override for graphql queries
+  // which include a resource key
+  const results = collection || data;
+
   return (
     <>
-      {data?.length && children(data)}
+      {results?.length && children(results)}
 
       {!!data && !data?.length && (
         <div>{MSG_NO_SEARCH_RESULTS}</div>

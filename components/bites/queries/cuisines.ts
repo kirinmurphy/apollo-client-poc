@@ -1,6 +1,7 @@
-import gql from "graphql-tag";
+import { gql as gqlRequest } from 'graphql-request';
 
-const CUISINES_QUERY = gql`
+// using graphql-request, not apollo gql for this one
+const CUISINES_QUERY = gqlRequest`
   query Cuisines {
     cuisines {
       id
