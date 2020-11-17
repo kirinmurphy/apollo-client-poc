@@ -1,12 +1,12 @@
-# Apollo Strapi POC (Frontend)
-Location based search proof of concept using Typescript, NextJS, Apollo, Strapi & JWT
+# Next.js + Strapi + GraphQL POC (Frontend)
+Full stack proof of concept using Typescript, NextJS, Strapi & JWT & GraphQL  
+Trying a few GraphQL clients - Apollo in some places, useSWR with graphql-request in others.      
 
 So far: 
-- Filterable list of items, driven by filters in the URL params   
+- Filterable list of items, driven by URL param filters  
+- Public/secure page routing and authentication flows (login/signup) with JWT 
+- Uses Netlify lambdas to manage server(less) side authentication controller.   
 - Leaflet map instance aggregating items based on source location    
-- Login or Create account logic via JWT and GraphQL mutations   
-- Netlify serverless lambda library to manage server side authentication gate.   
-
 
 
 ## Making it work
@@ -47,6 +47,13 @@ https://www.apollographql.com/blog/first-impressions-with-apollo-client-3-2ae2a0
 https://www.apollographql.com/docs/react/caching/cache-interaction/            
 https://www.apollographql.com/blog/first-impressions-with-apollo-client-3-2ae2a069ab2f/         
 
+#### Strapi authenticated users
+https://www.drewtown.dev/post/using-strapi-policies-to-create-editable-user-profiles/
+https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers
+
+#### React leaflet    
+https://walkingtree.tech/play-with-maps-in-react-online-and-offline-using-leaflet-libraries/    
+
 #### Strapi send email
 https://strapi.io/documentation/v3.x/plugins/email.html#programmatic-usage        
 https://medium.com/@kainikhil/send-emails-using-strapi-%EF%B8%8F-24184071de21        
@@ -59,10 +66,3 @@ https://jaredude.wordpress.com/2020/08/04/getting-started-with-strapi-and-cloudi
 
 #### Location Data
 https://foursquare.com/developers/apps/E5B4ADENUZLKZRSUONNZP2EJTXPIYDF0Y24L5EN1F3BNZIMM/settings           
-
-#### Strapi authenticated users
-https://www.drewtown.dev/post/using-strapi-policies-to-create-editable-user-profiles/
-https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers
-
-#### React leaflet    
-https://walkingtree.tech/play-with-maps-in-react-online-and-offline-using-leaflet-libraries/    
