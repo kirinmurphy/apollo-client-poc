@@ -31,7 +31,7 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
     { data = {}, error, loading }
   ] = useMutation(gqlMutation, {
     update: cache => {
-      // dont wanna persiste the auth props in the cache once JWT is stored in a cookie
+      // dont wanna persist the auth props in the cache once JWT is stored in a cookie
       // able to use cache.modify to remove it, but not the supplied login credentials :/ 
       // not sure the use case of storing mutations so this will do until it won't
       cache.evict({ id: 'ROOT_MUTATION' });

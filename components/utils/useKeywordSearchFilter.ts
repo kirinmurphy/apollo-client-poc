@@ -4,20 +4,18 @@ import {
   useUrlParam 
 } from 'codethings-nextjs-router-addons';
 
-const URL_PARAM_SEARCH_KEYWORD = 'bite-search';
-
-interface ReturnProps {
+export interface KeywordSearchFilterReturnProps {
   activeSearchKeyword: string;
   updateSearchKeyword: UpdateParamType;
   clearSearchKeyword: ClearParamType;
 }
 
-export function useKeywordSearchFilter (): ReturnProps {
+export function useKeywordSearchFilter (keyword: string): KeywordSearchFilterReturnProps {
   const { 
     paramValue: activeSearchKeyword, 
     updateParam: updateSearchKeyword, 
     clearParam: clearSearchKeyword, 
-  } = useUrlParam(URL_PARAM_SEARCH_KEYWORD);
+  } = useUrlParam(keyword);
 
   return {
     activeSearchKeyword,

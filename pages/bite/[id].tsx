@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { BrowserBackLink } from "codethings-react-ui";
 
+import { BiteSummaryProps } from '../../components/types';
+
 import { BITE_BY_ID } from "../../components/bites/queries/bites";
 
 import { Layout } from "../../components/page/Layout";
@@ -10,11 +12,17 @@ import Query from "../../components/widgets/Query";
 import { BiteDetail } from "../../components/bites/BiteDetail";
 import { PageContentWrapper } from "../../styles/globalCss";
 
-interface Props {
+interface BiteQueryReturnProps {
+  bite: BiteSummaryProps;
+}
+
+interface BiteQueryVariablesProps {
   id: number;
 }
 
-export default function Bites (props: Props): JSX.Element {
+interface Props extends BiteQueryVariablesProps {}
+
+export default function Bite ({ id }: Props): JSX.Element {
   return (
     <Layout>
       <PageContentWrapper>
@@ -23,8 +31,11 @@ export default function Bites (props: Props): JSX.Element {
         </div>
 
         {/* Page initially renders with no id before re-rendering, why???? */}
-        {props.id && (
-          <Query query={BITE_BY_ID} variables={{ id: props.id }}>
+        {id && (
+          <Query<BiteQueryReturnProps, BiteQueryVariablesProps> 
+            query={BITE_BY_ID} 
+            variables={{ id }}>
+
             {({ data }) => {
               const { bite } = data;
               return (

@@ -3,13 +3,13 @@ import { useQuery, DocumentNode } from "@apollo/client";
 import { LoadingIcon } from "codethings-react-ui";
 import { LooseObject } from "../../types/global";
 
-interface Props {
-  children: (arg0: { data:any }) => JSX.Element;
+interface Props<Data, Variables> {
+  children: (arg0: { data:Data }) => JSX.Element;
   query: DocumentNode;
-  variables?: LooseObject; 
+  variables?: Variables; 
 }
 
-export default function Query (props: Props): JSX.Element {
+export default function Query<Data, Variables,> (props: Props<Data, Variables>): JSX.Element {
 
   const { children, query, variables = {} } = props;
   

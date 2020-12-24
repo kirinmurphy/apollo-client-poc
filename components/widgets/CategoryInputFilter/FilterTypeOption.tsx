@@ -5,7 +5,7 @@ interface Props {
   onClick: () => void
 }
 
-export function CuisineTypeOption ({ name, onClick }: Props): JSX.Element {
+export function FilterTypeOption ({ name, onClick }: Props): JSX.Element {
   return (
     <div className="option" onClick={onClick}>
       {name}

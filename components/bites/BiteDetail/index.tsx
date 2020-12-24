@@ -21,7 +21,7 @@ export function BiteDetail ({ bite }: Props): JSX.Element {
       
       <h2>{name}</h2>
   
-      <div>{neighborhood}</div>
+      <div>{neighborhood.name}</div>
       
       {photo && (
         <div className="bite-summary__image">

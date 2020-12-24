@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import useSWR from 'swr';
 import { useCallbackOnExternalEventTrigger } from 'codethings-react-ui';
 
 import { 
@@ -7,38 +6,42 @@ import {
   MSG_FILTER_VIEW_ALL_RESULTS 
 } from '../../utils/dictionary';
 
-import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
-import { getFilteredCuisines } from './utils/getFilteredCuisines';
+import { SearchFormDispatchType } from './utils/searchFormStateReducer';
+
+import { getFilteredElements } from './utils/getFilteredElements';
 
 import { 
-  SearchFormDispatchType, 
   SEARCH_ACTION_CLOSE_AUTOCOMPLETE, 
   SEARCH_ACTION_RESET_FORM, 
 } from './utils/searchFormStateReducer';
 
-import { CuisineTypeOption } from './CuisineTypeOption';
-import CUISINES_QUERY from '../queries/cuisines';
-import { defaultGraphQlFetcher } from '../../../utils/graphql-request-fetcher';
+import { FilterTypeOption } from './FilterTypeOption';
+import { useKeywordSearchFilter } from '../../utils/useKeywordSearchFilter';
+import { FilterOptionsProps } from './types';
 
 interface Props {
   inputValue: string;
   searchFormDispatch: SearchFormDispatchType;
+  searchParamKey:string;
+  options: FilterOptionsProps;
 }
 
-export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
-  const { inputValue, searchFormDispatch } = props;
+export function CategoryAutocomplete (props: Props) {
+  const { 
+    inputValue, 
+    searchFormDispatch, 
+    searchParamKey, 
+    options 
+  } = props;
 
   const { 
     activeSearchKeyword, 
     updateSearchKeyword, 
     clearSearchKeyword 
-  } = useKeywordSearchFilter();
+  } = useKeywordSearchFilter(searchParamKey);
 
-  const { data = {} } = useSWR(CUISINES_QUERY, defaultGraphQlFetcher);
-  const { cuisines = [] } = data;
-
-  const filteredCuisines = getFilteredCuisines({ 
-    cuisines, activeSearchKeyword, inputValue 
+  const filteredElements = getFilteredElements({ 
+    options, activeSearchKeyword, inputValue 
   });
 
   const autocompleteRef = useRef(null);
@@ -48,7 +51,7 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
   return (
     <div className="category-list" ref={autocompleteRef}>
       {!!activeSearchKeyword && (
-        <CuisineTypeOption 
+        <FilterTypeOption 
           name={MSG_FILTER_VIEW_ALL_RESULTS} 
           onClick={() => { 
             clearSearchKeyword();
@@ -57,8 +60,8 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
         />
       )}
       
-      {filteredCuisines.map(({ id, name }) => (
-        <CuisineTypeOption 
+      {filteredElements.map(({ id, name }) => (
+        <FilterTypeOption 
           key={id} 
           name={name} 
           onClick={() => { 
@@ -68,7 +71,7 @@ export function CuisineCategoryAutocomplete (props: Props): JSX.Element {
         />
       ))}
 
-      {!!cuisines && !filteredCuisines.length && (
+      {!!options && !filteredElements.length && (
         <div className="no-category-matches">{MSG_NO_TYPEAHEAD_MATCHES}</div>
       )}
     </div>

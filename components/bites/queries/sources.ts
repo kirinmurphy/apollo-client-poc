@@ -7,7 +7,9 @@ export const GQL_FRAGMENT_SOURCES = gql`
     location {
       latitude
       longitude
-      neighborhood
+      neighborhood {
+        name
+      }
     }
   }
 `;

@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
-
 import {
   MSG_RESULT_COUNT_SINGULAR,
   MSG_RESULT_COUNT_PLURAL,
   MSG_RESULT_COUNT_FOR,
   MSG_SHOW_ALL_RESULTS
 } from '../../utils/dictionary';
+import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks';
 
 interface Props {
   biteCount: number;
@@ -15,7 +14,7 @@ interface Props {
 
 export function SearchResultsSummary ({ biteCount }: Props): JSX.Element {
 
-  const { activeSearchKeyword, clearSearchKeyword } = useKeywordSearchFilter();
+  const { activeSearchKeyword, clearSearchKeyword } = useCuisineTypeFilter();
 
   return (
     <>

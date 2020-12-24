@@ -19,7 +19,7 @@ export function BiteSummary (props: BiteSummaryProps): JSX.Element {
         <a className="bite-summary__name link">{name}</a>
 
         <div className="bite-summary__source">
-          <CenterTextEllipticizer rawText={`${source.name} - ${source?.location?.neighborhood}`} /> 
+          <CenterTextEllipticizer rawText={`${source.name} - ${source?.location?.neighborhood.name}`} /> 
         </div>  
       </div>
     </Link>

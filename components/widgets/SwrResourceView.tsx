@@ -5,29 +5,24 @@ import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
 
 import { MSG_NO_SEARCH_RESULTS } from '../utils/dictionary';
 
-interface Props {
-  children: (arg0: any) => JSX.Element;
-  data?: any;
-  collection?: LooseObject[];
+interface Props<ReturnProps> {
+  children: (arg0: { collection: ReturnProps }) => JSX.Element;
+  collection: any;
   error?: LooseObject;
 }
 
-export function SwrResourceView (props: Props): JSX.Element {
-  const { children, data, error, collection } = props;
-
-  // collection is an override for graphql queries
-  // which include a resource key
-  const results = collection || data;
+export function SwrResourceView <ReturnProps,>(props: Props<ReturnProps>): JSX.Element {
+  const { children, error, collection } = props;
 
   return (
     <>
-      {results?.length && children(results)}
+      {collection?.length && children({ collection })}
 
-      {!!data && !data?.length && (
+      {!!collection && !collection?.length && (
         <div>{MSG_NO_SEARCH_RESULTS}</div>
       )}
 
-      {!data && !error && (
+      {!collection && !error && (
         <div><LoadingIcon /></div>
       )}
 

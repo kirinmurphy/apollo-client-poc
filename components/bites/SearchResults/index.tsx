@@ -3,49 +3,38 @@ import useSWR from 'swr';
 
 import { GridList } from '../../../styles/globalCss'; 
 
-import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
-
 import { SearchResultsSummary } from './SearchResultsSummary';
-import { BiteSourceMap } from './BiteSourceMap';
 import { SwrResourceView } from '../../widgets/SwrResourceView';
 import { BiteSummary } from './BiteSummary';
-import { BiteSourceMapWrapper, BiteTheme, SearchResultsSummaryWrapper } from './styles';
-import { defaultGraphQlFetcher, GRAPHQL_URL } from '../../../utils/graphql-request-fetcher';
-import { BITE_QUERY, FILTERED_BITE_QUERY } from '../queries/bites';
-import request from 'graphql-request';
+import { BiteTheme, SearchResultsSummaryWrapper } from './styles';
+import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks';
+import { getBiteQueryProps } from './utils/getBiteQueryProps';
+import { BiteSummaryProps } from '../../types';
 
 export function BiteList (): JSX.Element {
-
-  const { activeSearchKeyword } = useKeywordSearchFilter();
-
-  const query = !!activeSearchKeyword 
-    ? [FILTERED_BITE_QUERY, activeSearchKeyword]  
-    : BITE_QUERY;
-
-  const fetcher = !!activeSearchKeyword
-    ? (query, id) => request(GRAPHQL_URL, query, { searchKeyword: id })
-    : defaultGraphQlFetcher;
-
-  const staticBitePathProps = useSWR(query, fetcher);
+  
+  const { activeSearchKeyword } = useCuisineTypeFilter();
+  const { biteQuery, biteFetcher } = getBiteQueryProps(activeSearchKeyword);
+  const { data, error } = useSWR(biteQuery, biteFetcher);
 
   return (
-    <SwrResourceView {...staticBitePathProps}
-      collection={staticBitePathProps.data?.bites}>
-      {(bites) => (
+    <SwrResourceView<BiteSummaryProps[]>
+      collection={data?.bites}
+      error={error}>
+
+      {({ collection: bites }) => (
         <>
           <SearchResultsSummaryWrapper>
             <SearchResultsSummary biteCount={bites?.length} />
           </SearchResultsSummaryWrapper>
 
-          <BiteSourceMapWrapper>
-            <BiteSourceMap bites={bites} />
-          </BiteSourceMapWrapper>
-
           <GridList>
             {bites.map((itemProps) => {
-              return <BiteTheme key={itemProps.id}>
-                <BiteSummary {...itemProps} />
-              </BiteTheme>;
+              return (
+                <BiteTheme key={itemProps.id}>
+                  <BiteSummary {...itemProps} />
+                </BiteTheme>
+              );
             })}
           </GridList>        
         </>

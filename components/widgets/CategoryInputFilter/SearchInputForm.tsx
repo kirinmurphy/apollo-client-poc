@@ -9,17 +9,18 @@ import {
   SEARCH_ACTION_UPDATE_INPUT_FIELD 
 } from './utils/searchFormStateReducer';
 
-import { useKeywordSearchFilter } from '../useKeywordSearchFilter';
+import { useKeywordSearchFilter } from '../../utils/useKeywordSearchFilter';
 
 interface Props {
   searchFormDispatch: SearchFormDispatchType;
   inputValue: string;
+  searchParamKey: string;
 }
 
 export function SearchInputForm (props: Props): JSX.Element {
-  const { inputValue, searchFormDispatch } = props;
+  const { inputValue, searchFormDispatch, searchParamKey } = props;
 
-  const { updateSearchKeyword } = useKeywordSearchFilter();
+  const { updateSearchKeyword } = useKeywordSearchFilter(searchParamKey);
   
   function submitForm () {
     searchFormDispatch({ type: SEARCH_ACTION_RESET_FORM });

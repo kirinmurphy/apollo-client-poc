@@ -27,7 +27,9 @@ export const biteFragment = `
     location {
       latitude
       longitude
-      neighborhood
+      neighborhood {
+        name
+      }
     }
   }
 `;
