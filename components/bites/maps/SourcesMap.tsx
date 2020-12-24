@@ -1,8 +1,8 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
-import { BiteSummaryProps } from '../../types';
 import Head from 'next/head';
-import { getSourcesWithBites } from './utils/getSourcesWithBites';
+import dynamic from 'next/dynamic';
+
+import { SourceMapMarkerProps } from '../utils/getSourcesWithBites';
 
 const Mapizer = dynamic(
   () => import('../../widgets/Mapizer'),
@@ -10,20 +10,11 @@ const Mapizer = dynamic(
 );
 
 interface Props {
-  bites: BiteSummaryProps[]
+  sources: SourceMapMarkerProps[];
 }
 
-export function BiteSourceMap ({ bites }: Props): JSX.Element {
-
-  const sourcesWithBites = getSourcesWithBites(bites);
-
-  const markers = sourcesWithBites.map(({ source, bites }) => { 
-    const { latitude, longitude } = source.location;
-    return {
-      markerData: { source, bites },
-      position: [latitude, longitude]
-    };
-  });
+export function SourcesMap ({ sources }: Props): JSX.Element {
+  const markers = sources.map(getMarkerProps);
 
   return (
     <>
@@ -38,11 +29,11 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
       </Head>
       <Mapizer 
         markers={markers} 
-        tooltipTemplate={({ source, bites }) => (
+        tooltipTemplate={({ source, bites = [] }) => (
           <div>
             {source.name} - {source.location.neighborhood}
             
-            {bites.map(({ id, name }) => {
+            {bites.length && bites.map(({ id, name }) => {
               return <div key={id}>{name}</div>;
             })}
           </div>
@@ -50,4 +41,12 @@ export function BiteSourceMap ({ bites }: Props): JSX.Element {
       />
     </>
   );
+}
+
+function getMarkerProps ({ source, bites }) { 
+  const { latitude, longitude } = source.location;
+  return {
+    markerData: { source, bites },
+    position: [latitude, longitude]
+  };
 }

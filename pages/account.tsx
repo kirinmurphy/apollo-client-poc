@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { getDefaultPropsOnSecurePage } from '../components/authentication';
 import { USER_IMPRESSIONS_QUERY } from '../components/bites/queries/impressions';
 import { BiteSummary } from '../components/bites/SearchResults/BiteSummary';
-import { BiteTheme } from '../components/bites/SearchResults/styles';
+import { BiteSummaryTheme } from '../components/bites/SearchResults/styles';
 import { Layout, PAGE_ACCOUNT } from '../components/page/Layout';
 import { BiteImpressionProps, BiteSummaryProps } from '../components/types';
 import { useCurrentUser } from '../components/utils/useCurrentUser';
@@ -27,10 +27,10 @@ export default function Account (): JSX.Element {
             
           {({ collection: biteImpressions }) => (
             <GridList>
-              {biteImpressions.map((itemProps) => {
-                return <BiteTheme key={itemProps.bite.id}>
-                  <BiteSummary {...itemProps.bite} />
-                </BiteTheme>;
+              {biteImpressions.map((impressions) => {
+                return <BiteSummaryTheme key={impressions.bite.id}>
+                  <BiteSummary {...impressions.bite} />
+                </BiteSummaryTheme>;
               })}
             </GridList>        
           )}

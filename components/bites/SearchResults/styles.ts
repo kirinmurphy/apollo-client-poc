@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { breakpointTablet } from '../../../styles/globalCss'; 
 
 export const BiteSourceMapWrapper = styled.div`
@@ -18,30 +18,54 @@ padding:.7rem 0;
 }
 `;
 
-export const BiteTheme = styled.div`
-.bite-summary__image {
-  height:0; 
-  padding-bottom:60%;
-  overflow:hidden;
+
+interface BiteSummaryThemeProps {
+  link?: boolean;
 }
 
-.bite-summary__image img {
-  display:block;
-}
+export const BiteSummaryTheme = styled.div<BiteSummaryThemeProps>`
 
-.bite-summary__name {
-  font-size:.9rem;
-  font-weight:bold;
-}
+  ${props => props.link && css`
+    a {
+      display:block;
+      color:inherit;
+      cursor:pointer;
+      transition: all .5s var(--transition-swoop-easing);  
+      text-decoration:none;
 
-.bite-summary__source {
-  font-size:var(--fontSize-small);
-}
+      .bite-summary__name:hover {
+        text-decoration:none;
+      }
 
-.bite-summary:hover {
-  .link {
-    text-decoration:underline;
-    color:var(--textcolor-link-hover);
+      &:hover { 
+        transform:scale(.96);
+        transform-origin:center;
+        text-decoration:none;
+  
+        .bite-summary__source {
+          color:var(--textcolor-link);
+        }
+      }
+    }    
+  `} 
+
+  .bite-summary__image {
+    height:0; 
+    padding-bottom:60%;
+    overflow:hidden;
   }
-}
+
+  .bite-summary__image img {
+    display:block;
+  }
+
+  .bite-summary__name {
+    font-size:.9rem;
+    font-weight:bold;
+    color:var(--textcolor-base);
+  }
+
+  .bite-summary__source {
+    font-size:var(--fontSize-small);
+  }
 `;

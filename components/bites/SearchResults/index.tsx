@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 
 import { GridList } from '../../../styles/globalCss'; 
@@ -6,7 +7,7 @@ import { GridList } from '../../../styles/globalCss';
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { SwrResourceView } from '../../widgets/SwrResourceView';
 import { BiteSummary } from './BiteSummary';
-import { BiteTheme, SearchResultsSummaryWrapper } from './styles';
+import { BiteSummaryTheme, SearchResultsSummaryWrapper } from './styles';
 import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks';
 import { getBiteQueryProps } from './utils/getBiteQueryProps';
 import { BiteSummaryProps } from '../../types';
@@ -29,11 +30,16 @@ export function BiteList (): JSX.Element {
           </SearchResultsSummaryWrapper>
 
           <GridList>
-            {bites.map((itemProps) => {
+            {bites.map((bite) => {
+              const { id, source } = bite;
               return (
-                <BiteTheme key={itemProps.id}>
-                  <BiteSummary {...itemProps} />
-                </BiteTheme>
+                <BiteSummaryTheme link={true} key={id}>
+                  <Link href={`/source/${encodeURIComponent(source.id)}`}>
+                    <a>
+                      <BiteSummary {...bite} />
+                    </a>
+                  </Link>
+                </BiteSummaryTheme>
               );
             })}
           </GridList>        

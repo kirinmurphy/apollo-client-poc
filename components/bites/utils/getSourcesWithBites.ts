@@ -1,12 +1,16 @@
-import { BiteSummaryProps, SourceProps } from "../../../types";
+import { BiteSummaryProps, SourceProps } from "../../types";
 
-interface GetSourcesWithBitesReturnProps {
+export interface SourceMapMarkerProps {
   source: SourceProps;
+  bites?: BiteSummaryProps[];
+}
+
+export interface SourceWithBitesMapMarkerProps extends SourceMapMarkerProps {
   bites: BiteSummaryProps[];
 }
 
 export function getSourcesWithBites (
-  bites:BiteSummaryProps[]): GetSourcesWithBitesReturnProps[] {
+  bites:BiteSummaryProps[]): SourceWithBitesMapMarkerProps[] {
   
   const sourcesObject = bites.reduce((currentSources, currentBite) => {
     const existingBites = currentSources[currentBite.source.id]?.bites || [];

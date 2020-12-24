@@ -1,13 +1,15 @@
 import React from 'react';
-import { CuisineFilter } from './CuisineFilter';
+import { FilterCuisine } from './FilterCuisine';
+import { FilterNeighborhood } from './FilterNeighborhood';
 
 import { SearchWrapper } from './styles';
 
 export function SearchControl (): JSX.Element {  
   return (
     <SearchWrapper>
-      <CuisineFilter/>
-      
+      <FilterCuisine/>
+      {/* TODO: needs to be wired into search results */}
+      {/* <FilterNeighborhood /> */}
     </SearchWrapper>
   );
 }
