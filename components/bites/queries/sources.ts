@@ -9,6 +9,9 @@ export const GQL_FRAGMENT_SOURCES = gql`
       longitude
       neighborhood {
         name
+        city {
+          name
+        }
       }
     }
   }
@@ -22,3 +25,23 @@ const SOURCES_QUERY = gql`
 `;
 
 export default SOURCES_QUERY;
+
+export const SOURCE_WITH_BITES_BY_ID_QUERY = gql`
+  query Source($id: ID!){
+    source(id: $id) { 
+      ...SourceContent 
+      bites { 
+        id
+        name
+        mealPreferences
+        photo {
+          url
+        }
+        cuisines {
+          name
+        }
+      }
+    } 
+  }
+  ${GQL_FRAGMENT_SOURCES}
+`;

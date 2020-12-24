@@ -39,8 +39,6 @@ export const BiteTheme = styled.div`
 }
 
 .bite-summary:hover {
-  cursor:pointer;
-
   .link {
     text-decoration:underline;
     color:var(--textcolor-link-hover);

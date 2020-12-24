@@ -7,8 +7,12 @@ import { CenterTextEllipticizer } from 'codethings-react-ui';
 export function BiteSummary (props: BiteSummaryProps): JSX.Element {
   const { id, photo, name, source } = props;
 
+  console.log('spou',source);
+
+  const sourceText = `${source.name} - ${source?.location?.neighborhood.name}`;
+
   return (
-    <Link href={`/bite/${encodeURIComponent(id)}`}>
+    <Link href={`/source/${encodeURIComponent(source.id)}`}>
       <div className="bite-summary">
         {photo && (
           <div className="bite-summary__image">
@@ -19,7 +23,7 @@ export function BiteSummary (props: BiteSummaryProps): JSX.Element {
         <a className="bite-summary__name link">{name}</a>
 
         <div className="bite-summary__source">
-          <CenterTextEllipticizer rawText={`${source.name} - ${source?.location?.neighborhood.name}`} /> 
+          <CenterTextEllipticizer rawText={sourceText} /> 
         </div>  
       </div>
     </Link>
