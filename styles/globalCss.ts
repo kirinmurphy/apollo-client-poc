@@ -16,6 +16,12 @@ export const PageContentWrapper = styled.section`
   max-width:1200px;
   min-width:320px;
   margin:0 auto;
+
+  // Move - doesn't quite belong here
+  .back-link { 
+    font-size:var(--fontSize-small);
+    margin-bottom:1rem;
+  }
 `;
 
 export const GridList = styled.div`

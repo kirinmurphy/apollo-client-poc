@@ -13,16 +13,18 @@ interface BiteBaseProps {
   name: string
 }
 
+export interface SourceLocationProps {
+  neighborhood: {
+    name: string;
+  }
+  latitude?: number;
+  longitude?: number;
+}
+
 export interface SourceProps {
   id: string;
   name: string;
-  location?: {
-    neighborhood: {
-      name: string;
-    }
-    latitude?: number;
-    longitude?: number;
-  }
+  location?: SourceLocationProps
 }
 
 export interface BiteSummaryProps extends BiteBaseProps {
@@ -36,13 +38,17 @@ export interface BiteImpressionProps {
   bite: BiteSummaryProps;
 }
 
-export interface SourceWithBitesProps extends SourceProps {
-  bites: {
-    id,
-    name,
-    mealPreferences,
-    photo: {
-      url: string;
-    }
+export interface SourceBiteProps {
+  id: string;
+  name: string;
+  mealPreferences: string;
+  photo: PhotoProps,
+  cuisines: {
+    name: string;
   }[]
 }
+
+export interface SourceWithBitesProps extends SourceProps {
+  bites: SourceBiteProps[];
+}
+

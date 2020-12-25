@@ -1,9 +1,8 @@
 import React from "react";
-// import styled from "styled-components";
 
 import { BrowserBackLink } from "codethings-react-ui";
 
-import { SourceProps, SourceWithBitesProps } from '../../components/types';
+import { SourceWithBitesProps } from '../../components/types';
 
 import { Layout } from "../../components/page/Layout";
 import Query from "../../components/widgets/Query";

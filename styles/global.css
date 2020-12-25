@@ -32,8 +32,6 @@ body {
   padding:2vw;
 }
 
-.map { height:45vh; }
-
 .map > * { height:100%; }
 
 
