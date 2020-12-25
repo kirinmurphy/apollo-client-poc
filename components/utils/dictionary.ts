@@ -1,4 +1,4 @@
-export const MSG_SITE_TITLE = 'Site Name';
+export const MSG_SITE_TITLE = 'Best Bite Chicago';
 
 export const MSG_RESULT_COUNT_SINGULAR = 'result';
 export const MSG_RESULT_COUNT_PLURAL = 'results';

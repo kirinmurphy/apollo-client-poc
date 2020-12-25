@@ -5,15 +5,28 @@ export const breakpointTablet = '800px';
 export const SiteTitle = styled.h1`
   font-size:var(--fontSize-title-medium);
 
+  .svg-inline--fa {
+    font-size:var(--fontSize-small);
+    transform:translateY(-4px);
+    color:#bbb;
+  }
+
   a { color:var(--textcolor-base); 
-    &:hover { text-decoration:none; }
+    &:hover { 
+      text-decoration:none; 
+
+      .svg-inline--fa {
+        color:var(--textcolor-base);
+      }
+    
+    }
   }
 `;
 
 export const PageTitle = styled.h2``;
 
 export const PageContentWrapper = styled.section`
-  max-width:1200px;
+  max-width:1100px;
   min-width:320px;
   margin:0 auto;
 

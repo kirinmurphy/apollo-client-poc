@@ -7,6 +7,8 @@ import { MSG_SITE_TITLE } from '../utils/dictionary';
 
 import { SiteTitle } from '../../styles/globalCss';
 import { PAGE_HOME } from "./Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const UserControls = dynamic(
   () => import('./UserControls'),
@@ -22,7 +24,11 @@ export function Navbar ({ page }: Props): JSX.Element {
     <NavbarWrapper>
       <div className="site-nav">
         <SiteTitle>
-          {page !== PAGE_HOME && <Link href="/"><a>{MSG_SITE_TITLE}</a></Link>}
+          {page !== PAGE_HOME && (
+            <Link href="/">
+              <a>{MSG_SITE_TITLE} <FontAwesomeIcon icon={faHome} /></a>
+            </Link>
+          )}
           {page === PAGE_HOME && MSG_SITE_TITLE}
         </SiteTitle>
         {/* {page !== PAGE_HOME && <Link href="/"><a>Home</a></Link>} */}
