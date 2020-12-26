@@ -6,10 +6,10 @@ import { USER_IMPRESSIONS_QUERY } from '../components/bites/queries/impressions'
 import { BiteSummary } from '../components/bites/SearchResults/BiteSummary';
 import { BiteSummaryTheme } from '../components/bites/SearchResults/styles';
 import { Layout, PAGE_ACCOUNT } from '../components/page/Layout';
-import { BiteImpressionProps, BiteSummaryProps } from '../components/types';
+import { BiteImpressionProps } from '../components/bites/types';
 import { useCurrentUser } from '../components/utils/useCurrentUser';
 import { SwrResourceView } from '../components/widgets/SwrResourceView';
-import { GridList, PageContentWrapper } from '../styles/globalCss';
+import { GridList, PageContentWrapper } from '../styles/globalStyles';
 
 
 export default function Account (): JSX.Element {

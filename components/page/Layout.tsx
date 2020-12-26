@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageContentWrapper } from '../../styles/globalCss';
+import { PageContentWrapper } from '../../styles/globalStyles';
 
 import { Navbar } from "./Navbar";
 

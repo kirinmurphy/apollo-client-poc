@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpointTablet } from '../../../styles/globalCss'; 
+import { breakpointTablet } from '../../../styles/globalStyles'; 
 
 export const BiteSourceMapWrapper = styled.div`
   position:relative;
@@ -26,14 +26,14 @@ interface BiteSummaryThemeProps {
 
 export const BiteSummaryTheme = styled.div<BiteSummaryThemeProps>`
 
-  .bite-summary__image {
+  .img-wrap {
     height:0; 
     padding-bottom:60%;
     overflow:hidden;
     background:#444;
   }
 
-  .bite-summary__image img {
+  .img-wrap img {
     display:block;
   }
 
@@ -79,7 +79,7 @@ export const BiteSummaryTheme = styled.div<BiteSummaryThemeProps>`
   ${props => props.layout === 'full' && css`
     display:flex;
 
-    .bite-summary__image {
+    .img-wrap {
       margin-right:1rem;
       flex:0 0 280px;
       padding-bottom:18% !important;     

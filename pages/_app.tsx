@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 
 import Head from "next/head";
-import '../styles/global.css';
+import '../styles/default.css';
 import '../components/utils/fontAwesomeLibrary';
 
 import { ApolloProvider, ApolloClient } from "@apollo/client";

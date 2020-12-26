@@ -1,4 +1,4 @@
-import { BiteSummaryProps, SourceProps } from "../../types";
+import { BiteSummaryProps, SourceProps } from "../types";
 
 export interface SourceMapMarkerProps {
   source: SourceProps;

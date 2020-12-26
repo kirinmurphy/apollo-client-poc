@@ -1,5 +1,5 @@
 import { CommaSeparatedList } from "codethings-react-ui";
-import { SourceProps } from "../../types";
+import { SourceProps } from "../types";
 import { SourcesMap } from "../maps/SourcesMap";
 
 export function SourceDetailHeader (source: SourceProps): JSX.Element {

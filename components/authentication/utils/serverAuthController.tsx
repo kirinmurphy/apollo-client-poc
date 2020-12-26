@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 export function redirectIfNotAuthenticated (ctx: NextPageContext): void {
-  if (!isAuthenticated(ctx)) { redirectTo(ctx, PATH_LOGIN) }
+  if (!isAuthenticated(ctx)) { redirectTo(ctx, PATH_LOGIN); }
 }
 
 export function redirectIfAlreadyAuthenticated (ctx: NextPageContext) : void {

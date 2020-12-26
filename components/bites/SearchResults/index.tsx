@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 
-import { GridList } from '../../../styles/globalCss'; 
+import { GridList } from '../../../styles/globalStyles'; 
 
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { SwrResourceView } from '../../widgets/SwrResourceView';
@@ -10,7 +10,7 @@ import { BiteSummary } from './BiteSummary';
 import { BiteSummaryTheme, SearchResultsSummaryWrapper } from './styles';
 import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks';
 import { getBiteQueryProps } from './utils/getBiteQueryProps';
-import { BiteSummaryProps } from '../../types';
+import { BiteSummaryProps } from '../types';
 
 export function BiteList (): JSX.Element {
   
@@ -26,18 +26,18 @@ export function BiteList (): JSX.Element {
       {({ collection: bites }) => (
         <>
           <SearchResultsSummaryWrapper>
-            <SearchResultsSummary biteCount={bites?.length} />
+            <SearchResultsSummary />
           </SearchResultsSummaryWrapper>
 
           <GridList>
             {bites.map((bite) => {
               const { id, source } = bite;
+              const linkToSource = `/source/${encodeURIComponent(source.id)}`;
+
               return (
                 <BiteSummaryTheme link={true} key={id}>
-                  <Link href={`/source/${encodeURIComponent(source.id)}`}>
-                    <a>
-                      <BiteSummary {...bite} />
-                    </a>
+                  <Link href={linkToSource}>
+                    <a><BiteSummary {...bite} /></a>
                   </Link>
                 </BiteSummaryTheme>
               );

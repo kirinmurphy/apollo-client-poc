@@ -8,6 +8,7 @@ import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
 
 import { useClientAuthController } from '../authentication';
 import { EnrolledNavControl } from './EnrolledNavControl';
+import { UserControlsWrapper } from './styles';
 
 interface Props {
   page: string;
@@ -43,48 +44,3 @@ export default function UserControls ({ page }: Props): JSX.Element {
     </UserControlsWrapper>
   );
 }
-
-
-const UserControlsWrapper = styled.div`
-  position:relative;
-  z-index:11;
-  transform:translateY(5px);
-  
-  > a {
-    text-transform:uppercase;
-
-    &:not(.button) {
-      color:var(--textcolor-base);
-    }
-  }
-
-  .sign-up {
-    display:inline-block;
-    margin-left:1rem;
-    background-color:#759b88;
-    line-height:2rem;
-    padding:0 .75rem;
-
-    &:hover {
-      color:var(--textcolor-inverted);
-      text-decoration:none;
-      background-color:#556b78;
-    }
-  }
-
-  .svg-inline--fa {
-    font-size:1.75rem;
-    transform:translateY(.2rem);
-    color:var(--textcolor-link);
-  }
-
-  .dropdownizer__window {
-    width:200px;
-    font-size:var(--fontSize-small);
-  }
-
-  .user-details,
-  .dropdownizer .dropdown-item {
-    padding:.3rem 1rem;
-  }
-`;

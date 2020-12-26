@@ -1,16 +1,15 @@
 import React from "react";
-import styled from "styled-components";
 
 import { BrowserBackLink } from "codethings-react-ui";
 
-import { BiteSummaryProps } from '../../components/types';
+import { BiteSummaryProps } from '../../components/bites/types';
 
 import { BITE_BY_ID } from "../../components/bites/queries/bites";
 
 import { Layout } from "../../components/page/Layout";
 import Query from "../../components/widgets/Query";
 import { BiteDetail } from "../../components/bites/BiteDetail";
-import { PageContentWrapper } from "../../styles/globalCss";
+import { PageContentWrapper } from "../../styles/globalStyles";
 
 interface BiteQueryReturnProps {
   bite: BiteSummaryProps;
@@ -39,9 +38,7 @@ export default function Bite ({ id }: Props): JSX.Element {
             {({ data }) => {
               const { bite } = data;
               return (
-                <BiteDetailWrapper>
-                  <BiteDetail bite={bite} />
-                </BiteDetailWrapper>
+                <BiteDetail bite={bite} />
               );
             }}
           </Query> 
@@ -50,9 +47,6 @@ export default function Bite ({ id }: Props): JSX.Element {
     </Layout>
   );
 }
-
-const BiteDetailWrapper = styled.div`
-`;
 
 interface StaticProps {
   params: {

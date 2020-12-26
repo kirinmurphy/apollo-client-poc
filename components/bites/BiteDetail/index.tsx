@@ -1,5 +1,6 @@
 import React from "react";
-import { BiteSummaryProps } from "../../types";
+import { BiteSummaryProps } from "../types";
+import { Photo } from "../../widgets/Photo";
 
 interface Props {
   bite: BiteSummaryProps;
@@ -23,11 +24,7 @@ export function BiteDetail ({ bite }: Props): JSX.Element {
   
       <div>{neighborhood.name}</div>
       
-      {photo && (
-        <div className="bite-summary__image">
-          <img src={process.env.IMAGE_ASSET_URL + photo.url} />
-        </div>
-      )}
+      <Photo photo={photo} />
     </>
   );  
 }

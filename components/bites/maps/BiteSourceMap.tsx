@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BiteSummaryProps } from '../../types';
+import { BiteSummaryProps } from '../types';
 import { getSourcesWithBites } from '../utils/getSourcesWithBites';
 import { SourcesMap } from './SourcesMap';
 

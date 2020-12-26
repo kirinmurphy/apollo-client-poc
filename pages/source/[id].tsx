@@ -2,12 +2,12 @@ import React from "react";
 
 import { BrowserBackLink } from "codethings-react-ui";
 
-import { SourceWithBitesProps } from '../../components/types';
+import { SourceWithBitesProps } from '../../components/bites/types';
 
 import { Layout } from "../../components/page/Layout";
 import Query from "../../components/widgets/Query";
 
-import { PageContentWrapper } from "../../styles/globalCss";
+import { PageContentWrapper } from "../../styles/globalStyles";
 import { SOURCE_WITH_BITES_BY_ID_QUERY } from "../../components/bites/queries/sources";
 import { SourceDetail } from "../../components/bites/SourceDetail";
 
@@ -49,9 +49,6 @@ export default function Source ({ id }: Props): JSX.Element {
     </Layout>
   );
 }
-
-// const BiteDetailWrapper = styled.div`
-// `;
 
 interface StaticProps {
   params: {

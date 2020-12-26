@@ -1,15 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import { DocumentNode } from 'graphql';
 
-import { PageContentWrapper, PageTitle } from '../../styles/globalCss';
+import { PageContentWrapper, PageTitle } from '../../styles/globalStyles';
 
 import { AuthFormFieldsProps } from './AuthFormCommonFields';
 
 import { useClientAuthController } from './utils/useClientAuthController';
 import { MSGS_AUTH_FORMS } from '../utils/dictionary';
+import { FullPageFormTheme } from './styles';
 
 interface AuthFormProps {
   fields: (arg0: AuthFormFieldsProps) => JSX.Element;
@@ -60,7 +60,7 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
 
   return (
     <PageContentWrapper>
-      <FullPageFormWrapper>
+      <FullPageFormTheme>
         <PageTitle>{MSG_PAGE_TITLE}</PageTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           {fields({ register, errors })}
@@ -73,29 +73,7 @@ export function AuthForm (props: AuthFormProps): JSX.Element {
             <span>{MSG_SUBMIT_BUTTON_TEXT}</span>
           </button>
         </form>
-      </FullPageFormWrapper>
+      </FullPageFormTheme>
     </PageContentWrapper>
   );
 }
-
-const FullPageFormWrapper = styled.div`
-  width:500px;
-  margin:0 auto;
-  padding: 1rem;
-
-  .field-error {
-    color: var(--textcolor-error);
-    font-size:var(--fontSize-small);
-  }
-
-  .form-error {
-    margin-bottom:1rem;
-    font-size:var(--fontSize-small);
-    color:var(--textcolor-error);
-  }
-
-  button[type="submit"] { 
-    width:100%;
-    height:3rem;
-  }
-`;

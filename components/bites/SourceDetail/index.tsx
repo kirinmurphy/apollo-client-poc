@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SourceWithBitesProps } from "../../types";
+import { SourceWithBitesProps } from "../types";
 import { SourceDetailBite } from "./SourceDetailBites";
 import { SourceDetailHeader } from "./SourceDetailHeader";
 import { SourceDetailHeaderTheme } from "./styles";
