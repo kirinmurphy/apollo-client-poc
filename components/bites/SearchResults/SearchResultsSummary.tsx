@@ -18,12 +18,13 @@ export function SearchResultsSummary ({ biteCount }: Props): JSX.Element {
 
   return (
     <>
-      <span>
-        {biteCount} {biteCount > 1 ? MSG_RESULT_COUNT_PLURAL : MSG_RESULT_COUNT_SINGULAR} 
+      <span> &nbsp;
 
         {!!activeSearchKeyword && (
           <>
-            <span> {MSG_RESULT_COUNT_FOR} <strong>{activeSearchKeyword}</strong></span>
+            <span> 
+              {activeSearchKeyword}
+            </span>
 
             &nbsp;&middot;&nbsp;
 

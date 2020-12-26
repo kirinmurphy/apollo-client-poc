@@ -6,8 +6,8 @@ require("dotenv").config();
 module.exports = {
   env: {
     API_URL: process.env.API_URL,
-    IMAGE_ASSET_URL: process.env.IMAGE_ASSET_URL || ''
+    IMAGE_ASSET_URL: process.env.IMAGE_ASSET_URL || '',
+    SITE_TITLE: process.env.SITE_TITLE || 'Site Title'
   },
   target: "serverless",
 };
-

@@ -2,7 +2,7 @@ interface PhotoProps {
   url: string 
 };
 
-interface CuisineProps {
+export interface CuisineProps {
   name: string;
   id: string | number;
 }
@@ -24,6 +24,7 @@ export interface SourceLocationProps {
 export interface SourceProps {
   id: string;
   name: string;
+  cuisines?: CuisineProps[];
   location?: SourceLocationProps
 }
 
@@ -43,9 +44,7 @@ export interface SourceBiteProps {
   name: string;
   mealPreferences: string;
   photo: PhotoProps,
-  cuisines: {
-    name: string;
-  }[]
+  cuisines: CuisineProps[]
 }
 
 export interface SourceWithBitesProps extends SourceProps {

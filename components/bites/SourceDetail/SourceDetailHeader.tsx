@@ -1,11 +1,11 @@
+import { CommaSeparatedList } from "codethings-react-ui";
 import { SourceProps } from "../../types";
 import { SourcesMap } from "../maps/SourcesMap";
-
-import { BiteSourceMapWrapper } from "../SearchResults/styles";
 
 export function SourceDetailHeader (source: SourceProps): JSX.Element {
   const { 
     name,
+    cuisines,
     location: { neighborhood }
   } = source;
   
@@ -13,6 +13,8 @@ export function SourceDetailHeader (source: SourceProps): JSX.Element {
     <>
       <header>
         <h2>{name}</h2>
+        <CommaSeparatedList collection={cuisines.map(cuisine => cuisine.name)} />
+        {' - '} 
         <div>{neighborhood.name}</div>
       </header>
 

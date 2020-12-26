@@ -10,10 +10,10 @@ import { PAGE_HOME } from "./Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-const UserControls = dynamic(
-  () => import('./UserControls'),
-  { ssr: false }
-);
+// const UserControls = dynamic(
+//   () => import('./UserControls'),
+//   { ssr: false }
+// );
 
 interface Props {
   page: string;
@@ -34,7 +34,7 @@ export function Navbar ({ page }: Props): JSX.Element {
         {/* {page !== PAGE_HOME && <Link href="/"><a>Home</a></Link>} */}
       </div>
 
-      <UserControls page={page} />
+      {/* <UserControls page={page} /> */}
     </NavbarWrapper>
   );
 }

@@ -4,6 +4,9 @@ export const GQL_FRAGMENT_SOURCES = gql`
   fragment SourceContent on Source {
     id
     name
+    cuisines {
+      name
+    }
     location {
       latitude
       longitude

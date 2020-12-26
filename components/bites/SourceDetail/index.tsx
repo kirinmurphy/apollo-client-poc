@@ -19,7 +19,11 @@ export function SourceDetail ({ source }: Props): JSX.Element {
       </SourceDetailHeaderTheme>
 
       {bites.map((bite) => {
-        return <SourceDetailBite bite={bite} key={bite.id} />;
+        return <SourceDetailBite 
+          key={bite.id} 
+          bite={bite}
+          sourceCuisines={rest.cuisines}
+        />;
       })}
     </>
   );  
