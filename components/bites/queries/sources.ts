@@ -7,15 +7,25 @@ export const GQL_FRAGMENT_SOURCES = gql`
     cuisines {
       name
     }
+    marqueeImage {
+      url
+    }
     location {
       latitude
       longitude
+      phone
       neighborhood {
         name
         city {
           name
         }
       }
+    }
+    contactLinks {
+      website
+      facebook
+      twitter
+      instagram
     }
   }
 `;

@@ -17,6 +17,7 @@ body {
 :root {
   --textcolor-error: #a00;
   --textcolor-link: #0070f3;
+  --textcolor-inverted-link-hover: #bbddff;
 
   --bgcolor-light: #e4e4e4;
 
@@ -53,7 +54,7 @@ body {
 
 
 
-
+/* move these  */
 input[type="submit"],
 input[type="button"],
 button,
@@ -89,3 +90,8 @@ button:hover,
 .button:hover {
   background:var(--bgcolor-button-hover);
 }
+
+.flex-grower {
+  flex-grow:1;
+}
+

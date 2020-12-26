@@ -1,4 +1,7 @@
 import React from "react";
+import styled, { css } from "styled-components";
+
+import { getPhotoUrl } from "../../widgets/Photo";
 
 import { SourceWithBitesProps } from "../types";
 import { SourceDetailBite } from "./SourceDetailBites";
@@ -10,22 +13,25 @@ interface Props {
 }
 
 export function SourceDetail ({ source }: Props): JSX.Element {
-  const { bites, ...rest } = source;
+  const { bites, ...sourceMeta } = source;
   
+  const marqueeUrl = getPhotoUrl(sourceMeta.marqueeImage);
+
   return (
-    <>    
-      <SourceDetailHeaderTheme>
-        <SourceDetailHeader {...rest} />    
+    <>   
+      <SourceDetailHeaderTheme imageUrl={marqueeUrl} 
+        className="panel panel--inverted">
+        
+        <SourceDetailHeader {...sourceMeta} />
       </SourceDetailHeaderTheme>
 
       {bites.map((bite) => {
         return <SourceDetailBite 
           key={bite.id} 
           bite={bite}
-          sourceCuisines={rest.cuisines}
+          sourceCuisines={sourceMeta.cuisines}
         />;
       })}
     </>
   );  
 }
-
