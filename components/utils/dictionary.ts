@@ -1,8 +1,5 @@
 export const MSG_SITE_TITLE = process.env.SITE_TITLE || 'Site Title';
 
-export const MSG_RESULT_COUNT_SINGULAR = 'result';
-export const MSG_RESULT_COUNT_PLURAL = 'results';
-export const MSG_RESULT_COUNT_FOR = 'for';
 export const MSG_SHOW_ALL_RESULTS = 'show all';
 
 export const MSG_NO_SEARCH_RESULTS = 'No Results';
@@ -31,3 +28,25 @@ export const MSGS_AUTH_FORMS = {
     MSG_AUTH_FAILED: 'Unable to create an account with these credentials.'
   }
 }
+
+export const MSGS_PREFERRED_DELIVERY_METHODS = {
+  thirdPartyService: {
+    text: 'Preferred delivery avaialble through',
+    links: {
+      uberEats: { name: 'Uber Eats', link: 'https://www.ubereats.com' },
+      grubhub: { name: 'Grubhub', link: 'https://www.grubhub.com' }
+    }
+  },
+  call: {
+    linkText: 'Call ahead',
+    text: 'for best delivery service.'
+  },
+  website: {
+    linkText: 'Order online',
+    text: 'for best delivery service.'
+  },
+  otherLink: {
+    linkText: 'Check here',
+    text: 'for delivery options.'
+  }
+};

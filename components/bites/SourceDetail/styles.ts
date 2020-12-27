@@ -44,6 +44,8 @@ export const SourceDetailHeaderTheme = styled.div<BackgroundImageWrapperProps>`
     }
     
     .contact-info {
+      margin-top:-.25rem;
+      
       a {
         margin-right:.75rem;
         text-decoration:none;

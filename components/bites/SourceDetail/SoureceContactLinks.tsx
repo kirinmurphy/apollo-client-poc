@@ -1,6 +1,7 @@
 import { ContactLinksProps, PhoneType } from "../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import { getFormattedPhone } from "./utils/getFormattedPhone";
 
 interface Props {
   phone: PhoneType;
@@ -24,11 +25,4 @@ export function SourceContactLinks ({ phone, contactLinks }: Props): JSX.Element
       {instagram && <a href={instagram} className="contact-link instagram">INSTA</a>}
     </div>
   );
-}
-
-function getFormattedPhone (phone: string): string {
-  const first = phone.substring(0,3);
-  const middle = phone.substring(3,6);
-  const last = phone.substring(6,10);
-  return `${first}.${middle}.${last}`;
 }

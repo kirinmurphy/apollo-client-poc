@@ -25,9 +25,11 @@ export interface CuisineProps {
   id: string | number;
 }
 
+export type PreferredDeliveryMethodType = 'call' | 'website' | 'uberEats' | 'grubhub' | 'otherLink';
+
 export interface SourceDeliveryOptionsProps {
   available: boolean;
-  preferredMethod: 'call' | 'website' | 'uberEats' | 'grubhub' | 'otherLink';
+  preferredMethod: PreferredDeliveryMethodType;
   otherLink: string;
 }
 

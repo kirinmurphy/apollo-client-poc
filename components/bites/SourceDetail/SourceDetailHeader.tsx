@@ -33,7 +33,11 @@ export function SourceDetailHeader (source: SourceProps): JSX.Element {
 
         <SourceContactLinks phone={phone} contactLinks={contactLinks} />
 
-        <SourceDeliveryOptions phone={phone} deliveryOptions={deliveryOptions} />
+        <SourceDeliveryOptions 
+          phone={phone} 
+          website={contactLinks?.website}
+          deliveryOptions={deliveryOptions} 
+        />
       </div>
 
       {/* FIX - goofy api for sources here */}

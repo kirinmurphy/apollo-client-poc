@@ -1,25 +1,47 @@
+import { MSGS_PREFERRED_DELIVERY_METHODS } from "../../utils/dictionary";
 import { PhoneType, SourceDeliveryOptionsProps } from "../types";
+import { DirectDeliveryMessage } from "./DirectDeliveryMessage";
 
-interface PProps {
+interface Props {
   phone: PhoneType;
+  website: string;
   deliveryOptions: SourceDeliveryOptionsProps;
 }
 
-export function SourceDeliveryOptions ({ phone, deliveryOptions }: PProps): JSX.Element {
-  const { available, preferredMethod } = deliveryOptions;
-  return (
-    <>
-      {available && 
-        <div className="delivery-method">
-          {preferredMethod === 'uberEats' && (
-            <span>Preferred delivery with <a href="https://www.ubereats.com">Uber Eats</a></span>
-          )}
+export function SourceDeliveryOptions (props: Props): JSX.Element {
+  const { 
+    phone, 
+    website, 
+    deliveryOptions: { available, preferredMethod, otherLink } 
+  } = props;
 
-          {preferredMethod === 'call' && (
-            <span><a href={`tel:${phone}`}>Call ahead</a> to place your order.</span>
-          )}
-        </div>
-      }
-    </>    
-  );  
+  const copy = MSGS_PREFERRED_DELIVERY_METHODS;
+  const thirdPartyLinks = copy.thirdPartyService.links;
+  const isThirdPartyService = Object.keys(thirdPartyLinks).includes(preferredMethod);
+
+  const directDeliveryOptions = {
+    call: { link: `tel:${phone}` },
+    website: { link: website },
+    otherLink: { link: otherLink }
+  };
+  
+  return available ? (
+    <div className="delivery-method">
+      {isThirdPartyService && (
+        <span>
+          {copy.thirdPartyService.text}{' '}
+          <a href={thirdPartyLinks[preferredMethod].link}>
+            {thirdPartyLinks[preferredMethod].name}
+          </a>
+        </span>
+      )}
+
+      {!isThirdPartyService && (
+        <DirectDeliveryMessage 
+          method={preferredMethod} 
+          link={directDeliveryOptions[preferredMethod].link} 
+        />
+      )}          
+    </div>
+  ) : <></>;
 }
