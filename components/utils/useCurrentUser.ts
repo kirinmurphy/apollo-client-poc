@@ -13,8 +13,6 @@ interface UseCurrentUserReturnProps {
   }
 }
 
-const GRAPHQL_URL = process.env.API_URL + "/graphql";
-
 export function useCurrentUser (): UseCurrentUserReturnProps {
   const { authToken } = useClientAuthController();
 
@@ -24,7 +22,7 @@ export function useCurrentUser (): UseCurrentUserReturnProps {
     return fetch(url, { headers: headers }).then(r => r.json());
   }
 
-  const secureGraphQlClient = new GraphQLClient(GRAPHQL_URL, { headers: headers });
+  const secureGraphQlClient = new GraphQLClient(process.env.GRAPHQL_URL, { headers: headers });
   const secureGraphQlFetcher = query => secureGraphQlClient.request(query);
   
   const { data: user } = useSWR(API_PATH_CURRENT_USER, secureFetcher);

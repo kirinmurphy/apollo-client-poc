@@ -27,6 +27,11 @@ export const GQL_FRAGMENT_SOURCES = gql`
       twitter
       instagram
     }
+    deliveryOptions {
+      available
+      preferredMethod
+      otherLink
+    }
   }
 `;
 

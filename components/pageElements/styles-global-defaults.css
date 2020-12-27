@@ -1,0 +1,23 @@
+html,
+body {
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+/* a {
+  color: var(--textcolor-link);
+  text-decoration: none;
+} */
+
+/* a:hover {
+  text-decoration: underline;
+} */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  padding:2vw;
+}

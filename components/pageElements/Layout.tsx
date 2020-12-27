@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageContentWrapper } from '../../styles/globalStyles';
+import { PageContentWrapper } from './styles-elements';
 
 import { Navbar } from "./Navbar";
 
@@ -9,10 +9,6 @@ interface Props {
   page?: string;
 }
 
-export const PAGE_HOME = 'homepage';
-export const PAGE_SIGNUP = 'signup';
-export const PAGE_LOGIN = 'login';
-export const PAGE_ACCOUNT = 'account';
 
 export function Layout ({ children, page }: Props): JSX.Element {
   // useEffect(() => { redirectIfOldIE(window); }, []);

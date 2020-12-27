@@ -1,0 +1,17 @@
+:root {
+  --textcolor-error: #a00;
+  --textcolor-link: #0070f3;
+  --textcolor-inverted-link-hover: #bbddff;
+
+  --bgcolor-light: #e4e4e4;
+
+  --bgcolor-highlight1-medium:#45586b;
+  --bgcolor-highlight1-dark:#05182b;
+
+  --bgcolor-button: var(--bgcolor-highlight1-medium);
+  --bgcolor-button-hover: var(--bgcolor-highlight1-dark);
+
+  --dropdownItem-textColor: var(--textcolor-link);
+
+  /* --page-bgColor: pink; */
+}

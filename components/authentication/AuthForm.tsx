@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import { DocumentNode } from 'graphql';
 
-import { PageContentWrapper, PageTitle } from '../../styles/globalStyles';
+import { PageContentWrapper, PageTitle } from '../pageElements/styles-elements';
 
 import { AuthFormFieldsProps } from './AuthFormCommonFields';
 

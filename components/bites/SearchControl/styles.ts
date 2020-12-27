@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpointTablet } from '../../../styles/globalStyles';
+import { breakpointTablet } from '../../pageElements/styles-elements';
 
 export const SearchWrapper = styled.div``;
 

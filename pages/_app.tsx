@@ -1,16 +1,20 @@
 import React from "react";
-import 'codethings-react-ui/dist/styles.css';
-import 'leaflet/dist/leaflet.css';
-import 'react-leaflet-markercluster/dist/styles.min.css';
-
+import { AppProps } from "next/app";
 import Head from "next/head";
-import '../styles/default.css';
-import '../components/utils/fontAwesomeLibrary';
-
 import { ApolloProvider, ApolloClient } from "@apollo/client";
 import withApollo from "../utils/withApollo";
-import { AppProps } from "next/app";
+
+import '../components/utils/fontAwesomeLibrary';
 import { MSG_SITE_TITLE } from "../components/utils/dictionary";
+
+// Styles
+import 'codethings-react-ui/dist/styles.css';
+import '../components/pageElements/styles-global-defaults.css';
+import '../components/pageElements/styles-global-variables.css';
+import '../components/pageElements/styles-global-buttons.css';
+
+import 'leaflet/dist/leaflet.css';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 
 interface Props extends AppProps {
   apollo: ApolloClient<string>

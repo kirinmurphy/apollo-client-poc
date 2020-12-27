@@ -1,6 +1,6 @@
 import request from 'graphql-request';
 
-import { defaultGraphQlFetcher, GRAPHQL_URL } from '../../../../utils/graphql-request-fetcher';
+import { defaultGraphQlFetcher } from '../../../utils/graphqlRequestFetcher';
 
 import { BITE_QUERY, FILTERED_BITE_QUERY } from '../../queries/bites';
 
@@ -30,6 +30,6 @@ const defaultProps = {
 function getKeywordProps (activeSearchKeyword): GetDynamicBiteQueryReturnProps {
   return {
     biteQuery: [FILTERED_BITE_QUERY, activeSearchKeyword],
-    biteFetcher: (query, id) => request(GRAPHQL_URL, query, { searchKeyword: id })  
+    biteFetcher: (query, id) => request(process.env.GRAPHQL_URL, query, { searchKeyword: id })  
   };
 };

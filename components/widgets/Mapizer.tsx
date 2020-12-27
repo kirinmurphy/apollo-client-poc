@@ -2,6 +2,7 @@ import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import { LooseObject } from 'codethings-react-ui/dist/widgets/types';
+import styled from 'styled-components';
 
 interface Props {
   markers: LooseObject[],
@@ -13,12 +14,14 @@ export default function Mapizer ({ markers, tooltipTemplate }: Props): JSX.Eleme
   const allLatLongs = markers.map(marker => marker.position);
 
   return (
-    <div className="map">
+    <MapDefaultTheme className="map">
       <Map bounds={allLatLongs}>
+
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         {markers.map(({ markerData, position }) => {
           return (
             <Marker position={position} key={markerData.source.id}>
@@ -29,6 +32,10 @@ export default function Mapizer ({ markers, tooltipTemplate }: Props): JSX.Eleme
           );
         })}
       </Map>
-    </div>
+    </MapDefaultTheme>
   );
 }
+
+const MapDefaultTheme = styled.div`
+  > * { height:100% !important; }
+`;

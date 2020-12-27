@@ -1,5 +1,6 @@
 import { PhotoProps } from "../widgets/types";
 
+type LinkType = string;
 export type PhoneType = string;
 
 // BITE ADJACENT
@@ -13,15 +14,21 @@ interface LocationProps {
 }
 
 export interface ContactLinksProps {
-  website: string;
-  facebook: string;
-  twitter: string;
-  instagram: string;
+  website: LinkType;
+  facebook: LinkType;
+  twitter: LinkType;
+  instagram: LinkType;
 }
 
 export interface CuisineProps {
   name: string;
   id: string | number;
+}
+
+export interface SourceDeliveryOptionsProps {
+  available: boolean;
+  preferredMethod: 'call' | 'website' | 'uberEats' | 'grubhub' | 'otherLink';
+  otherLink: string;
 }
 
 export interface SourceProps {
@@ -31,6 +38,7 @@ export interface SourceProps {
   location?: LocationProps
   marqueeImage?: PhotoProps;
   contactLinks?: ContactLinksProps;
+  deliveryOptions: SourceDeliveryOptionsProps;
 }
 
 // BITES 

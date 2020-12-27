@@ -2,25 +2,8 @@ import styled from 'styled-components';
 
 export const breakpointTablet = '800px';
 
-export const SiteTitle = styled.h1`
-  font-size:var(--fontSize-title-medium);
-
-  .svg-inline--fa {
-    font-size:var(--fontSize-small);
-    transform:translateY(-4px);
-    color:#bbb;
-  }
-
-  a { color:var(--textcolor-base); 
-    &:hover { 
-      text-decoration:none; 
-
-      .svg-inline--fa {
-        color:var(--textcolor-base);
-      }
-    
-    }
-  }
+export const FlexPusher = styled.div`
+  flex-grow:1;
 `;
 
 export const PageTitle = styled.h2``;

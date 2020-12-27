@@ -1,15 +1,36 @@
 import styled from "styled-components";
 
-export const NavbarTheme = styled.nav`
-display:flex;
-justify-content: space-between;
-padding-bottom:1rem;
-margin-bottom:1rem;
-border-bottom:1px solid #ddd;
+export const SiteLogoTheme = styled.h1`
+  font-size:var(--fontSize-title-medium);
 
-.site-nav {
+  .svg-inline--fa {
+    font-size:var(--fontSize-small);
+    transform:translateY(-4px);
+    color:#bbb;
+  }
+
+  a { color:var(--textcolor-base); 
+    &:hover { 
+      text-decoration:none; 
+
+      .svg-inline--fa {
+        color:var(--textcolor-base);
+      }
+    
+    }
+  }
+`;
+
+export const NavbarTheme = styled.nav`
   display:flex;
-}
+  justify-content: space-between;
+  padding-bottom:1rem;
+  margin-bottom:1rem;
+  border-bottom:1px solid #ddd;
+
+  .site-nav {
+    display:flex;
+  }
 `;
 
 export const UserControlsWrapper = styled.div`

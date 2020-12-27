@@ -4,10 +4,10 @@ import { BrowserBackLink } from "codethings-react-ui";
 
 import { SourceWithBitesProps } from '../../components/bites/types';
 
-import { Layout } from "../../components/page/Layout";
+import { Layout } from "../../components/pageElements/Layout";
 import Query from "../../components/widgets/Query";
 
-import { PageContentWrapper } from "../../styles/globalStyles";
+import { PageContentWrapper } from "../../components/pageElements/styles-elements";
 import { SOURCE_WITH_BITES_BY_ID_QUERY } from "../../components/bites/queries/sources";
 import { SourceDetail } from "../../components/bites/SourceDetail";
 

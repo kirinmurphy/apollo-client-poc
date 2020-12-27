@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { defaultGraphQlFetcher } from '../../../utils/graphql-request-fetcher';
+import { defaultGraphQlFetcher } from '../../utils/graphqlRequestFetcher';
 
 import { URL_PARAM_SEARCH_KEYWORD_CUISINE } from './utils/keywordFilterHooks';
 import CUISINES_QUERY from '../queries/cuisines';

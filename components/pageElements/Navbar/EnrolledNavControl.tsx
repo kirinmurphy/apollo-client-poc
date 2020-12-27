@@ -5,12 +5,12 @@ import { Dropdownizer } from 'codethings-react-ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-import { MSG_LOGOUT, MSG_LINK_ACCOUNT_PAGE } from '../utils/dictionary';
+import { MSG_LOGOUT, MSG_LINK_ACCOUNT_PAGE } from '../../utils/dictionary';
 
-import { PAGE_ACCOUNT } from './Layout';
+import { PAGE_ACCOUNT } from '../constants';
 
-import { useClientAuthController } from '../authentication';
-import { useCurrentUser } from '../utils/useCurrentUser';
+import { useClientAuthController } from '../../authentication';
+import { useCurrentUser } from '../../utils/useCurrentUser';
 
 interface Props {
   page: string;

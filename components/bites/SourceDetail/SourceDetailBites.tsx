@@ -2,7 +2,7 @@ import React from "react";
 import { CommaSeparatedList } from "codethings-react-ui";
 
 import { CuisineProps, SourceBiteProps } from "../types";
-import { BiteSummaryTheme } from "../SearchResults/styles";
+import { BiteSummaryTheme } from "../BiteSummary/styles";
 import { Photo } from "../../widgets/Photo";
 import { getFilteredBiteCuisines } from "./utils/getFilteredbuiteCuisines";
 

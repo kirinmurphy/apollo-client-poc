@@ -2,14 +2,14 @@ import React from "react";
 
 import { NavbarTheme } from "./styles";
 
-import { SiteTitle } from '../../styles/globalStyles';
+import { SiteLogoTheme } from '../Navbar/styles';
 import { SiteLogo } from "./Logo";
 
-// import dynamic from 'next/dynamic';
-// const UserControls = dynamic(
-//   () => import('./UserControls'),
-//   { ssr: false }
-// );
+import dynamic from 'next/dynamic';
+const UserControls = dynamic(
+  () => import('./UserControls'),
+  { ssr: false }
+);
 
 interface Props {
   page: string;
@@ -19,13 +19,12 @@ export function Navbar ({ page }: Props): JSX.Element {
   return (
     <NavbarTheme>
       <div className="site-nav">
-        <SiteTitle>
+        <SiteLogoTheme>
           <SiteLogo page={page} />
-        </SiteTitle>
+        </SiteLogoTheme>
       </div>
 
-      {/* <UserControls page={page} /> */}
+      <UserControls page={page} />
     </NavbarTheme>
   );
 }
-

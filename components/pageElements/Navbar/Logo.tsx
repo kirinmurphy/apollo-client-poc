@@ -1,8 +1,8 @@
 import React from "react";
 import Link from 'next/link';
 
-import { MSG_SITE_TITLE } from '../utils/dictionary';
-import { PAGE_HOME } from "./Layout";
+import { MSG_SITE_TITLE } from '../../utils/dictionary';
+import { PAGE_HOME } from "../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 

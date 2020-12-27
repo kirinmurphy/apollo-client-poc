@@ -29,7 +29,7 @@ export const SourceDetailHeaderTheme = styled.div<BackgroundImageWrapperProps>`
     display:flex;
     flex-direction: column;
     justify-items: end;
-    flex-grow: 1; // grows any available width not taken up by siblings!
+    flex-grow: 1;
     margin-top:-.5rem;
     color:var(--textcolor-inverted);
     
@@ -56,6 +56,10 @@ export const SourceDetailHeaderTheme = styled.div<BackgroundImageWrapperProps>`
           }
         }
       }
+    }
+
+    .delivery-method {
+      font-size:var(--fontSize-small);
     }
   }
 

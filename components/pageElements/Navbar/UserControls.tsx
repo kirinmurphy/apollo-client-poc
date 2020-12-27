@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import styled from "styled-components";
 
-import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../utils/dictionary';
+import { MSG_LINK_HEADER_SIGNUP, MSG_LINK_HEADER_LOGIN } from '../../utils/dictionary';
 
-import { PAGE_SIGNUP, PAGE_LOGIN } from './Layout';
+import { PAGE_SIGNUP, PAGE_LOGIN } from '../constants';
 
-import { useClientAuthController } from '../authentication';
+import { useClientAuthController } from '../../authentication';
 import { EnrolledNavControl } from './EnrolledNavControl';
 import { UserControlsWrapper } from './styles';
 

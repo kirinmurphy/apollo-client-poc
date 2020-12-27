@@ -1,22 +1,17 @@
 import React from 'react';
 
-import { PageContentWrapper } from '../styles/globalStyles'; 
+import { PageContentWrapper } from '../components/pageElements/styles-elements'; 
 
-import { Layout, PAGE_HOME } from '../components/page/Layout';
-import { SearchControl } from '../components/bites/SearchControl';
-import { BiteList } from '../components/bites/SearchResults';
-import { SearchControlWrapper } from '../components/bites/SearchControl/styles';
+import { Layout } from '../components/pageElements/Layout';
+import { PAGE_HOME } from '../components/pageElements/constants';
+
+import { BitesHomepage } from '../components/bites/Homepage';
 
 export default function Home (): JSX.Element {
   return (
     <Layout page={PAGE_HOME}>
       <PageContentWrapper>
-        <SearchControlWrapper>
-          <SearchControl />
-        </SearchControlWrapper>
-        
-        <BiteList />
-
+        <BitesHomepage />
       </PageContentWrapper>
     </Layout>
   )

@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Layout, PAGE_LOGIN } from '../components/page/Layout';
+import { Layout } from '../components/pageElements/Layout';
+import { PAGE_LOGIN } from '../components/pageElements/constants';
+
 import { GQL_LOGIN } from '../components/authentication/queries/login';
 
 import { 

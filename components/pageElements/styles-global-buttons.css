@@ -1,0 +1,37 @@
+
+/* move these  */
+input[type="submit"],
+input[type="button"],
+button,
+.button {
+  padding:0 1rem;
+  height:2rem;
+  line-height:1.8rem;
+  border-radius:2px;
+  border:none;
+  color:var(--textcolor-inverted);
+  background:var(--bgcolor-button);
+  font-size:var(--fontsize-highlight);
+  cursor:pointer;
+}
+
+input[type="submit"][disabled],
+input[type="button"][disabled],
+button[disabled],
+.button[disabled],
+input[type="submit"][disabled]:hover,
+input[type="button"][disabled]:hover,
+button[disabled]:hover,
+.button[disabled]:hover {
+  background: #ddd;
+  color:#999;
+  cursor: not-allowed;
+}
+
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  background:var(--bgcolor-button-hover);
+}

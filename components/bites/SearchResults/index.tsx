@@ -2,12 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 
-import { GridList } from '../../../styles/globalStyles'; 
+import { GridList } from '../../pageElements/styles-elements'; 
 
 import { SearchResultsSummary } from './SearchResultsSummary';
 import { SwrResourceView } from '../../widgets/SwrResourceView';
-import { BiteSummary } from './BiteSummary';
-import { BiteSummaryTheme, SearchResultsSummaryWrapper } from './styles';
+import { BiteSummary } from '../BiteSummary';
+import { BiteSummaryTheme } from '../BiteSummary/styles';
+
+import { SearchResultsSummaryWrapper } from './styles';
 import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks';
 import { getBiteQueryProps } from './utils/getBiteQueryProps';
 import { BiteSummaryProps } from '../types';
