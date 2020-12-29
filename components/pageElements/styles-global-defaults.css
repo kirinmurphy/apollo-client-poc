@@ -4,6 +4,10 @@ body {
   font-size: 18px;
 }
 
+body {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+
 /* a {
   color: var(--textcolor-link);
   text-decoration: none;

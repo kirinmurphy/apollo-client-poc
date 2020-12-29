@@ -26,10 +26,7 @@ function App ({ Component, pageProps, apollo }: Props): JSX.Element {
       <Head>
         <title>{MSG_SITE_TITLE}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Staatliches"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700" />        
       </Head>
       <Component {...pageProps} />
     </ApolloProvider>
