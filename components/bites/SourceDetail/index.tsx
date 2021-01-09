@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { getPhotoUrl } from "../../widgets/Photo";
 
 import { SourceWithBitesProps } from "../types";
-import { SourceDetailBite } from "./SourceDetailBites";
+import { SourceDetailBite } from "./SourceDetailBite";
 import { SourceDetailHeader } from "./SourceDetailHeader";
 import { SourceDetailHeaderTheme } from "./styles";
 

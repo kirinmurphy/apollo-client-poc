@@ -28,7 +28,7 @@ export function SourceDetailBite ({ bite, sourceCuisines }: Props): JSX.Element 
       <div className="content">
         <h3>{name}</h3>
 
-        {filteredBiteCuisines?.length && (
+        {!!filteredBiteCuisines.length && (
           <div className="cuisines">
             <CommaSeparatedList collection={filteredBiteCuisines} />
           </div>

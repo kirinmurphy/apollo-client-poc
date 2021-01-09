@@ -34,7 +34,7 @@ export const MSGS_PREFERRED_DELIVERY_METHODS = {
     text: 'Preferred delivery avaialble through',
     links: {
       uberEats: { name: 'Uber Eats', link: 'https://www.ubereats.com' },
-      grubhub: { name: 'Grubhub', link: 'https://www.grubhub.com' }
+      grubHub: { name: 'Grubhub', link: 'https://www.grubhub.com' }
     }
   },
   call: {
