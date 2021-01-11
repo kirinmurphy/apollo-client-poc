@@ -3,15 +3,20 @@ import React from 'react';
 import { SearchControl } from '../SearchControl';
 import { SearchControlWrapper } from '../SearchControl/styles';
 import { BiteList } from '../SearchResults';
+import { BiteSummaryProps } from '../types';
 
-export function BitesHomepage (): JSX.Element {
+interface Props {
+  initialBites: BiteSummaryProps[];
+}
+
+export function BitesHomepage ({ initialBites }): JSX.Element {
   return (
     <>
       <SearchControlWrapper>
         <SearchControl />
       </SearchControlWrapper>
 
-      <BiteList />    
+      <BiteList initialBites={initialBites} />    
     </>
   );
 }
