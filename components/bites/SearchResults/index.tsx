@@ -14,12 +14,20 @@ import { useCuisineTypeFilter } from '../SearchControl/utils/keywordFilterHooks'
 import { getBiteQueryProps } from './utils/getBiteQueryProps';
 import { BiteSummaryProps } from '../types';
 
-export function BiteList (): JSX.Element {
-  
+interface Props {
+  initialBites: BiteSummaryProps[];
+}
+
+export function BiteList ({ initialBites }): JSX.Element {
+
   const { activeSearchKeyword } = useCuisineTypeFilter();
   const { biteQuery, biteFetcher } = getBiteQueryProps(activeSearchKeyword);
-  const { data, error } = useSWR(biteQuery, biteFetcher);
 
+  console.log('fefe', activeSearchKeyword);
+  const config = activeSearchKeyword ? { initialData: initialBites } : {};
+  const { data, error } = useSWR(biteQuery, biteFetcher, config);
+
+  console.log('ffffff', activeSearchKeyword);
   return (
     <SwrResourceView<BiteSummaryProps[]>
       collection={data?.bites}
