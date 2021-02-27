@@ -13,11 +13,13 @@ export function BiteSummary (props: BiteSummaryProps): JSX.Element {
     <>
       <Photo photo={photo} />
 
-      <span className="bite-summary__name">{name}</span>
+      <div className="bite-summary__details">
+        <span className="bite-summary__name">{name}</span>
 
-      <div className="bite-summary__source">
-        <CenterTextEllipticizer rawText={sourceText} /> 
-      </div>  
+        <div className="bite-summary__source">
+          <CenterTextEllipticizer rawText={sourceText} /> 
+        </div>  
+      </div>
     </>
   );
 }

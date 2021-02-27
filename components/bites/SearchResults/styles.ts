@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpointTablet } from '../../pageElements/styles-elements'; 
+import { breakpointDesktopMin } from '../../pageElements/styles-elements'; 
 
 export const BiteSourceMapWrapper = styled.div`
   position:relative;
@@ -12,9 +12,8 @@ export const SearchResultsSummaryWrapper = styled.div`
   z-index: 2;
   padding:.7rem 0;
 
-  @media(min-width:${breakpointTablet}) {
+  @media(min-width:${breakpointDesktopMin}) {
     padding:.4rem 0 1.3rem 0;
     font-size:var(--fontSize-bump);
   }
 `;
-

@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
-export const breakpointTablet = '800px';
+const breakpointTabletBase = 800;
+export const breakpointTabletMax = `${breakpointTabletBase}px`;
+export const breakpointDesktopMin = `${breakpointTabletBase+1}px`;
+
+const breakpintMobileBase = 450;
+export const breakpointNMobileMax = `${breakpintMobileBase}px`;
+export const breakpointTabletMin = `${breakpintMobileBase+1}px`;
+
+
+export const gridBreakpointMedium = '900px';
+export const gridBreakpointSmall = '450px';
 
 export const FlexPusher = styled.div`
   flex-grow:1;
@@ -34,13 +44,14 @@ export const GridList = styled.div`
     margin-right:1%;
   }
 
-  @media (max-width:900px) {
+  @media (max-width:${gridBreakpointMedium}) {
     > * {
       width:49%;
+      margin-bottom:.4rem;
     }
   }
 
-  @media (max-width:450px) {
+  @media (max-width:${gridBreakpointSmall}) {
     margin-right:0;
 
     > * {

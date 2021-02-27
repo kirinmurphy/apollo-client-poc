@@ -1,28 +1,39 @@
 import styled, { css } from "styled-components";
+import { breakpointDesktopMin, breakpointTabletMax } from "../../pageElements/styles-elements";
 
 interface BackgroundImageWrapperProps {
   imageUrl?: string;
 }
 
+const sourceMarqueeBG = (imageUrl) => {
+  return imageUrl && css`
+    padding:1rem;
+
+    background-color:var(--bgcolor-highlight1-dark);
+    background-position:top left;
+    background-repeat:no-repeat;
+    background-size:100% auto;
+    background-image: url(${imageUrl});
+
+    &:before {
+      content:'';
+      position:absolute;
+      top:0; right:0; bottom:0; left:0;
+      background: rgba(0,0,0,.7);
+      z-index:1;
+    }
+
+    > * {
+      position:relative; 
+      z-index:2;
+    }
+  `;
+}
+
 export const SourceDetailHeaderTheme = styled.div<BackgroundImageWrapperProps>`
   position:relative;
   display:flex; 
-
   margin-bottom:1rem;
-  padding:1rem;
-
-  background-color:var(--bgcolor-highlight1-dark);
-  background-position:top left;
-  background-repeat:no-repeat;
-  background-size:100% auto;
-  ${props => props.imageUrl && css`background-image: url(${props.imageUrl});`}
-
-  &:before {
-    content:'';
-    position:absolute;
-    top:0; right:0; bottom:0; left:0;
-    background: rgba(0,0,0,.7);
-  }
 
   .primary-source-details {
     position:relative;
@@ -70,4 +81,25 @@ export const SourceDetailHeaderTheme = styled.div<BackgroundImageWrapperProps>`
     width: 300px;
     flex: 0 0 300px;
   }
+
+
+  @media (min-width:${breakpointDesktopMin}) {
+    ${props => sourceMarqueeBG(props.imageUrl)}
+  }
+
+  @media (max-width:${breakpointTabletMax}) {
+    display: block;
+    
+    .primary-source-details {
+      ${props => sourceMarqueeBG(props.imageUrl)}
+      margin-bottom:.5rem;
+      height:180px;
+    }
+
+    .map {
+      width:100%;
+      height:180px;
+    }
+  }
 `;
+
