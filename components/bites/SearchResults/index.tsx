@@ -33,15 +33,20 @@ export function BiteList (): JSX.Element {
 
           <GridList>
             {bites.map((bite) => {
-              const { id, source } = bite;
-              const linkToSource = `/source/${encodeURIComponent(source.id)}`;
+
+              const source = bite?.attributes?.source;
+              const linkToSource = `/source/${encodeURIComponent(source?.data.id)}`;
 
               return (
-                <BiteSummaryTheme link={true} key={id}>
-                  <Link href={linkToSource}>
-                    <a><BiteSummary {...bite} /></a>
-                  </Link>
-                </BiteSummaryTheme>
+                <React.Fragment key={data?.id}>
+                  {bite?.id && (
+                    <BiteSummaryTheme link={true} key={data?.id}>
+                      <Link href={linkToSource}>
+                        <a><BiteSummary {...bite} /></a>
+                      </Link>
+                    </BiteSummaryTheme>
+                  )}
+                </React.Fragment>
               );
             })}
           </GridList>        

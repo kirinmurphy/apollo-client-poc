@@ -1,12 +1,12 @@
-import { CuisineProps } from "../../types";
+import { CuisinesProps } from "../../types";
 
 export function getFilteredBiteCuisines (
-  sourceCuisines: CuisineProps[], 
-  biteCuisines: CuisineProps[]): string[] {
+  sourceCuisines: CuisinesProps, 
+  biteCuisines: CuisinesProps): string[] {
   
-  const sourceCuisineNames = sourceCuisines.map(cuisine => cuisine.name);
+  const sourceCuisineNames = sourceCuisines.data.map(cuisine => cuisine.attributes.name);
   
-  return biteCuisines
-    .filter(biteCuisine => !sourceCuisineNames.includes(biteCuisine.name))
-    .map(cuisine => cuisine.name);
+  return biteCuisines.data
+    .filter(biteCuisine => !sourceCuisineNames.includes(biteCuisine.attributes.name))
+    .map(cuisine => cuisine.attributes.name);
 }

@@ -2,19 +2,22 @@ import React from 'react';
 import { CenterTextEllipticizer } from 'codethings-react-ui';
 
 import { BiteSummaryProps } from '../types';
-import { Photo } from '../../widgets/Photo';
+// import { Photo } from '../../widgets/Photo';
 
 export function BiteSummary (props: BiteSummaryProps): JSX.Element {
-  const { photo, name, source } = props;
+  const { attributes: { source, title } } = props;
+  const { data: { attributes: sourceMeta } } = source;
 
-  const sourceText = `${source.name} - ${source?.location?.neighborhood.name}`;
+  const neighborhood = sourceMeta?.location?.neighborhood;
+  const neighborhoodName = neighborhood?.data?.attributes?.name;
+  const sourceText = `${sourceMeta.name} - ${neighborhoodName}`;
 
   return (
     <>
-      <Photo photo={photo} />
+      {/* <Photo photo={photo} /> */}
 
       <div className="bite-summary__details">
-        <span className="bite-summary__name">{name}</span>
+        <span className="bite-summary__name">{title}</span>
 
         <div className="bite-summary__source">
           <CenterTextEllipticizer rawText={sourceText} /> 

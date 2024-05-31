@@ -1,11 +1,15 @@
 import { gql as gqlRequest } from 'graphql-request';
 
-// using graphql-request, not apollo gql for this one
+// Updated CUISINES_QUERY for Strapi v4
 const CUISINES_QUERY = gqlRequest`
   query Cuisines {
     cuisines {
-      id
-      name
+      data {
+        id
+        attributes {
+          name
+        }
+      }
     }
   }
 `;

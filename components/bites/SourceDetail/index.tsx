@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
+// import styled, { css } from "styled-components";
 
-import { getPhotoUrl } from "../../widgets/Photo";
+// import { getPhotoUrl } from "../../widgets/Photo";
 
 import { SourceWithBitesProps } from "../types";
 import { SourceDetailBite } from "./SourceDetailBite";
@@ -13,19 +13,17 @@ interface Props {
 }
 
 export function SourceDetail ({ source }: Props): JSX.Element {
-  const { bites, ...sourceMeta } = source;
-  
-  const marqueeUrl = getPhotoUrl(sourceMeta.marqueeImage);
-
+  const { bites, ...sourceMeta } = source.data.attributes;
+  // const marqueeUrl = getPhotoUrl(sourceMeta.marqueeImage);
   return (
     <>   
-      <SourceDetailHeaderTheme imageUrl={marqueeUrl} 
+      <SourceDetailHeaderTheme imageUrl={'asdf'} 
         className="panel panel--inverted">
         
-        <SourceDetailHeader {...sourceMeta} />
+        <SourceDetailHeader {...source} />
       </SourceDetailHeaderTheme>
 
-      {bites.map((bite) => {
+      {bites.data.map((bite) => {
         return <SourceDetailBite 
           key={bite.id} 
           bite={bite}

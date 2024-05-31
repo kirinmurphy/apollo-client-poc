@@ -1,3 +1,4 @@
+import React from "react";
 import { CommaSeparatedList } from "codethings-react-ui";
 
 import { FlexPusher } from "../../pageElements/styles-elements";
@@ -17,7 +18,7 @@ export function SourceDetailHeader (source: SourceProps): JSX.Element {
     },
     contactLinks,
     deliveryOptions
-  } = source;
+  } = source.data.attributes;
   
   return (
     <>
@@ -26,9 +27,9 @@ export function SourceDetailHeader (source: SourceProps): JSX.Element {
         <header>
           <h2>{name}</h2>
 
-          <CommaSeparatedList collection={cuisines.map(cuisine => cuisine.name)} />
+          <CommaSeparatedList collection={cuisines.data.map(({ attributes }) => attributes.name)} />
           {' - '} 
-          <span>{neighborhood.name}</span>
+          <span>{neighborhood.data.attributes.name}</span>
         </header>
 
         <SourceContactLinks phone={phone} contactLinks={contactLinks} />

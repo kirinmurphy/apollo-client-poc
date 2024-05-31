@@ -14,15 +14,17 @@ interface Props<ReturnProps> {
 export function SwrResourceView <ReturnProps,>(props: Props<ReturnProps>): JSX.Element {
   const { children, error, collection } = props;
 
+  const { data } = collection || {};
+
   return (
     <>
-      {collection?.length && children({ collection })}
+      {data?.length && children({ collection: data })}
 
-      {!!collection && !collection?.length && (
+      {!!data && !data?.length && (
         <div>{MSG_NO_SEARCH_RESULTS}</div>
       )}
 
-      {!collection && !error && (
+      {!data && !error && (
         <div><LoadingIcon /></div>
       )}
 

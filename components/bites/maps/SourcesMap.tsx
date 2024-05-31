@@ -44,9 +44,10 @@ export function SourcesMap ({ sources }: Props): JSX.Element {
 }
 
 function getMarkerProps ({ source, bites }) { 
-  const { latitude, longitude } = source.location;
+  const sourceMeta = source.data.attributes;
+  const { latitude, longitude } = sourceMeta.location;
   return {
-    markerData: { source, bites },
+    markerData: { source: sourceMeta, bites },
     position: [latitude, longitude]
   };
 }

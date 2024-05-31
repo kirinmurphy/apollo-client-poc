@@ -6,7 +6,12 @@ export type PhoneType = string;
 // BITE ADJACENT
 interface LocationProps {
   neighborhood: {
-    name: string;
+    data: {
+      id: string; 
+      attributes: {
+        name: string;
+      }
+    }
   }
   latitude?: number;
   longitude?: number;
@@ -21,8 +26,14 @@ export interface ContactLinksProps {
 }
 
 export interface CuisineProps {
-  name: string;
   id: string | number;
+  attributes: {
+    name: string;
+  }
+}
+
+export interface CuisinesProps {
+  data: CuisineProps[];
 }
 
 export type PreferredDeliveryMethodType = 'call' | 'website' | 'uberEats' | 'grubhub' | 'otherLink';
@@ -33,34 +44,42 @@ export interface SourceDeliveryOptionsProps {
   otherLink: string;
 }
 
-export interface SourceProps {
-  id: string;
+export interface SourceAttributeProps {
   name: string;
-  cuisines: CuisineProps[];
+  cuisines: CuisinesProps;
   location?: LocationProps
   marqueeImage?: PhotoProps;
   contactLinks?: ContactLinksProps;
-  deliveryOptions: SourceDeliveryOptionsProps;
+  deliveryOptions: SourceDeliveryOptionsProps;    
 }
 
-// BITES 
-interface BiteBaseProps {
+export interface SourceProps {
+  data: {
+    id: string;
+    attributes: SourceAttributeProps;
+  }
+}
+
+export interface BiteSummaryProps {
   id: string | number;
-  photo: PhotoProps;
-  name: string;
-  cuisines: CuisineProps[];
+  attributes: {
+    source: SourceProps
+    title: string;
+    cuisines: CuisinesProps;
+  }  
 }
 
-export interface BiteSummaryProps extends BiteBaseProps {
-  source: SourceProps
+export interface SourceWithBitesAttributesProps extends SourceAttributeProps {
+  bites: {
+    data: BiteSummaryProps[];
+  };
 }
 
-export interface SourceBiteProps extends BiteBaseProps {
-  mealPreferences: string;
-}
-
-export interface SourceWithBitesProps extends SourceProps {
-  bites: SourceBiteProps[];
+export interface SourceWithBitesProps {
+  data: {
+    id: string;
+    attributes: SourceWithBitesAttributesProps;
+  }
 }
 
 // USER IMPRESSIONS
